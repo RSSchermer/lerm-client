@@ -1,0 +1,27 @@
+@import 'bootstrap';
+
+$page-width: 1064px;
+$border-color: $gray-lighter;
+
+.nav-container {
+  @extend .container;
+
+  width: $page-width;
+}
+
+main {
+  @extend .container;
+
+  width: $page-width;
+}
+
+footer.main-footer {
+  @extend .container;
+
+  width: $page-width;
+  color: $text-muted;
+  text-align: center;
+  border-top: 1px solid $border-color;
+  margin-top: 20px;
+  padding: 20px;
+}
