@@ -10,14 +10,16 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
+      {{#if session.isAuthenticated}}
+        <li><a {{action 'invalidateSession'}}>Logout</a></li>
+      {{else}}
+        <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+      {{/if}}
     </ul>
   </div>
 </nav>
 
 <main>
-  <h2>Welcome to Ember</h2>
-
   {{outlet}}
 </main>
 

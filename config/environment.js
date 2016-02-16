@@ -25,6 +25,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.SERVER_HOST = 'http://localhost:3000';
+    ENV.APP.API_NAMESPACE = ENV.APP.SERVER_HOST + 'api/v1';
+    ENV.APP.SERVER_TOKEN_ENDPOINT = ENV.APP.SERVER_HOST + '/oauth/token';
   }
 
   if (environment === 'test') {
