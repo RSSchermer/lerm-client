@@ -19,6 +19,11 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication: 'current-user',
+    routeIfAlreadyAuthenticated: 'current-user'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -26,7 +31,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.SERVER_HOST = 'http://localhost:3000';
-    ENV.APP.API_NAMESPACE = ENV.APP.SERVER_HOST + 'api/v1';
+    ENV.APP.API_NAMESPACE = 'api/v1';
     ENV.APP.SERVER_TOKEN_ENDPOINT = ENV.APP.SERVER_HOST + '/oauth/token';
   }
 
