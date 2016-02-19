@@ -7,7 +7,14 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route('current-user');
+
+  this.route('current-user', function () {
+    this.route('new-project');
+  });
+
+  this.route('projects', function () {
+    this.route('show', { path: '/:project_id' });
+  });
 });
 
 export default Router;
