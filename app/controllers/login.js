@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
       let { identification, password } = this.getProperties('identification', 'password');
       this.get('session').authenticate('authenticator:oauth2', identification, password).catch((reason) => {
         if (reason.error === 'invalid_grant') {
-          this.set('errorMessage', 'Invalid email/password')
+          this.set('errorMessage', 'Invalid email/password');
         } else {
           this.set('errorMessage', reason.error || reason);
         }
