@@ -16,9 +16,7 @@ export default Ember.Controller.extend({
       headers[headerName] = headerValue;
       const url = ENV.APP.SERVER_HOST + '/' + ENV.APP.API_NAMESPACE + '/current-user';
 
-      Ember.$.ajax(url, {
-        headers: headers
-      }).then((data) => {
+      Ember.$.ajax(url, { headers: headers }).then((data) => {
         this.set('currentUser', this.get('store').push(data));
       });
     });
