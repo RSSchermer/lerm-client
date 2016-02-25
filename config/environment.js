@@ -33,6 +33,10 @@ module.exports = function(environment) {
     ENV.APP.SERVER_HOST = 'http://localhost:3000';
     ENV.APP.API_NAMESPACE = 'api/v1';
     ENV.APP.SERVER_TOKEN_ENDPOINT = ENV.APP.SERVER_HOST + '/oauth/token';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
   }
 
   if (environment === 'test') {
@@ -45,6 +49,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV.APP.SERVER_HOST = '';
+    ENV.APP.API_NAMESPACE = 'api/v1';
+    ENV.APP.SERVER_TOKEN_ENDPOINT = ENV.APP.SERVER_HOST + '/oauth/token';
   }
 
   if (environment === 'production') {

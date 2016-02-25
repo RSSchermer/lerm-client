@@ -1,24 +1,46 @@
+import Mirage from 'ember-cli-mirage';
+import qs from 'npm:qs';
+
 export default function() {
+  this.urlPrefix = '';
 
-  // These comments are here to help you get started. Feel free to delete them.
+  // Auth routes
 
-  /*
-    Config (with defaults).
+  this.post('/oauth/token', (schema, request) => {
+    const params = qs.parse(request.requestBody);
 
-    Note: these only affect routes defined *after* them!
-  */
+    if (params.grant_type === 'password' &&
+        params.password === 'valid_password') {
+      schema.currentUser.create({
+        email: params.username,
+        username: 'current_user',
+        firstName: 'Current',
+        lastName: 'User'
+      });
 
-  // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';    // make this `api`, for example, if your API is namespaced
-  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
+      return {
+        access_token: '824228db73ee5cc495af0716c644374b308c94dc71dff13ed3d8419a7bca1eeb',
+        token_type: 'bearer',
+        expires_in: 7200,
+        created_at: 1456307186
+      };
+    } else {
+      return new Mirage.Response(401, {}, {error: 'invalid_grant'});
+    }
+  });
 
-  /*
-    Shorthand cheatsheet:
+  // API routes
 
-    this.get('/posts');
-    this.post('/posts');
-    this.get('/posts/:id');
-    this.put('/posts/:id'); // or this.patch
-    this.del('/posts/:id');
-  */
+  this.namespace = 'api/v1';
+
+  // Returns the most recently created current user.
+  this.get('current-user', (schema) => {
+    const currentUsers = schema.currentUser.all();
+
+    if (currentUsers.length > 0) {
+      return currentUsers[currentUsers.length - 1];
+    } else {
+      return null;
+    }
+  });
 }
