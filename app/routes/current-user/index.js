@@ -6,15 +6,18 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
     let currentUser;
 
+    // TODO: refactor when ember-simple-auth 1.2 is released with a promise based authorize API
     this.get('session').authorize('authorizer:oauth2', (headerName, headerValue) => {
       const headers = {};
       headers[headerName] = headerValue;
       const url = ENV.APP.SERVER_HOST + '/' + ENV.APP.API_NAMESPACE + '/current-user?include=memberships.project';
 
-      currentUser = Ember.$.ajax(url, { headers: headers }).then((data) => {
-        this.store.pushPayload(data);
+      currentUser = Ember.$.ajax(url, {headers: headers}).then((data) => {
+        return Ember.run(() => {
+          this.store.pushPayload(data);
 
-        return this.store.findRecord('user', data.data.id);
+          return this.store.peekRecord('currentUser', data.data.id);
+        });
       });
     });
 
