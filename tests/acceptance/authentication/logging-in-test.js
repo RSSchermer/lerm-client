@@ -51,8 +51,8 @@ describe('Acceptance: Logging in', function () {
       click('.auth-form .submit-button');
     });
 
-    it('redirects to current-user.index', function () {
-      expect(currentPath()).to.equal('current-user.index');
+    it('redirects to current-user', function () {
+      expect(currentPath()).to.equal('current-user');
     });
   });
 });
