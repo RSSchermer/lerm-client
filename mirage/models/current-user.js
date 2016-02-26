@@ -1,4 +1,3 @@
-import { Model } from 'ember-cli-mirage';
+import User from './user';
 
-export default Model.extend({
-});
+export default User.extend();
