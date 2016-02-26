@@ -4,5 +4,9 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
     return this.store.createRecord('project');
+  },
+
+  deactivate() {
+    this.controller.get('model').rollbackAttributes();
   }
 });
