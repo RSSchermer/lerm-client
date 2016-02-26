@@ -10,7 +10,7 @@ import startApp from '../../helpers/start-app';
 import destroyApp from '../../helpers/destroy-app';
 import { authenticateSession } from 'lerm-client/tests/helpers/ember-simple-auth';
 
-describe('Acceptance: Creating a project', function () {
+describe('Acceptance: Projects | Creating a project', function () {
   let application;
 
   beforeEach(function () {

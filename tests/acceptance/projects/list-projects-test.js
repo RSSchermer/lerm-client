@@ -9,7 +9,7 @@ import { expect } from 'chai';
 import startApp from '../../helpers/start-app';
 import destroyApp from '../../helpers/destroy-app';
 
-describe('Acceptance: Creating a project', function () {
+describe('Acceptance: Projects | Listing projects', function () {
   let application;
 
   beforeEach(function () {
