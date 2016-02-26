@@ -3,6 +3,8 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 import ENV from 'lerm-client/config/environment';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
+  ajax: Ember.inject.service(),
+
   model() {
     let currentUser;
 
@@ -10,9 +12,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     this.get('session').authorize('authorizer:oauth2', (headerName, headerValue) => {
       const headers = {};
       headers[headerName] = headerValue;
-      const url = ENV.APP.SERVER_HOST + '/' + ENV.APP.API_NAMESPACE + '/current-user?include=memberships.project';
+      const url = '/current-user?include=memberships.project';
 
-      currentUser = Ember.$.ajax(url, {headers: headers}).then((data) => {
+      currentUser = this.get('ajax').request(url, {headers: headers}).then((data) => {
         return Ember.run(() => {
           this.store.pushPayload(data);
 
