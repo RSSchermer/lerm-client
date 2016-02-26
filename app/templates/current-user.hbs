@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-3">
+    <h2>{{model.username}}</h2>
+
+    {{model.fullName}}
+  </div>
+
+  <div class="col-md-9">
+    {{#link-to 'current-user.new-project'}}New project{{/link-to}}
+
+    <ul>
+      {{#each model.memberships as |membership|}}
+        <li>
+          {{#link-to 'projects.show' membership.project}}{{membership.project.name}}{{/link-to}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
