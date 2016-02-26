@@ -9,7 +9,7 @@
 
     <ul class="nav navbar-nav navbar-right user-menu">
       {{#if session.isAuthenticated}}
-        <li>{{#link-to 'current-user'}}{{currentUser.username}}{{/link-to}}</li>
+        <li>{{#link-to 'current-user'}}{{session.currentUser.username}}{{/link-to}}</li>
         <li><a {{action 'invalidateSession'}} class="logout-link">Logout</a></li>
       {{else}}
         <li>{{#link-to 'login'}}Login{{/link-to}}</li>
