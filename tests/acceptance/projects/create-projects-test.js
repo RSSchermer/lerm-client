@@ -8,6 +8,7 @@ import {
 import { expect } from 'chai';
 import startApp from '../../helpers/start-app';
 import destroyApp from '../../helpers/destroy-app';
+import { authenticateSession } from 'lerm-client/tests/helpers/ember-simple-auth';
 
 describe('Acceptance: Creating a project', function () {
   let application;
@@ -21,13 +22,23 @@ describe('Acceptance: Creating a project', function () {
   });
 
   describe('I am not logged in', function () {
-    describe('I visit the page for creating a new project', function () {
+    describe('I visit the page for listing projects', function () {
       beforeEach(function () {
-        visit('projects.new');
+        visit('projects');
       });
 
-      it('shows a page indicating I am not authorized to create a project', function () {
-        expect(find('main').text()).to.contain('Unauthorized');
+      it('does not show a link for creating a new project', function () {
+        expect(find('main').text()).to.contain('Create a new project');
+      });
+    });
+
+    describe('I visit the page for creating a new project', function () {
+      beforeEach(function () {
+        visit('projects/new');
+      });
+
+      it('redirects me to the login page', function () {
+        expect(currentPath()).to.equal('login');
       });
     });
   });
@@ -40,9 +51,19 @@ describe('Acceptance: Creating a project', function () {
       authenticateSession(application);
     });
 
+    describe('I visit the page for listing projects', function () {
+      beforeEach(function () {
+        visit('projects');
+      });
+
+      it('shows a link for creating a new project', function () {
+        expect(find('main').text()).to.contain('Create a new project');
+      });
+    });
+
     describe('I visit the page for creating a new project', function () {
       beforeEach(function () {
-        visit('projects.new');
+        visit('projects/new');
       });
 
       it('shows a form for creating a new project', function () {
