@@ -1,4 +1,6 @@
 import SessionService from 'ember-simple-auth/services/session';
+import Ember from 'ember';
+import DS from 'ember-data';
 
 export default SessionService.extend({
   ajax: Ember.inject.service(),
@@ -6,17 +8,21 @@ export default SessionService.extend({
   store: Ember.inject.service(),
 
   setCurrentUser: function () {
+    // TODO: refactor when ember-simple-auth 1.2 is released with a promise based authorize API
     this.authorize('authorizer:oauth2', (headerName, headerValue) => {
       const headers = {};
       headers[headerName] = headerValue;
+      const url = '/current-user?include=memberships.project';
 
-      this.get('ajax').request('/current-user', {headers: headers}).then((data) => {
-        Ember.run(() => {
+      const promise = this.get('ajax').request(url, {headers: headers}).then((data) => {
+        return Ember.run(() => {
           this.get('store').pushPayload(data);
 
-          this.set('currentUser', this.get('store').peekRecord('currentUser', data.data.id));
+          return this.get('store').peekRecord('currentUser', data.data.id);
         });
       });
+
+      this.set('currentUser', DS.PromiseObject.create({promise: promise}));
     });
   }.observes('isAuthenticated').on('init')
 });
