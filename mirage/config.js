@@ -43,4 +43,9 @@ export default function() {
       return null;
     }
   });
+
+  this.get('/projects');
+  this.get('/projects/:id');
+  this.post('/projects');
+  this.put('/projects/:id');
 }
