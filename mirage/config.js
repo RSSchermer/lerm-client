@@ -11,21 +11,51 @@ export default function() {
 
     if (params.grant_type === 'password' &&
         params.password === 'valid_password') {
-      schema.currentUser.create({
+      const resourceOwner = schema.user.create({
         email: params.username,
         username: 'current_user',
         firstName: 'Current',
         lastName: 'User'
       });
 
+      const token = schema.accessToken.create({
+        accessToken: '824228db73ee5cc495af0716c644374b308c94dc71dff13ed3d8419a7bca1eeb',
+        tokenType: 'bearer',
+        resourceOwnerId: resourceOwner.id,
+        scopes: [],
+        application: {uid: null},
+        expiresIn: 7200,
+        createdAt: Math.floor(Date.now() / 1000)
+      });
+
       return {
-        access_token: '824228db73ee5cc495af0716c644374b308c94dc71dff13ed3d8419a7bca1eeb',
-        token_type: 'bearer',
-        expires_in: 7200,
-        created_at: 1456307186
+        access_token: token.accessToken,
+        token_type: token.tokenType,
+        expires_in: token.expiresIn,
+        created_at: token.createdAt
       };
     } else {
       return new Mirage.Response(401, {}, {error: 'invalid_grant'});
+    }
+  });
+
+  // Returns information for the most recently created token
+  this.get('/oauth/token/info', (schema) => {
+    // TODO: make pull request on ember mirage to add a last() method
+    const accessTokens = schema.accessToken.all();
+
+    if (accessTokens.length > 0) {
+      const accessToken = accessTokens[accessTokens.length - 1];
+
+      return {
+        resource_owner_id: accessToken.resourceOwnerId,
+        scopes: accessToken.scopes,
+        application: accessToken.application,
+        expires_in: accessToken.expiresIn,
+        created_at: accessToken.createdAt
+      };
+    } else {
+      return null;
     }
   });
 
@@ -33,16 +63,8 @@ export default function() {
 
   this.namespace = 'api/v1';
 
-  // Returns the most recently created current user.
-  this.get('current-user', (schema) => {
-    const currentUsers = schema.currentUser.all();
-
-    if (currentUsers.length > 0) {
-      return currentUsers[currentUsers.length - 1];
-    } else {
-      return null;
-    }
-  });
+  this.get('/users');
+  this.get('/users/:id');
 
   this.get('/projects');
   this.get('/projects/:id');

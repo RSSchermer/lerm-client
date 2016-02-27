@@ -28,7 +28,7 @@ describe('Acceptance: Projects | Creating a project', function () {
       });
 
       it('does not show a link for creating a new project', function () {
-        expect(find('main').text()).to.contain('Create a new project');
+        expect(find('main').text()).to.not.contain('Create a new project');
       });
     });
 
@@ -45,7 +45,8 @@ describe('Acceptance: Projects | Creating a project', function () {
 
   describe('I am logged in', function () {
     beforeEach(function () {
-      server.create('currentUser');
+      this.currentUser = server.create('user');
+      server.create('accessToken', {resourceOwnerId: this.currentUser});
     });
     beforeEach(function () {
       authenticateSession(application);
@@ -70,44 +71,50 @@ describe('Acceptance: Projects | Creating a project', function () {
         expect(find('.new-project-form')).to.not.be.empty;
       });
 
-      describe('I fill out the form leaving the name empty', function () {
-        beforeEach(function () {
-          fillIn('#description', 'Some description');
-          click('.new-project-form .submit-button');
-        });
-
-        it('remains on the page for creating a new project', function () {
-          expect(currentPath()).to.equal('projects.new');
-        });
-
-        it('shows an error that indicates the name is required', function () {
-          expect(find('.new-project-form').text()).to.contain('Name may not be empty');
-        });
-      });
-
       describe('I fill out the form with valid project data', function () {
         beforeEach(function () {
-          fillIn('#name', 'Some project');
-          fillIn('#description', 'Some description');
-          click('.new-project-form .submit-button');
+          fillIn('.new-project-form .name-group input', 'Some project');
+          fillIn('.new-project-form .description-group textarea', 'Some description');
         });
 
-        it('transitions to the projects\'s overview page', function () {
-          expect(currentPath()).to.equal('projects.show');
-          expect(find('main')).to.contain('Some project');
-        });
-
-        it('displays a message indicating that the new project was created successfully', function () {
-          expect(find('main').text()).to.contain('The new project was created successfully');
-        });
-
-        describe('I visit my profile page', function () {
+        describe('I leave the page for creating projects without submitting the form', function () {
           beforeEach(function () {
-            visit('current-user');
+            visit('/');
           });
 
-          it('lists the new project in my project\'s list', function () {
-            expect(find('.projects-list')).to.contain('Some project');
+          describe('I visit the page for listing projects', function () {
+            beforeEach(function () {
+              visit('projects');
+            });
+
+            it('does not list the project', function () {
+              expect(find('.projects-table').text()).to.not.contain('Some project');
+            });
+          });
+        });
+
+        describe('I submit the form', function () {
+          beforeEach(function () {
+            click('.new-project-form button[type="submit"]');
+          });
+
+          it('transitions to the projects\'s overview page', function () {
+            expect(currentPath()).to.equal('projects.show');
+            expect(find('main').text()).to.contain('Some project');
+          });
+
+          it('displays a flash message indicating that the new project was created successfully', function () {
+            expect(find('main').text()).to.contain('The new project was created successfully');
+          });
+
+          describe('I visit the page for listing projects', function () {
+            beforeEach(function () {
+              visit('projects');
+            });
+
+            it('lists the project', function () {
+              expect(find('.projects-table').text()).to.contain('Some project');
+            });
           });
         });
       });

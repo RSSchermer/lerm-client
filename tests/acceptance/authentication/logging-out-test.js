@@ -27,7 +27,8 @@ describe('Acceptance: Authentication | Logging out', function () {
 
   describe('I am logged in', function () {
     beforeEach(function () {
-      server.create('currentUser');
+      this.currentUser = server.create('user');
+      server.create('accessToken', {resourceOwnerId: this.currentUser});
     });
     beforeEach(function () {
       authenticateSession(application);
