@@ -4,9 +4,11 @@ import qs from 'npm:qs';
 export default function() {
   this.urlPrefix = '';
 
-  // Auth routes
+  // OAuth routes
 
-  this.post('/oauth/token', (schema, request) => {
+  this.namespace = 'oauth';
+
+  this.post('/token', (schema, request) => {
     const params = qs.parse(request.requestBody);
 
     if (params.grant_type === 'password' &&
@@ -40,7 +42,7 @@ export default function() {
   });
 
   // Returns information for the most recently created token
-  this.get('/oauth/token/info', (schema) => {
+  this.get('/token/info', (schema) => {
     // TODO: make pull request on ember mirage to add a last() method
     const accessTokens = schema.accessToken.all();
 
