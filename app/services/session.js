@@ -12,14 +12,10 @@ export default SessionService.extend({
     this.authorize('authorizer:oauth2', (headerName, headerValue) => {
       const headers = {};
       headers[headerName] = headerValue;
-      const url = '/current-user?include=memberships.project';
 
-      const promise = this.get('ajax').request(url, {headers: headers}).then((data) => {
-        return Ember.run(() => {
-          this.get('store').pushPayload(data);
-
-          return this.get('store').peekRecord('currentUser', data.data.id);
-        });
+      const promise = this.get('ajax').request('/oauth/token/info', {headers: headers}).then((tokenInfo) => {
+        // TODO: find way to cleanly include memberships.project (see https://github.com/emberjs/data/pull/2584).
+        return this.get('store').findRecord('user', tokenInfo['resource_owner_id']);
       });
 
       this.set('currentUser', DS.PromiseObject.create({promise: promise}));
