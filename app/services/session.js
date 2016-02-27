@@ -22,7 +22,7 @@ export default SessionService.extend({
     });
 
     if (promise) {
-      return DS.PromiseObject.create({promise: promise})
+      return DS.PromiseObject.create({promise: promise});
     } else {
       return null;
     }
