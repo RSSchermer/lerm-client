@@ -12,6 +12,7 @@
     "ember-mocha-adapter": "~0.3.1",
     "ember-mocha": "~0.8.8",
     "pretender": "~0.10.1",
-    "Faker": "~3.0.0"
+    "Faker": "~3.0.0",
+    "jquery-mockjax": "2.0.1"
   }
 }
