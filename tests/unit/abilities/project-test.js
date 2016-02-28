@@ -2,6 +2,7 @@
 import { expect } from 'chai';
 import { describeModule } from 'ember-mocha';
 import {
+  beforeEach,
   context,
   describe,
   it
