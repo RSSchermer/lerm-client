@@ -9,6 +9,6 @@ export default DS.Model.extend({
   memberships: DS.hasMany('memberships'),
 
   fullName: function() {
-    return `${this.get('firstName')} ${this.get('lastName')}`;
+    return `${this.get('firstName') || ''} ${this.get('lastName') || ''}`.trim();
   }.property('firstName', 'lastName')
 });
