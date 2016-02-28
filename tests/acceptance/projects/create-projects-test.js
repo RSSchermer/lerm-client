@@ -99,7 +99,7 @@ describe('Acceptance - Projects: Creating a project', function () {
           });
 
           it('displays a flash message indicating that the new project was created successfully', function () {
-            expect(find('main').text()).to.contain('The new project was created successfully');
+            expect(find('main').text()).to.contain('The project was created successfully');
           });
 
           describe('I visit the page for listing projects', function () {

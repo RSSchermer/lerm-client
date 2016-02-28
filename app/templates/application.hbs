@@ -19,6 +19,10 @@
 </nav>
 
 <main>
+  {{#each flashMessages.queue as |flash|}}
+    {{flash-message flash=flash}}
+  {{/each}}
+
   {{outlet}}
 </main>
 
