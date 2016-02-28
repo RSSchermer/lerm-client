@@ -9,7 +9,7 @@ import { expect } from 'chai';
 import startApp from '../../helpers/start-app';
 import destroyApp from '../../helpers/destroy-app';
 
-describe('Acceptance | Authentication: Logging out', function () {
+describe('Acceptance - Authentication: Logging out', function () {
   let application;
 
   beforeEach(function () {
