@@ -7,7 +7,8 @@ import {
   describe,
   it
 } from 'mocha';
-import { manualSetup, make } from 'ember-data-factory-guy';
+import FactoryGuy from 'ember-data-factory-guy';
+import setupfactoryGuy from 'ember-data-factory-guy/utils/manual-setup';
 import Ember from 'ember';
 
 describeModule('ability:project', 'Abilities: Project', {
@@ -15,7 +16,7 @@ describeModule('ability:project', 'Abilities: Project', {
   },
   function () {
     beforeEach(function() {
-      manualSetup(this.container);
+      setupfactoryGuy(this.container);
     });
 
     context('I am not logged in', function () {
@@ -40,7 +41,7 @@ describeModule('ability:project', 'Abilities: Project', {
 
       describe('project specific abilities', function () {
         beforeEach(function () {
-          this.project = make('project');
+          this.project = FactoryGuy.make('project');
           this.subject().set('model', this.project);
         });
 
@@ -66,7 +67,7 @@ describeModule('ability:project', 'Abilities: Project', {
 
     context('I am logged in', function () {
       beforeEach(function () {
-        this.currentUser = make('user');
+        this.currentUser = FactoryGuy.make('user');
         this.subject().set('session', Ember.Object.create({
           isAuthenticated: true,
           currentUser: this.currentUser
@@ -87,7 +88,7 @@ describeModule('ability:project', 'Abilities: Project', {
 
       describe('project specific abilities', function () {
         beforeEach(function () {
-          this.project = make('project');
+          this.project = FactoryGuy.make('project');
           this.subject().set('model', this.project);
         });
 
@@ -113,7 +114,7 @@ describeModule('ability:project', 'Abilities: Project', {
 
         context('I am a project member', function () {
           beforeEach(function () {
-            make('membership', {user: this.currentUser, project: this.project});
+            FactoryGuy.make('membership', {user: this.currentUser, project: this.project});
           });
 
           describe('canView', function () {
