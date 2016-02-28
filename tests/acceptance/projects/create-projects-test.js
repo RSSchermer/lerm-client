@@ -8,7 +8,6 @@ import {
 import { expect } from 'chai';
 import startApp from '../../helpers/start-app';
 import destroyApp from '../../helpers/destroy-app';
-import { authenticateSession } from 'lerm-client/tests/helpers/ember-simple-auth';
 
 describe('Acceptance: Projects | Creating a project', function () {
   let application;
@@ -45,11 +44,7 @@ describe('Acceptance: Projects | Creating a project', function () {
 
   describe('I am logged in', function () {
     beforeEach(function () {
-      this.currentUser = server.create('user');
-      server.create('accessToken', {resourceOwnerId: this.currentUser});
-    });
-    beforeEach(function () {
-      authenticateSession(application);
+      logIn();
     });
 
     describe('I visit the page for listing projects', function () {
