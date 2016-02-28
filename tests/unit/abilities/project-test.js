@@ -8,7 +8,7 @@ import {
   it
 } from 'mocha';
 import FactoryGuy from 'ember-data-factory-guy';
-import setupfactoryGuy from 'ember-data-factory-guy/utils/manual-setup';
+import setupFactoryGuy from 'ember-data-factory-guy/utils/manual-setup';
 import Ember from 'ember';
 
 describeModule('ability:project', 'Abilities: Project', {
@@ -16,7 +16,7 @@ describeModule('ability:project', 'Abilities: Project', {
   },
   function () {
     beforeEach(function() {
-      setupfactoryGuy(this.container);
+      setupFactoryGuy(this.container);
     });
 
     context('I am not logged in', function () {
