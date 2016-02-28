@@ -11,7 +11,7 @@ import FactoryGuy from 'ember-data-factory-guy';
 import setupFactoryGuy from 'ember-data-factory-guy/utils/manual-setup';
 import Ember from 'ember';
 
-describeModule('ability:project', 'Abilities: Project', {
+describeModule('ability:project', 'Unit | Abilities: Project', {
     needs: ['model:project', 'model:user', 'model:membership']
   },
   function () {
