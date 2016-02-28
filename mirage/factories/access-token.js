@@ -13,7 +13,5 @@ export default Factory.extend({
 
   expiresIn: 7200,
 
-  createdAt() {
-    Math.floor(Date.now() / 1000)
-  }
+  createdAt: () => Math.floor(Date.now() / 1000)
 });
