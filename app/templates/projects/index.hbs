@@ -1,0 +1,25 @@
+<header>
+  <h1>Projects</h1>
+
+  {{#if (can 'create project')}}
+    {{#link-to 'projects.new'}}Create a new project{{/link-to}}
+  {{/if}}
+</header>
+
+<table class="table table-striped projects-table">
+  <thead>
+    <tr>
+      <th>Project</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each model as |project|}}
+      <tr class="project-row">
+        <td>
+          {{#link-to 'projects.show' project}}{{project.name}}{{/link-to}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
