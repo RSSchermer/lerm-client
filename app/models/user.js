@@ -2,10 +2,10 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  email: DS.attr(),
-  username: DS.attr(),
-  firstName: DS.attr(),
-  lastName: DS.attr(),
+  email: DS.attr('string'),
+  username: DS.attr('string'),
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
 
   memberships: DS.hasMany('memberships'),
 
