@@ -15,14 +15,14 @@ export default SessionService.extend({
       const headers = {};
       headers[headerName] = headerValue;
 
-      promise = this.get('ajax').request('/oauth/token/info', {headers: headers}).then((tokenInfo) => {
+      promise = this.get('ajax').request('/oauth/token/info', { headers }).then((tokenInfo) => {
         // TODO: find way to cleanly include memberships.project (see https://github.com/emberjs/data/pull/2584).
         return this.get('store').findRecord('user', tokenInfo['resource_owner_id']);
       });
     });
 
     if (promise) {
-      return DS.PromiseObject.create({promise: promise});
+      return DS.PromiseObject.create({ promise });
     } else {
       return null;
     }

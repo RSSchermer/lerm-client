@@ -14,7 +14,7 @@ describeModel('user', 'Unit - Models: user', {
   describe('fullName', function() {
     context('with neither a first name nor a last name', function() {
       beforeEach(function() {
-        this.subject({firstName: null, lastName: null});
+        this.subject({ firstName: null, lastName: null });
       });
 
       it('returns an empty string', function() {
@@ -24,7 +24,7 @@ describeModel('user', 'Unit - Models: user', {
 
     context('with only a first name', function() {
       beforeEach(function() {
-        this.subject({firstName: 'John', lastName: null});
+        this.subject({ firstName: 'John', lastName: null });
       });
 
       it('returns the first name', function() {
@@ -34,7 +34,7 @@ describeModel('user', 'Unit - Models: user', {
 
     context('with only a last name', function() {
       beforeEach(function() {
-        this.subject({firstName: null, lastName: 'Jones'});
+        this.subject({ firstName: null, lastName: 'Jones' });
       });
 
       it('returns the first name', function() {
@@ -44,7 +44,7 @@ describeModel('user', 'Unit - Models: user', {
 
     context('with both a first name and a last name', function() {
       beforeEach(function() {
-        this.subject({firstName: 'John', lastName: 'Jones'});
+        this.subject({ firstName: 'John', lastName: 'Jones' });
       });
 
       it('returns the first name followed by the last name', function() {

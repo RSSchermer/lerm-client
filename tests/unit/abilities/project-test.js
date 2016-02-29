@@ -113,7 +113,10 @@ describeModule('ability:project', 'Unit - Abilities: Project', {
 
       context('I am a project member', function() {
         beforeEach(function() {
-          FactoryGuy.make('membership', {user: this.currentUser, project: this.project});
+          FactoryGuy.make('membership', {
+            user: this.currentUser,
+            project: this.project
+          });
         });
 
         describe('canView', function() {
