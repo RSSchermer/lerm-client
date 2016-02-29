@@ -6,13 +6,13 @@ export default Ability.extend({
 
   canList: true,
 
-  canCreate: function () {
+  canCreate: Ember.computed('session.isAuthenticated', function () {
     return this.get('session.isAuthenticated');
-  }.property('session.isAuthenticated'),
+  }),
 
   canView: true,
 
-  canEdit: function () {
+  canEdit: Ember.computed('model', 'session.currentUser.memberships.[]', function () {
     const memberships = this.get('session.currentUser.memberships');
 
     if (memberships) {
@@ -20,7 +20,7 @@ export default Ability.extend({
     } else {
       return false;
     }
-  }.property('model', 'session.currentUser.memberships.[]'),
+  }),
 
   canDestroy: false
 });

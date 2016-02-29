@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -8,7 +9,7 @@ export default DS.Model.extend({
 
   memberships: DS.hasMany('memberships'),
 
-  fullName: function() {
+  fullName: Ember.computed('firstName', 'lastName', function() {
     return `${this.get('firstName') || ''} ${this.get('lastName') || ''}`.trim();
-  }.property('firstName', 'lastName')
+  })
 });
