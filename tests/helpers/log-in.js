@@ -5,15 +5,14 @@ const { Test } = Ember;
 
 export default Test.registerAsyncHelper('logIn',
   function(app, user) {
-    user = user || server.create('user');
-
-    const accessToken = server.create('accessToken', {resourceOwnerId: user.id});
+    let resourceOwner = user || server.create('user');
+    let accessToken = server.create('accessToken', { resourceOwnerId: resourceOwner.id });
 
     authenticateSession(app, {
-      access_token: accessToken.accessToken,
-      token_type: accessToken.tokenType,
-      expires_in: accessToken.expiresIn,
-      created_at: accessToken.createdAt
+      'access_token': accessToken.accessToken,
+      'token_type': accessToken.tokenType,
+      'expires_in': accessToken.expiresIn,
+      'created_at': accessToken.createdAt
     });
 
     wait();

@@ -31,13 +31,13 @@ export default function() {
       });
 
       return {
-        access_token: token.accessToken,
-        token_type: token.tokenType,
-        expires_in: token.expiresIn,
-        created_at: token.createdAt
+        'access_token': token.accessToken,
+        'token_type': token.tokenType,
+        'expires_in': token.expiresIn,
+        'created_at': token.createdAt
       };
     } else {
-      return new Mirage.Response(401, {}, {error: 'invalid_grant'});
+      return new Mirage.Response(401, {}, { error: 'invalid_grant' });
     }
   });
 
@@ -50,11 +50,11 @@ export default function() {
       const accessToken = accessTokens[accessTokens.length - 1];
 
       return {
-        resource_owner_id: accessToken.resourceOwnerId,
-        scopes: accessToken.scopes,
-        application: accessToken.application,
-        expires_in: accessToken.expiresIn,
-        created_at: accessToken.createdAt
+        'resource_owner_id': accessToken.resourceOwnerId,
+        'scopes': accessToken.scopes,
+        'application': accessToken.application,
+        'expires_in': accessToken.expiresIn,
+        'created_at': accessToken.createdAt
       };
     } else {
       return null;

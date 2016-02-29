@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  session: Ember.inject.service(),
+const { Controller, inject } = Ember;
+
+export default Controller.extend({
+  session: inject.service(),
 
   actions: {
     invalidateSession() {

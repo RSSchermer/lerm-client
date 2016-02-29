@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  flashMessages: Ember.inject.service(),
+const { Controller, inject, run } = Ember;
 
-  session: Ember.inject.service(),
+export default Controller.extend({
+  flashMessages: inject.service(),
+
+  session: inject.service(),
 
   actions: {
     submit() {
@@ -12,7 +14,7 @@ export default Ember.Controller.extend({
         // Reload the current user's memberships to sync.
         // TODO: see if there's an clean way to include the created relationship in
         // the response created by the server and remove this workaround.
-        Ember.run(() => {
+        run(() => {
           this.get('session.currentUser.memberships').reload();
         });
 

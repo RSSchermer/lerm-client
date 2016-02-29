@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
-  ajax: Ember.inject.service(),
+const { Route } = Ember;
 
+export default Route.extend(AuthenticatedRouteMixin, {
   model() {
     return this.get('session.currentUser');
   }

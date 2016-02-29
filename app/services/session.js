@@ -2,12 +2,15 @@ import SessionService from 'ember-simple-auth/services/session';
 import Ember from 'ember';
 import DS from 'ember-data';
 
+const { inject, computed } = Ember;
+const { PromiseObject } = DS;
+
 export default SessionService.extend({
-  ajax: Ember.inject.service(),
+  ajax: inject.service(),
 
-  store: Ember.inject.service(),
+  store: inject.service(),
 
-  currentUser: Ember.computed('isAuthenticated', function() {
+  currentUser: computed('isAuthenticated', function() {
     // TODO: refactor when ember-simple-auth 1.2 is released with a promise based authorize API
     let promise;
 
@@ -22,7 +25,7 @@ export default SessionService.extend({
     });
 
     if (promise) {
-      return DS.PromiseObject.create({ promise });
+      return PromiseObject.create({ promise });
     } else {
       return null;
     }

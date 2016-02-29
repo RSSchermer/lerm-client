@@ -9,7 +9,7 @@ export default Factory.extend({
 
   scopes: [],
 
-  application: {uid: null},
+  application: { uid: null },
 
   expiresIn: 7200,
 

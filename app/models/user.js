@@ -1,15 +1,18 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.Model.extend({
-  email: DS.attr('string'),
-  username: DS.attr('string'),
-  firstName: DS.attr('string'),
-  lastName: DS.attr('string'),
+const { Model, attr, hasMany } = DS;
+const { computed } = Ember;
 
-  memberships: DS.hasMany('memberships'),
+export default Model.extend({
+  email: attr('string'),
+  username: attr('string'),
+  firstName: attr('string'),
+  lastName: attr('string'),
 
-  fullName: Ember.computed('firstName', 'lastName', function() {
+  memberships: hasMany('memberships'),
+
+  fullName: computed('firstName', 'lastName', function() {
     return `${this.get('firstName') || ''} ${this.get('lastName') || ''}`.trim();
   })
 });
