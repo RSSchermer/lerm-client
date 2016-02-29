@@ -6,13 +6,13 @@ export default Ability.extend({
 
   canList: true,
 
-  canCreate: Ember.computed('session.isAuthenticated', function () {
+  canCreate: Ember.computed('session.isAuthenticated', function() {
     return this.get('session.isAuthenticated');
   }),
 
   canView: true,
 
-  canEdit: Ember.computed('model', 'session.currentUser.memberships.[]', function () {
+  canEdit: Ember.computed('model', 'session.currentUser.memberships.[]', function() {
     const memberships = this.get('session.currentUser.memberships');
 
     if (memberships) {

@@ -13,59 +13,59 @@ import Ember from 'ember';
 
 describeModule('ability:project', 'Unit - Abilities: Project', {
   needs: ['model:project', 'model:user', 'model:membership']
-}, function () {
+}, function() {
   beforeEach(function() {
     setupFactoryGuy(this.container);
   });
 
-  context('I am not logged in', function () {
-    beforeEach(function () {
+  context('I am not logged in', function() {
+    beforeEach(function() {
       this.subject().set('session', Ember.Object.create({
         isAuthenticated: false,
         currentUser: null
       }));
     });
 
-    describe('canList', function () {
-      it('is true', function () {
+    describe('canList', function() {
+      it('is true', function() {
         expect(this.subject().get('canList')).to.be.true;
       });
     });
 
-    describe('canCreate', function () {
-      it('is false', function () {
+    describe('canCreate', function() {
+      it('is false', function() {
         expect(this.subject().get('canCreate')).to.be.false;
       });
     });
 
-    describe('project specific abilities', function () {
-      beforeEach(function () {
+    describe('project specific abilities', function() {
+      beforeEach(function() {
         this.project = FactoryGuy.make('project');
         this.subject().set('model', this.project);
       });
 
-      describe('canView', function () {
-        it('is true', function () {
+      describe('canView', function() {
+        it('is true', function() {
           expect(this.subject().get('canView')).to.be.true;
         });
       });
 
-      describe('canEdit', function () {
-        it('is true', function () {
+      describe('canEdit', function() {
+        it('is true', function() {
           expect(this.subject().get('canEdit')).to.be.false;
         });
       });
 
-      describe('canDestroy', function () {
-        it('is false', function () {
+      describe('canDestroy', function() {
+        it('is false', function() {
           expect(this.subject().get('canDestroy')).to.be.false;
         });
       });
     });
   });
 
-  context('I am logged in', function () {
-    beforeEach(function () {
+  context('I am logged in', function() {
+    beforeEach(function() {
       this.currentUser = FactoryGuy.make('user');
       this.subject().set('session', Ember.Object.create({
         isAuthenticated: true,
@@ -73,63 +73,63 @@ describeModule('ability:project', 'Unit - Abilities: Project', {
       }));
     });
 
-    describe('canList', function () {
-      it('is true', function () {
+    describe('canList', function() {
+      it('is true', function() {
         expect(this.subject().get('canList')).to.be.true;
       });
     });
 
-    describe('canCreate', function () {
-      it('is true', function () {
+    describe('canCreate', function() {
+      it('is true', function() {
         expect(this.subject().get('canCreate')).to.be.true;
       });
     });
 
-    describe('project specific abilities', function () {
-      beforeEach(function () {
+    describe('project specific abilities', function() {
+      beforeEach(function() {
         this.project = FactoryGuy.make('project');
         this.subject().set('model', this.project);
       });
 
-      context('I am not a project member', function () {
-        describe('canView', function () {
-          it('is true', function () {
+      context('I am not a project member', function() {
+        describe('canView', function() {
+          it('is true', function() {
             expect(this.subject().get('canView')).to.be.true;
           });
         });
 
-        describe('canEdit', function () {
-          it('is true', function () {
+        describe('canEdit', function() {
+          it('is true', function() {
             expect(this.subject().get('canEdit')).to.be.false;
           });
         });
 
-        describe('canDestroy', function () {
-          it('is false', function () {
+        describe('canDestroy', function() {
+          it('is false', function() {
             expect(this.subject().get('canDestroy')).to.be.false;
           });
         });
       });
 
-      context('I am a project member', function () {
-        beforeEach(function () {
+      context('I am a project member', function() {
+        beforeEach(function() {
           FactoryGuy.make('membership', {user: this.currentUser, project: this.project});
         });
 
-        describe('canView', function () {
-          it('is true', function () {
+        describe('canView', function() {
+          it('is true', function() {
             expect(this.subject().get('canView')).to.be.true;
           });
         });
 
-        describe('canEdit', function () {
-          it('is true', function () {
+        describe('canEdit', function() {
+          it('is true', function() {
             expect(this.subject().get('canEdit')).to.be.true;
           });
         });
 
-        describe('canDestroy', function () {
-          it('is false', function () {
+        describe('canDestroy', function() {
+          it('is false', function() {
             expect(this.subject().get('canDestroy')).to.be.false;
           });
         });

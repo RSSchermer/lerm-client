@@ -7,7 +7,7 @@ export default SessionService.extend({
 
   store: Ember.inject.service(),
 
-  currentUser: Ember.computed('isAuthenticated', function () {
+  currentUser: Ember.computed('isAuthenticated', function() {
     // TODO: refactor when ember-simple-auth 1.2 is released with a promise based authorize API
     let promise;
 
