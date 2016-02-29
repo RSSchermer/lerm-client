@@ -12,7 +12,7 @@ export default SessionService.extend({
     let promise;
 
     this.authorize('authorizer:oauth2', (headerName, headerValue) => {
-      const headers = {};
+      let headers = {};
       headers[headerName] = headerValue;
 
       promise = this.get('ajax').request('/oauth/token/info', { headers }).then((tokenInfo) => {
