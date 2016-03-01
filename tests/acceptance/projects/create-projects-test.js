@@ -90,7 +90,7 @@ describe('Acceptance - Projects: Creating a project', function() {
 
         describe('I submit the form', function() {
           beforeEach(function() {
-            click('.new-project-form button[type="submit"]');
+            click('.new-project-form .btn-primary');
           });
 
           it('transitions to the projects\'s overview page', function() {

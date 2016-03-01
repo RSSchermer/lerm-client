@@ -32,7 +32,7 @@ describe('Acceptance - Authentication: Logging in', function() {
     beforeEach(function() {
       fillIn('#identification', 'valid_email@example.com');
       fillIn('#password', 'invalid_password');
-      click('.auth-form .submit-button');
+      click('.auth-form .btn-primary');
     });
 
     it('remains on the login page', function() {
@@ -40,7 +40,7 @@ describe('Acceptance - Authentication: Logging in', function() {
     });
 
     it('displays a message indicating the credentials were invalid', function() {
-      expect(find('.auth-form').text()).to.contain('Invalid email/password');
+      expect(find('.auth-form').text()).to.contain('Invalid credentials');
     });
   });
 
@@ -48,7 +48,7 @@ describe('Acceptance - Authentication: Logging in', function() {
     beforeEach(function() {
       fillIn('#identification', 'valid_email@example.com');
       fillIn('#password', 'valid_password');
-      click('.auth-form .submit-button');
+      click('.auth-form .btn-primary');
     });
 
     it('redirects to current-user', function() {

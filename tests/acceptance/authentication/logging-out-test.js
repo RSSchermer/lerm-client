@@ -30,7 +30,7 @@ describe('Acceptance - Authentication: Logging out', function() {
     });
 
     it('displays a logout link in the user menu', function() {
-      expect(find('.user-menu').text()).to.contain('Logout');
+      expect(find('.user-menu').text()).to.contain('Log out');
     });
 
     describe('I click the logout link', function() {
@@ -43,7 +43,7 @@ describe('Acceptance - Authentication: Logging out', function() {
       });
 
       it('does not display a logout link in the user menu', function() {
-        expect(find('.user-menu').text()).to.not.contain('Logout');
+        expect(find('.user-menu').text()).to.not.contain('Log out');
       });
     });
   });
