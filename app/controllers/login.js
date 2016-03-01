@@ -1,20 +1,22 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 
 const { Controller, inject } = Ember;
 
 export default Controller.extend({
   session: inject.service(),
 
-  actions: {
-    authenticate() {
-      let { identification, password } = this.getProperties('identification', 'password');
-      this.get('session').authenticate('authenticator:oauth2', identification, password).catch((reason) => {
-        if (reason.error === 'invalid_grant') {
-          this.set('errorMessage', 'Invalid email/password');
-        } else {
-          this.set('errorMessage', reason.error || reason);
-        }
-      });
+  authenticateTask: task(function * () {
+    let { identification, password } = this.getProperties('identification', 'password');
+
+    try {
+      yield this.get('session').authenticate('authenticator:oauth2', identification, password);
+    } catch (reason) {
+      if (reason.error === 'invalid_grant') {
+        this.set('errorMessage', 'Invalid email/password');
+      } else {
+        this.set('errorMessage', reason.error || reason);
+      }
     }
-  }
+  }).drop()
 });

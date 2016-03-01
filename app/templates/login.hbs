@@ -1,4 +1,4 @@
-<form class="auth-form" {{action 'authenticate' on='submit'}}>
+<form class="auth-form" {{action (perform authenticateTask) on='submit'}}>
   {{#if errorMessage}}
     <p>{{errorMessage}}</p>
   {{/if}}
