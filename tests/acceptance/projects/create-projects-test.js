@@ -68,8 +68,8 @@ describe('Acceptance - Projects: Creating a project', function() {
 
       describe('I fill out the form with valid project data', function() {
         beforeEach(function() {
-          fillIn('.new-project-form .name-group input', 'Some project');
-          fillIn('.new-project-form .description-group textarea', 'Some description');
+          fillIn('#name', 'Some project');
+          fillIn('#description', 'Some description');
         });
 
         describe('I leave the page for creating projects without submitting the form', function() {

@@ -1,26 +1,24 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 
-const { Controller, inject, run } = Ember;
+const { Controller, inject, run, computed } = Ember;
+const { alias } = computed;
 
 export default Controller.extend({
   flashMessages: inject.service(),
 
   session: inject.service(),
 
-  actions: {
-    submit() {
-      this.get('model').save().then((project) => {
-        // The server automatically creates a membership for the current user.
-        // Reload the current user's memberships to sync.
-        // TODO: see if there's an clean way to include the created relationship in
-        // the response created by the server and remove this workaround.
-        run(() => {
-          this.get('session.currentUser.memberships').reload();
-        });
+  project: alias('model'),
 
-        this.get('flashMessages').success('The project was created successfully.');
-        this.transitionToRoute('projects.show', project.id);
-      });
-    }
-  }
+  createProjectTask: task(function * () {
+    let project = yield this.get('project').save();
+
+    run(() => {
+      this.get('session.currentUser.memberships').reload();
+    });
+
+    this.get('flashMessages').success('The project was created successfully.');
+    this.transitionToRoute('projects.show', project.id);
+  }).drop()
 });
