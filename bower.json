@@ -13,6 +13,7 @@
     "ember-mocha": "~0.8.8",
     "pretender": "~0.10.1",
     "Faker": "^3.0.1",
-    "jquery-mockjax": "2.0.1"
+    "jquery-mockjax": "2.0.1",
+    "font-awesome": "~4.5.0"
   }
 }
