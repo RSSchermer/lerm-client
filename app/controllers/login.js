@@ -13,7 +13,7 @@ export default Controller.extend({
       yield this.get('session').authenticate('authenticator:oauth2', identification, password);
     } catch (reason) {
       if (reason.error === 'invalid_grant') {
-        this.set('errorMessage', 'Invalid email/password');
+        this.set('errorMessage', 'Invalid credentials');
       } else {
         this.set('errorMessage', reason.error || reason);
       }

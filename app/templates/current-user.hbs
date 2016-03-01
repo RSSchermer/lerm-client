@@ -1,19 +1,38 @@
 <div class="row">
-  <div class="col-md-3">
-    <h2>{{fa-icon "user"}} {{model.username}}</h2>
+  <div class="col-md-3 user-profile">
+    <h1>{{fa-icon "user"}} {{model.username}}</h1>
 
     {{model.fullName}}
   </div>
 
-  <div class="col-md-9">
-    {{#link-to 'projects.new'}}{{fa-icon "plus"}} New project{{/link-to}}
+  <div class="col-md-9 user-projects">
+    <header>
+      <h2>{{fa-icon "archive"}} Projects</h2>
 
-    <ul>
-      {{#each model.memberships as |membership|}}
-        <li>
-          {{#link-to 'projects.show' membership.project}}{{membership.project.name}}{{/link-to}}
-        </li>
-      {{/each}}
-    </ul>
+      {{#link-to 'projects.new' class="pull-right create-project-link btn btn-default"}}
+        {{fa-icon "plus"}} Create a new project
+      {{/link-to}}
+    </header>
+
+    <table class="table table-striped projects-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model.memberships as |membership|}}
+          <tr>
+            <td>
+              {{#link-to 'projects.show' membership.project class="project-link"}}
+                {{membership.project.name}}
+              {{/link-to}}
+
+              <span class="project-description">{{membership.project.description}}</span>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </div>

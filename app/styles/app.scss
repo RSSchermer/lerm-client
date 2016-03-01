@@ -44,3 +44,61 @@ footer.main-footer {
 .logout-link {
   cursor: pointer;
 }
+
+.projects-table {
+  .project-link {
+    font-weight: bold;
+  }
+
+  .project-description {
+    color: $text-muted;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.page-header {
+  margin: 0 0 20px;
+  padding: 10px 5px;
+  border-bottom: 1px solid $border-color;
+
+  h1 {
+    display: inline-block;
+    margin-top: 0;
+  }
+
+  .page-nav-links {
+    display: block;
+    font-size: 12pt;
+    float: right;
+    white-space: nowrap;
+    padding: 10px 0;
+  }
+}
+
+.user-projects {
+  header {
+    border-bottom: 1px solid $border-color;
+
+    h2 {
+      display: inline-block;
+      font-size: 18pt;
+    }
+
+    .create-project-link {
+      margin: 10px 0;
+    }
+  }
+}
+
+.auth-form {
+  max-width: 600px;
+
+  .auth-error {
+    font-weight: bold;
+    color: $brand-danger;
+    text-align: center;
+  }
+}
+

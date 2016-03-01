@@ -13,7 +13,7 @@
         <li>{{#link-to 'current-user'}}{{fa-icon "user"}} {{session.currentUser.username}}{{/link-to}}</li>
         <li><a {{action 'invalidateSession'}} class="logout-link">{{fa-icon "sign-out"}} Log out</a></li>
       {{else}}
-        <li>{{#link-to 'login'}}{{fa-icon "sign-in"}}Log in{{/link-to}}</li>
+        <li>{{#link-to 'login'}}{{fa-icon "sign-in"}} Log in{{/link-to}}</li>
       {{/if}}
     </ul>
   </div>
