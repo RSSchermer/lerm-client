@@ -19,8 +19,13 @@ export default SessionService.extend({
       headers[headerName] = headerValue;
 
       promise = this.get('ajax').request('/oauth/token/info', { headers }).then((tokenInfo) => {
-        // TODO: find way to cleanly include memberships.project (see https://github.com/emberjs/data/pull/2584).
-        return this.get('store').findRecord('user', tokenInfo['resource_owner_id']);
+        return this.get('store').findRecord('user', tokenInfo['resource_owner_id'], {
+          adapterOptions: {
+            query: {
+              include: 'memberships.project'
+            }
+          }
+        });
       });
     });
 
