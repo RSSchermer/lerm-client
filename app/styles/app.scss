@@ -31,3 +31,12 @@ footer.main-footer {
   height: 300px;
   width: 100%;
 }
+
+.navbar-nav > li > a.active {
+  &,
+  &:hover,
+  &:focus {
+    color: $navbar-default-link-active-color;
+    background-color: $navbar-default-link-active-bg;
+  }
+}
