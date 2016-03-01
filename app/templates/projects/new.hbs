@@ -4,21 +4,33 @@
 
 <form class="new-project-form form-horizontal" {{action (perform createProjectTask) on="submit"}}>
   <div class="form-group {{if project.errors.name "has-error"}}">
-    <label class="control-label" for="name">Name</label>
-    {{input id="name" class="form-control" value=project.name placeholder="Enter a name..."}}
-    {{#each project.errors.name as |error|}}
-      <p class="help-block"><em>{{error.message}}</em></p>
-    {{/each}}
+    <label class="control-label col-sm-2" for="name">Name</label>
+
+    <div class="col-sm-10">
+      {{input id="name" class="form-control" value=project.name placeholder="Enter a name..."}}
+      {{#each project.errors.name as |error|}}
+        <p class="help-block"><em>{{error.message}}</em></p>
+      {{/each}}
+    </div>
   </div>
 
   <div class="form-group {{if project.errors.description "has-error"}}">
-    <label class="control-label" for="description">Description</label>
-    {{textarea id="description" class="form-control" value=project.description
-               placeholder="Optionally give a description..."}}
-    {{#each project.errors.description as |error|}}
-      <p class="help-block"><em>{{error.message}}</em></p>
-    {{/each}}
+    <label class="control-label col-sm-2" for="description">Description</label>
+
+    <div class="col-sm-10">
+      {{textarea id="description" class="form-control" value=project.description
+                 placeholder="Optionally give a description..."}}
+      {{#each project.errors.description as |error|}}
+        <p class="help-block"><em>{{error.message}}</em></p>
+      {{/each}}
+    </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      {{#spinner-button type="submit" class="btn btn-primary" isSpinning=createProjectTask.isRunning}}
+        Submit
+      {{/spinner-button}}
+    </div>
+  </div>
 </form>
