@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-3">
-    <h2>{{model.username}}</h2>
+    <h2>{{fa-icon "user"}} {{model.username}}</h2>
 
     {{model.fullName}}
   </div>
 
   <div class="col-md-9">
-    {{#link-to 'projects.new'}}New project{{/link-to}}
+    {{#link-to 'projects.new'}}{{fa-icon "plus"}} New project{{/link-to}}
 
     <ul>
       {{#each model.memberships as |membership|}}
