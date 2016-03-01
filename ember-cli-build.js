@@ -8,6 +8,9 @@ module.exports = function(defaults) {
       includePaths: [
         'bower_components/bootstrap-sass/assets/stylesheets'
       ]
+    },
+    babel: {
+      includePolyfill: true
     }
   });
 
