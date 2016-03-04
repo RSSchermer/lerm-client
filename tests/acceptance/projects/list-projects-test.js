@@ -31,7 +31,7 @@ describe('Acceptance - Projects: Listing projects', function() {
       });
 
       it('lists 3 projects', function() {
-        expect(find('.projects-table tr.project-row').length).to.equal(3);
+        expect(find('.projects-table tbody tr').length).to.equal(3);
       });
     });
   });
