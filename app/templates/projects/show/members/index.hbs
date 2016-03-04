@@ -1,0 +1,21 @@
+<table class="table table-striped project-members-table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each model as |membership|}}
+      <tr>
+        <td>
+          {{membership.user.username}}
+        </td>
+        <td>
+          {{membership.user.fullName}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

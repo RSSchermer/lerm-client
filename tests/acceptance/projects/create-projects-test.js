@@ -94,7 +94,7 @@ describe('Acceptance - Projects: Creating a project', function() {
           });
 
           it('transitions to the projects\'s overview page', function() {
-            expect(currentPath()).to.equal('projects.show');
+            expect(currentPath()).to.equal('projects.show.index');
             expect(find('main').text()).to.contain('Some project');
           });
 

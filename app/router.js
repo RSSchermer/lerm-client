@@ -12,7 +12,11 @@ Router.map(function() {
 
   this.route('projects', function() {
     this.route('new');
-    this.route('show', { path: '/:project_id' });
+    this.route('show', { path: '/:project_id' }, function() {
+      this.route('members', function() {
+
+      });
+    });
     this.route('edit', { path: '/:project_id/edit' });
   });
 });

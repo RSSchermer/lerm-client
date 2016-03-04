@@ -17,7 +17,11 @@
 </header>
 
 <ul class="nav nav-tabs">
-  <li role="presentation"><a href="#" class="active">Rules</a></li>
+  <li role="presentation"><a href="#">Rules</a></li>
   <li role="presentation"><a href="#">Data Elements</a></li>
-  <li role="presentation"><a href="#">Members</a></li>
+  <li role="presentation">
+    {{#link-to 'projects.show.members' model}}{{fa-icon 'users'}} Members{{/link-to}}
+  </li>
 </ul>
+
+{{liquid-outlet}}
