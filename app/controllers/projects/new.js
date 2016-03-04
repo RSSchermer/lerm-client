@@ -11,7 +11,7 @@ export default Controller.extend({
 
   project: alias('model'),
 
-  createProjectTask: task(function * () {
+  createProjectTask: task(function *() {
     let project = yield this.get('project').save();
 
     run(() => {

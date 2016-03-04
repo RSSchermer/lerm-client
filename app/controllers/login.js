@@ -6,7 +6,7 @@ const { Controller, inject } = Ember;
 export default Controller.extend({
   session: inject.service(),
 
-  authenticateTask: task(function * () {
+  authenticateTask: task(function *() {
     let { identification, password } = this.getProperties('identification', 'password');
 
     try {
