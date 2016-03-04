@@ -19,13 +19,7 @@ export default SessionService.extend({
       headers[headerName] = headerValue;
 
       promise = this.get('ajax').request('/oauth/token/info', { headers }).then((tokenInfo) => {
-        return this.get('store').findRecord('user', tokenInfo['resource_owner_id'], {
-          adapterOptions: {
-            query: {
-              include: 'memberships.project'
-            }
-          }
-        });
+        return this.get('store').findRecord('user', tokenInfo['resource_owner_id'], { include: 'memberships.project' });
       });
     });
 
