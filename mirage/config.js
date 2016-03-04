@@ -72,4 +72,12 @@ export default function() {
   this.get('/projects/:id');
   this.post('/projects');
   this.put('/projects/:id');
+  this.patch('/projects/:id');
+
+  this.get('/memberships');
+  this.get('/memberships/:id');
+  this.post('/memberships');
+  this.put('/memberships/:id');
+  this.patch('/memberships/:id');
+  this.delete('/memberships/:id');
 }
