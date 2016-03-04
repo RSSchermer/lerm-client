@@ -31,8 +31,8 @@ describe('Acceptance - Projects: Editing a project', function() {
           visit(`projects/${this.project.id}`);
         });
 
-        it('does not show a link for creating a new project', function () {
-          expect(find('.edit-link')).to.be.empty;
+        it('does not show a link for editing the project', function() {
+          expect(find('.edit-link').length).to.equal(0);
         });
 
         describe('I visit the page for editing the project', function() {
@@ -57,8 +57,8 @@ describe('Acceptance - Projects: Editing a project', function() {
           visit(`projects/${this.project.id}`);
         });
 
-        it('does not show a link for creating a new project', function () {
-          expect(find('.edit-link')).to.be.empty;
+        it('does not show a link for editing the project', function() {
+          expect(find('.edit-link').length).to.equal(0);
         });
 
         describe('I visit the page for editing the project', function() {
@@ -67,7 +67,7 @@ describe('Acceptance - Projects: Editing a project', function() {
           });
 
           it('tells me I am not authorized to open this page', function() {
-            expect(find('main').text()).to.contain('Unauthorized');
+            expect(find('h1').text()).to.contain('Unauthorized');
           });
         });
       });
@@ -76,7 +76,7 @@ describe('Acceptance - Projects: Editing a project', function() {
     describe('I am logged as a user who is a project member', function() {
       beforeEach(function() {
         this.currentUser = server.create('user');
-        server.create('membership', { user: this.currentUser, project: this.project });
+        server.create('membership', { userId: this.currentUser.id, projectId: this.project.id });
         logIn(this.currentUser);
       });
 
@@ -85,8 +85,8 @@ describe('Acceptance - Projects: Editing a project', function() {
           visit(`projects/${this.project.id}`);
         });
 
-        it('shows a link for creating a new project', function () {
-          expect(find('.edit-link')).to.not.be.empty;
+        it('shows a link for editing the project', function() {
+          expect(find('.project-edit-link').length).to.not.equal(0);
         });
 
         describe('I visit the page for editing the project', function() {
@@ -95,7 +95,7 @@ describe('Acceptance - Projects: Editing a project', function() {
           });
 
           it('shows a form for editing the project', function() {
-            expect(find('.project-edit-form')).to.not.be.empty;
+            expect(find('.project-edit-form').length).to.not.equal(0);
           });
 
           describe('I fill out the form with valid project data', function() {

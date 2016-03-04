@@ -1,14 +1,14 @@
 <header class="page-header">
-  <h1>Create a new project</h1>
+  <h1>Edit project</h1>
 
   <nav class="page-nav-links">
-    {{#link-to 'projects.index' class='btn btn-default back-link'}}
-      {{fa-icon "chevron-left"}} Back to project list
+    {{#link-to 'projects.show' project class='btn btn-default back-link'}}
+      {{fa-icon "chevron-left"}} Back
     {{/link-to}}
   </nav>
 </header>
 
-<form class="new-project-form form-horizontal" {{action (perform createProjectTask) on="submit"}}>
+<form class="project-edit-form form-horizontal" {{action (perform saveProjectTask) on="submit"}}>
   <div class="form-group {{if project.errors.name "has-error"}}">
     <label class="control-label col-sm-2" for="name">Name</label>
 
@@ -34,8 +34,8 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      {{#spinner-button type="submit" class="btn btn-primary" isSpinning=createProjectTask.isRunning}}
-        {{fa-icon "save"}} Create
+      {{#spinner-button type="submit" class="btn btn-primary" isSpinning=saveProjectTask.isRunning}}
+        {{fa-icon "save"}} Save
       {{/spinner-button}}
     </div>
   </div>

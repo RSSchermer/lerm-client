@@ -1,1 +1,15 @@
-<h1>{{model.name}}</h1>
+<header class="page-header">
+  <h1>{{model.name}}</h1>
+
+  <p class="text-muted">
+    {{model.description}}
+  </p>
+
+  <nav class="page-nav-links">
+    {{#if (can 'edit project' model)}}
+      {{#link-to 'projects.edit' model class='btn btn-default project-edit-link'}}
+        {{fa-icon "pencil"}} Edit project
+      {{/link-to}}
+    {{/if}}
+  </nav>
+</header>

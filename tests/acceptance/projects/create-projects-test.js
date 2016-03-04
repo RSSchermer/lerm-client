@@ -63,7 +63,7 @@ describe('Acceptance - Projects: Creating a project', function() {
       });
 
       it('shows a form for creating a new project', function() {
-        expect(find('.new-project-form')).to.not.be.empty;
+        expect(find('.new-project-form').length).to.not.equal(0);
       });
 
       describe('I fill out the form with valid project data', function() {

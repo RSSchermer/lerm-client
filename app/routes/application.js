@@ -3,4 +3,10 @@ import AuthApplicationRouteMixin from 'ember-simple-auth/mixins/application-rout
 
 const { Route } = Ember;
 
-export default Route.extend(AuthApplicationRouteMixin);
+export default Route.extend(AuthApplicationRouteMixin, {
+  actions: {
+    unauthorized() {
+      this.render('unauthorized');
+    }
+  }
+});

@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import AuthDataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import ENV from 'lerm-client/config/environment';
+import Ember from 'ember';
 
 const { JSONAPIAdapter } = DS;
 
@@ -14,7 +15,7 @@ export default JSONAPIAdapter.extend(AuthDataAdapterMixin, {
     let url = this._super(...arguments);
     let query = Ember.get(snapshot, 'adapterOptions.query');
     if (query) {
-      url += '?' + Ember.$.param(query); // assumes no query params are present already
+      url += `?${Ember.$.param(query)}`; // assumes no query params are present already
     }
     return url;
   }
