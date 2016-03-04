@@ -12,4 +12,11 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   );
+
+  this.transition(
+    this.fromRoute('projects.show'),
+    this.toRoute('projects.edit'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
 }
