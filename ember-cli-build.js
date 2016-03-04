@@ -9,6 +9,9 @@ module.exports = function(defaults) {
         'bower_components/bootstrap-sass/assets/stylesheets'
       ]
     },
+    jscsOptions: {
+      testFramework: 'mocha'
+    },
     babel: {
       includePolyfill: true
     }
