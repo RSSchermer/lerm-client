@@ -66,7 +66,7 @@ export default function() {
   this.namespace = 'api/v1';
 
   this.get('/users', function(db, request) {
-    //console.log(request);
+    // TODO: remove workaround when ember-cli-mirage support the filter param out of the box
     let users = db.user.all();
     let emailFilter = request.queryParams['filter[email]'];
 
