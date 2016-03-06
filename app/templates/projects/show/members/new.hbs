@@ -1,0 +1,35 @@
+<header class="page-header">
+  <h1>Add a project member</h1>
+
+  <nav class="page-nav-links">
+    {{#link-to 'projects.show.members.index' project class='btn btn-default back-link'}}
+      {{fa-icon "chevron-left"}} Back
+    {{/link-to}}
+  </nav>
+</header>
+
+<form class="add-member-form form-horizontal" {{action (perform addProjectMemberTask) on="submit"}}>
+  <div class="form-group {{if error "has-error"}}">
+    <label class="control-label col-sm-2" for="email">E-mail</label>
+
+    <div class="col-sm-10">
+      {{input id="email" class="form-control" value=email placeholder="Enter an e-mail adress"}}
+
+      {{#if error}}
+        <p class="help-block"><em>email - {{error}}</em></p>
+      {{/if}}
+
+      <p class="help-block">
+        Enter the e-mail address of the user you wish to add to the project.
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      {{#spinner-button type="submit" class="btn btn-primary" isSpinning=addProjectMemberTask.isRunning}}
+        {{fa-icon "plus"}} Add member
+      {{/spinner-button}}
+    </div>
+  </div>
+</form>

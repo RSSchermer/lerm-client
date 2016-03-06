@@ -1,3 +1,9 @@
+{{#if (can 'edit project' model.project)}}
+  {{#link-to 'projects.show.members.new' model.project class='btn btn-default add-member-link pull-right'}}
+    {{fa-icon "plus"}} Add project member
+  {{/link-to}}
+{{/if}}
+
 <table class="table table-striped project-members-table">
   <thead>
     <tr>
@@ -7,7 +13,7 @@
   </thead>
 
   <tbody>
-    {{#each model as |membership|}}
+    {{#each model.memberships as |membership|}}
       <tr>
         <td>
           {{membership.user.username}}

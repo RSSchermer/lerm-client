@@ -65,7 +65,17 @@ export default function() {
 
   this.namespace = 'api/v1';
 
-  this.get('/users');
+  this.get('/users', function(db, request) {
+    //console.log(request);
+    let users = db.user.all();
+    let emailFilter = request.queryParams['filter[email]'];
+
+    if (emailFilter) {
+      return users.filter((u) => u.email === emailFilter);
+    } else {
+      return users;
+    }
+  });
   this.get('/users/:id');
 
   this.get('/projects');

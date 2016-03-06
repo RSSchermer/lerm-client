@@ -8,6 +8,9 @@ export default Route.extend({
 
     project.hasMany('memberships').load({ include: 'user' });
 
-    return project.get('memberships');
+    return {
+      project,
+      memberships: project.get('memberships')
+    };
   }
 });

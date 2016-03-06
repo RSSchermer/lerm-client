@@ -31,7 +31,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
           visit(`projects/${this.project.id}/members`);
         });
 
-        it('does not show a link for editing the project', function() {
+        it('does not show a link for adding a member to the project', function() {
           expect(find('.add-member-link').length).to.equal(0);
         });
 
@@ -57,7 +57,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
           visit(`projects/${this.project.id}/members`);
         });
 
-        it('does not show a link for editing the project', function() {
+        it('does not show a link for adding a member to the project', function() {
           expect(find('.add-member-link').length).to.equal(0);
         });
 
@@ -95,11 +95,11 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
           });
 
           describe('I visit the page for adding a member to the project', function() {
-            beforeEach(function () {
+            beforeEach(function() {
               visit(`projects/${this.project.id}/members/new`);
             });
 
-            it('shows a form for editing the project', function () {
+            it('shows a form for editing adding a project member', function() {
               expect(find('.add-member-form').length).to.not.equal(0);
             });
 
@@ -108,16 +108,15 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
                 fillIn('#email', 'has_no_account@example.com');
               });
 
-              describe('I click the button the add the user', function() {
+              describe('I click the button the add the member', function() {
                 beforeEach(function() {
-                  click('.add-member-form btn-primary');
+                  click('.add-member-form .btn-primary');
                 });
 
                 it('displays an error saying that no user exists for the email', function() {
                   expect(find('.add-member-form').text()).to.contain('no user exists for this e-mail');
                 });
               });
-
             });
 
             describe('I fill in the email of a user who is already a project member', function() {
@@ -125,8 +124,14 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
                 fillIn('#email', this.currentUser.email);
               });
 
-              it('displays an error saying that this user is already a project member', function() {
-                expect(find('.add-member-form').text()).to.contain('this user is already a project member');
+              describe('I click the button the add the user', function() {
+                beforeEach(function() {
+                  click('.add-member-form .btn-primary');
+                });
+
+                it('displays an error saying that this user is already a project member', function() {
+                  expect(find('.add-member-form').text()).to.contain('this user is already a project member');
+                });
               });
             });
 
@@ -137,11 +142,11 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
 
               describe('I click the button the add the user', function() {
                 beforeEach(function() {
-                  click('.add-member-form btn-primary');
+                  click('.add-member-form .btn-primary');
                 });
 
                 it('redirects me to the page listing the members of the project', function() {
-                  expect(currentPath()).to.equal('project.show.members.index');
+                  expect(currentPath()).to.equal('projects.show.members.index');
                 });
 
                 it('it displays a flash message indicating that the member was added successfully', function() {
