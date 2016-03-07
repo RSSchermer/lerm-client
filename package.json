@@ -48,6 +48,7 @@
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
     "ember-simple-auth": "1.0.1",
+    "ember-sinon": "0.5.0",
     "ember-spin-spinner": "0.2.4",
     "ember-spinner-button": "0.1.0",
     "ember-suave": "2.0.1",
