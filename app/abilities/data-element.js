@@ -7,7 +7,7 @@ export default Ability.extend({
   can: inject.service(),
 
   canView: computed('model.project', function() {
-    return this.get('can').can('show project', this.get('model.project'));
+    return this.get('can').can('view project', this.get('model.project'));
   }),
 
   canEdit: computed('model.project', function() {
