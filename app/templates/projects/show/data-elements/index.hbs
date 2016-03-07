@@ -17,7 +17,9 @@
       {{#each model.dataElements as |dataElement|}}
         <tr>
           <td>
-            {{dataElement.label}}
+            {{#link-to 'projects.show.data-elements.show' dataElement.project dataElement}}
+              {{dataElement.label}}
+            {{/link-to}}
           </td>
           <td>
             {{dataElement.description}}

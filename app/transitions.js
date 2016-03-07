@@ -33,4 +33,11 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   );
+
+  this.transition(
+    this.fromRoute('projects.show.data-elements.index'),
+    this.toRoute('projects.show.data-elements.show'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
 }
