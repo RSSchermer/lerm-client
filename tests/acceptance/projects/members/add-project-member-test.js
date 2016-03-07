@@ -85,7 +85,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
           visit(`projects/${this.project.id}/members`);
         });
 
-        it('shows a link for editing the project', function() {
+        it('shows a link for adding a member to the project', function() {
           expect(find('.add-member-link').length).to.not.equal(0);
         });
 
