@@ -18,7 +18,7 @@ Router.map(function() {
       });
 
       this.route('data-elements', function() {
-
+        this.route('new');
       });
     });
     this.route('edit', { path: '/:project_id/edit' });

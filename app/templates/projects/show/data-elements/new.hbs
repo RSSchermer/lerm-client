@@ -1,0 +1,42 @@
+<header class="page-header">
+  <h2>Add a Data Element</h2>
+
+  <nav class="page-nav-links">
+    {{#link-to 'projects.show.members.index' dataElement.project class='btn btn-default back-link'}}
+      {{fa-icon "chevron-left"}} Back
+    {{/link-to}}
+  </nav>
+</header>
+
+<form class="add-data-element-form form-horizontal" {{action (perform createDataElementTask) on="submit"}}>
+  <div class="form-group {{if dataElement.errors.label "has-error"}}">
+    <label class="control-label col-sm-2" for="label">Label</label>
+
+    <div class="col-sm-10">
+      {{input id="label" class="form-control" value=dataElement.label placeholder="Enter a label..."}}
+      {{#each dataElement.errors.label as |error|}}
+        <p class="help-block"><em>{{error.message}}</em></p>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="form-group {{if dataElement.errors.description "has-error"}}">
+    <label class="control-label col-sm-2" for="description">Description</label>
+
+    <div class="col-sm-10">
+      {{textarea id="description" class="form-control" value=dataElement.description
+                 placeholder="Give a description for the data element..."}}
+      {{#each dataElement.errors.description as |error|}}
+        <p class="help-block"><em>{{error.message}}</em></p>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      {{#spinner-button type="submit" class="btn btn-primary" isSpinning=createDataElementTask.isRunning}}
+        {{fa-icon "plus"}} Add Data Element
+      {{/spinner-button}}
+    </div>
+  </div>
+</form>

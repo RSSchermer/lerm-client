@@ -1,3 +1,9 @@
+{{#if (can 'edit project' model.project)}}
+  {{#link-to 'projects.show.data-elements.new' model.project class='btn btn-default add-data-element-link pull-right'}}
+    {{fa-icon "plus"}} Add Data Element
+  {{/link-to}}
+{{/if}}
+
 <table class="table table-striped project-data-elements-table">
   <thead>
     <tr>
