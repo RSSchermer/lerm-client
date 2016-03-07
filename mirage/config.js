@@ -90,4 +90,11 @@ export default function() {
   this.put('/memberships/:id');
   this.patch('/memberships/:id');
   this.delete('/memberships/:id');
+
+  this.get('/data-elements');
+  this.get('/data-elements/:id');
+  this.post('/data-elements');
+  this.put('/data-elements/:id');
+  this.patch('/data-elements/:id');
+  this.delete('/data-elements/:id');
 }

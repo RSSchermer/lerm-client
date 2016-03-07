@@ -1,0 +1,21 @@
+<table class="table table-striped project-data-elements-table">
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each model.dataElements as |dataElement|}}
+      <tr>
+        <td>
+          {{dataElement.label}}
+        </td>
+        <td>
+          {{dataElement.description}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

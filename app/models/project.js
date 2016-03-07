@@ -6,5 +6,6 @@ export default Model.extend({
   name: attr('string'),
   description: attr('string'),
 
-  memberships: hasMany('memberships')
+  memberships: hasMany('membership'),
+  dataElements: hasMany('data-element')
 });
