@@ -32,7 +32,7 @@ describe('Acceptance - Projects: Editing a project', function() {
         });
 
         it('does not show a link for editing the project', function() {
-          expect(find('.edit-link').length).to.equal(0);
+          expect(find('.project-edit-link').length).to.equal(0);
         });
 
         describe('I visit the page for editing the project', function() {
@@ -58,7 +58,7 @@ describe('Acceptance - Projects: Editing a project', function() {
         });
 
         it('does not show a link for editing the project', function() {
-          expect(find('.edit-link').length).to.equal(0);
+          expect(find('.project-edit-link').length).to.equal(0);
         });
 
         describe('I visit the page for editing the project', function() {
@@ -104,7 +104,7 @@ describe('Acceptance - Projects: Editing a project', function() {
               fillIn('#description', 'Some description');
             });
 
-            describe('I leave the page for creating projects without submitting the form', function() {
+            describe('I leave the page without submitting the form', function() {
               beforeEach(function() {
                 visit('/');
               });
