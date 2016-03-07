@@ -4,24 +4,31 @@
   {{/link-to}}
 {{/if}}
 
-<table class="table table-striped project-data-elements-table">
-  <thead>
-    <tr>
-      <th>Label</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    {{#each model.dataElements as |dataElement|}}
+{{#if model.dataElements.length}}
+  <table class="table table-striped project-data-elements-table">
+    <thead>
       <tr>
-        <td>
-          {{dataElement.label}}
-        </td>
-        <td>
-          {{dataElement.description}}
-        </td>
+        <th>Label</th>
+        <th>Description</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      {{#each model.dataElements as |dataElement|}}
+        <tr>
+          <td>
+            {{dataElement.label}}
+          </td>
+          <td>
+            {{dataElement.description}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p class="text-muted">
+    No data elements exist yet for this project.
+    {{#link-to 'projects.show.data-elements.new' model.project}}Add a data element.{{/link-to}}
+  </p>
+{{/if}}

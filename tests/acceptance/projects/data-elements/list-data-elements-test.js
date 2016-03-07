@@ -25,6 +25,18 @@ describe('Acceptance - Projects | Data Elements: Listing the data elements of a 
       this.project = server.create('project');
     });
 
+    describe('the project has no data elements', function() {
+      describe('I visit the page that lists the data elements of the project', function() {
+        beforeEach(function() {
+          visit(`projects/${this.project.id}/data-elements`);
+        });
+
+        it('tells me that no data elements exist yet for this project', function() {
+          expect(find('main').text()).to.contain('No data elements exist yet for this project');
+        });
+      });
+    });
+
     describe('the project has 3 data elements', function() {
       beforeEach(function() {
         server.logging = true;
