@@ -24,7 +24,9 @@ Router.map(function() {
       });
 
       this.route('rules', function() {
-
+        this.route('new');
+        this.route('show', { path: '/:rule_id' });
+        this.route('edit', { path: '/:rule_id/edit' });
       });
     });
     this.route('edit', { path: '/:project_id/edit' });

@@ -1,3 +1,9 @@
+{{#if (can 'edit project' model.project)}}
+  {{#link-to 'projects.show.rules.new' model.project class='btn btn-default add-rule-link pull-right'}}
+    {{fa-icon "plus"}} Add Rule
+  {{/link-to}}
+{{/if}}
+
 {{#if model.rules.length}}
   <table class="table table-striped project-rules-table">
     <thead>
@@ -24,5 +30,6 @@
 {{else}}
   <p class="text-muted">
     No rules exist yet for this project.
+    {{#link-to 'projects.show.rules.new' model.project}}Add a rule.{{/link-to}}
   </p>
 {{/if}}
