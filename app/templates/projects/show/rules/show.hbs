@@ -30,6 +30,18 @@
   <dd>{{rule.originalText}}</dd>
 </dl>
 
+<ul class="nav nav-tabs project-nav">
+  <li role="presentation">
+    <a href="#">LERM</a>
+  </li>
+  <li role="presentation">
+    <a href="#">Results</a>
+  </li>
+  <li role="presentation">
+    <a href="#">Relationships</a>
+  </li>
+</ul>
+
 {{#if showDeleteModal}}
   {{#modal-dialog close='toggleDeleteModal' targetAttachment='center' translucentOverlay=true}}
     <h3>Are you sure you wish to delete this rule?</h3>
