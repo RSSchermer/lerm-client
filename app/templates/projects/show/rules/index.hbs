@@ -1,0 +1,28 @@
+{{#if model.rules.length}}
+  <table class="table table-striped project-rules-table">
+    <thead>
+    <tr>
+      <th>Label</th>
+      <th>Source</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each model.rules as |rule|}}
+      <tr>
+        <td>
+          {{rule.label}}
+          <span class="original-text">{{rule.originalText}}</span>
+        </td>
+        <td>
+          {{rule.source}}
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p class="text-muted">
+    No rules exist yet for this project.
+  </p>
+{{/if}}

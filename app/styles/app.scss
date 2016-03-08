@@ -72,6 +72,19 @@ footer.main-footer {
   }
 }
 
+.rules-table {
+  .rule-link {
+    font-weight: bold;
+  }
+
+  .original-text {
+    color: $text-muted;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
 .page-header {
   margin: 0 0 20px;
   padding: 10px 5px;

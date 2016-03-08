@@ -7,5 +7,6 @@ export default Model.extend({
   description: attr('string'),
 
   memberships: hasMany('membership'),
-  dataElements: hasMany('data-element')
+  dataElements: hasMany('data-element'),
+  rules: hasMany('rule')
 });

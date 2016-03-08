@@ -93,4 +93,11 @@ export default function() {
   this.put('/data-elements/:id');
   this.patch('/data-elements/:id');
   this.delete('/data-elements/:id');
+
+  this.get('/rules');
+  this.get('/rules/:id');
+  this.post('/rules');
+  this.put('/rules/:id');
+  this.patch('/rules/:id');
+  this.delete('/rules/:id');
 }
