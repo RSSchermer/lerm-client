@@ -47,4 +47,25 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   );
+
+  this.transition(
+    this.fromRoute('projects.show.rules.index'),
+    this.toRoute('projects.show.rules.new'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+
+  this.transition(
+    this.fromRoute('projects.show.rules.index'),
+    this.toRoute('projects.show.rules.show'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+
+  this.transition(
+    this.fromRoute('projects.show.rules.show'),
+    this.toRoute('projects.show.rules.edit'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
 }
