@@ -17,7 +17,7 @@
     {{#each model.rules as |rule|}}
       <tr>
         <td>
-          {{rule.label}}
+          {{#link-to 'projects.show.rules.show' rule.project rule class="rule-link"}}{{rule.label}}{{/link-to}}
           <span class="original-text">{{rule.originalText}}</span>
         </td>
         <td>
