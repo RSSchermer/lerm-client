@@ -25,7 +25,16 @@ Router.map(function() {
 
       this.route('rules', function() {
         this.route('new');
-        this.route('show', { path: '/:rule_id' });
+        this.route('show', { path: '/:rule_id' }, function() {
+          this.route('lerm', function() {
+            this.route('step-1');
+            this.route('step-2');
+            this.route('step-3');
+            this.route('step-4');
+            this.route('step-5');
+            this.route('step-6');
+          });
+        });
         this.route('edit', { path: '/:rule_id/edit' });
       });
     });

@@ -72,7 +72,7 @@ footer.main-footer {
   }
 }
 
-.rules-table {
+.project-rules-table {
   .rule-link {
     font-weight: bold;
   }
@@ -140,4 +140,81 @@ footer.main-footer {
 
 .project-nav {
   margin-bottom: 10px;
+}
+
+.steps {
+  list-style: none;
+  overflow: hidden;
+  color: #aaa;
+  font-size: $font-size-base * 1.2;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  background: #fafafa;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.steps li {
+  float: left;
+  line-height: 60px;
+}
+
+.steps li a {
+  color: $link-color;
+  text-decoration: none;
+  padding: 0 10px 0 40px;
+  display: block;
+  float: left;
+  background: #fafafa;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+.steps li a::after {
+  position: relative;
+  display: block;
+  margin-top: -30px;
+  margin-left: auto;
+  margin-right: -25px;
+  height: 30px;
+  width: 30px;
+  content: " ";
+  -webkit-transform: skew(-40deg);
+  background: #fafafa;
+  border-right: 1px solid #d6d6d6;
+  -moz-transform: skew(-40deg);
+  -o-transform: skew(-40deg);
+  transform: skew(-40deg);
+}
+
+.steps li a::before {
+  float: right;
+  display: block;
+  margin-bottom: -30px;
+  margin-left: auto;
+  margin-right: -25px;
+  height: 30px;
+  width: 30px;
+  content: " ";
+  -webkit-transform: skew(40deg);
+  background: #fafafa;
+  border-right: 1px solid #d6d6d6;
+  -moz-transform: skew(40deg);
+  -o-transform: skew(40deg);
+  transform: skew(40deg);
+}
+
+.steps li:first-child a {
+  padding-left: 20px;
+}
+
+.steps li a.active {
+  color: $gray-dark;
+  background: white;
+
+  &::before, &::after {
+    background: white;
+  }
 }

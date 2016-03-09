@@ -32,15 +32,19 @@
 
 <ul class="nav nav-tabs project-nav">
   <li role="presentation">
-    <a href="#">LERM</a>
+    {{#link-to 'projects.show.rules.show.lerm' rule.project rule}}
+      LERM
+    {{/link-to}}
   </li>
   <li role="presentation">
-    <a href="#">Results</a>
+    <a href="#">Formalization results</a>
   </li>
   <li role="presentation">
     <a href="#">Relationships</a>
   </li>
 </ul>
+
+{{liquid-outlet}}
 
 {{#if showDeleteModal}}
   {{#modal-dialog close='toggleDeleteModal' targetAttachment='center' translucentOverlay=true}}
