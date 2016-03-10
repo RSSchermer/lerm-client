@@ -126,7 +126,7 @@ describe('Acceptance - Projects: Editing a project', function() {
               });
 
               it('transitions to the projects\'s overview page', function() {
-                expect(currentPath()).to.equal('projects.show.index');
+                expect(currentPath()).to.equal('projects.show.index.rules');
               });
 
               it('displays a flash message indicating that the new project was updated successfully', function() {

@@ -135,7 +135,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
                 });
 
                 it('transitions to the rules\'s overview page', function() {
-                  expect(currentPath()).to.equal('projects.show.rules.show');
+                  expect(currentPath()).to.equal('projects.show.rules.show.lerm.step-1');
                 });
 
                 it('displays a flash message indicating that the new project was updated successfully', function() {
