@@ -1,0 +1,36 @@
+{{#if (can 'edit project' model.project)}}
+  {{#link-to 'projects.show.data-elements.new' model.project class='btn btn-default add-data-element-link pull-right'}}
+    {{fa-icon "plus"}} Add Data Element
+  {{/link-to}}
+{{/if}}
+
+{{#if model.dataElements.length}}
+  <table class="table table-striped project-data-elements-table">
+    <thead>
+    <tr>
+      <th>Label</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each model.dataElements as |dataElement|}}
+      <tr>
+        <td>
+          {{#link-to 'projects.show.data-elements.show' dataElement.project dataElement}}
+            {{dataElement.label}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{dataElement.description}}
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p class="text-muted">
+    No data elements exist yet for this project.
+    {{#link-to 'projects.show.data-elements.new' model.project}}Add a data element.{{/link-to}}
+  </p>
+{{/if}}

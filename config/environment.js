@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'lerm-client',
+    podModulePrefix: 'lerm-client/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

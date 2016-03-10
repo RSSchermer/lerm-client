@@ -1,0 +1,51 @@
+<header class="page-header">
+  <div>
+    <h2>{{fa-icon "cube"}} {{dataElement.label}}</h2>
+
+    <nav class="page-nav-links">
+      {{#link-to 'projects.show.data-elements.index' project class='btn btn-default'}}
+        {{fa-icon "chevron-left"}} Back
+      {{/link-to}}
+
+      {{#if (can 'edit data-element' dataElement)}}
+        {{#link-to 'projects.show.data-elements.edit' project dataElement
+        class='btn btn-default data-element-edit-link'}}
+          {{fa-icon "pencil"}} Edit
+        {{/link-to}}
+      {{/if}}
+
+      {{#if (can 'destroy data-element' dataElement)}}
+        <a class='btn btn-default data-element-delete-modal-link' {{action 'toggleDeleteModal'}}>
+          {{fa-icon "remove"}} Delete
+        </a>
+      {{/if}}
+    </nav>
+  </div>
+</header>
+
+<dl>
+  <dt>Description</dt>
+  <dd>{{dataElement.description}}</dd>
+</dl>
+
+{{#if showDeleteModal}}
+  {{#modal-dialog close='toggleDeleteModal' targetAttachment='center' translucentOverlay=true}}
+    <h3>Are you sure you wish to delete this data element?</h3>
+
+    <dl>
+      <dt>Label</dt>
+      <dd>{{dataElement.label}}</dd>
+      <dt>Description</dt>
+      <dd>{{dataElement.description}}</dd>
+    </dl>
+
+    {{#spinner-button onclick=(action (perform deleteDataElementTask))
+    isSpinning=deleteDataElementTask.isrunning
+    class='btn btn-danger delete-btn'}}
+      {{fa-icon "remove"}} Delete
+    {{/spinner-button}}
+
+    <a class="btn btn-default delete-cancel-btn" {{action "toggleDeleteModal"}}>Cancel</a>
+
+  {{/modal-dialog}}
+{{/if}}

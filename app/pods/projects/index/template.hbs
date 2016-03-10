@@ -1,0 +1,30 @@
+<header class="page-header">
+  <h1>{{fa-icon "archive"}} Projects</h1>
+
+  <nav class="page-nav-links">
+    {{#if (can 'create project')}}
+      {{#link-to 'projects.new' class="create-project-link btn btn-default"}}
+        {{fa-icon "plus"}} Create a new project
+      {{/link-to}}
+    {{/if}}
+  </nav>
+</header>
+
+<table class="table table-striped projects-table">
+  <thead>
+  <tr>
+    <th>Project</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  {{#each model as |project|}}
+    <tr class="project-row">
+      <td>
+        {{#link-to 'projects.show' project class='project-link'}}{{project.name}}{{/link-to}}
+        <span class="project-description">{{project.description}}</span>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
