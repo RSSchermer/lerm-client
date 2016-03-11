@@ -34,7 +34,7 @@ describe('Acceptance - Projects | Members: Listing project members', function() 
 
       describe('I visit the page that lists the members of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/members`);
+          visit(`/projects/${this.project.id}/members`);
         });
 
         it('lists 3 members', function() {

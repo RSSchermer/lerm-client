@@ -28,7 +28,7 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
     describe('I am not logged in', function() {
       describe('I visit the page for listing the rules of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/rules`);
+          visit(`/projects/${this.project.id}/rules`);
         });
 
         it('does not show a link for adding a rule to the project', function() {
@@ -37,11 +37,11 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
 
         describe('I visit the page for adding a rule to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/new`);
+            visit(`/projects/${this.project.id}/rules/new`);
           });
 
           it('redirects me to the login page', function() {
-            expect(currentPath()).to.equal('login');
+            expect(currentURL()).to.equal('/login');
           });
         });
       });
@@ -54,7 +54,7 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
 
       describe('I visit the page for listing the rules of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/rules`);
+          visit(`/projects/${this.project.id}/rules`);
         });
 
         it('does not show a link for adding a rule to the project', function() {
@@ -63,7 +63,7 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
 
         describe('I visit the page for adding a rule to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/new`);
+            visit(`/projects/${this.project.id}/rules/new`);
           });
 
           it('tells me I am not authorized to open this page', function() {
@@ -82,7 +82,7 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
 
       describe('I visit the page for the listing the rules of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/rules`);
+          visit(`/projects/${this.project.id}/rules`);
         });
 
         it('shows a link for adding a rule the project', function() {
@@ -91,7 +91,7 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
 
         describe('I visit the page for adding a rule to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/new`);
+            visit(`/projects/${this.project.id}/rules/new`);
           });
 
           it('shows a form for editing adding a rule', function() {
@@ -111,7 +111,7 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
               });
 
               it('redirects me to the page listing the rules of the project', function() {
-                expect(currentPath()).to.equal('projects.show.rules.index');
+                expect(currentURL()).to.equal(`/projects/${this.project.id}/rules`);
               });
 
               it('it displays a flash message indicating that the rule was added successfully', function() {

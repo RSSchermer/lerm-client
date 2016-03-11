@@ -36,7 +36,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
       describe('I am not logged in', function() {
         describe('I visit the page for the rule', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/${this.rule.id}`);
+            visit(`/projects/${this.project.id}/rules/${this.rule.id}`);
           });
 
           it('does not show a link for editing the rule', function() {
@@ -45,11 +45,11 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
 
           describe('I visit the page for editing the rule', function() {
             beforeEach(function() {
-              visit(`projects/${this.project.id}/rules/${this.rule.id}/edit`);
+              visit(`/projects/${this.project.id}/rules/${this.rule.id}/edit`);
             });
 
             it('redirects me to the login page', function() {
-              expect(currentPath()).to.equal('login');
+              expect(currentURL()).to.equal('/login');
             });
           });
         });
@@ -62,7 +62,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
 
         describe('I visit the page for the rule', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/${this.rule.id}`);
+            visit(`/projects/${this.project.id}/rules/${this.rule.id}`);
           });
 
           it('does not show a link for editing the rule', function() {
@@ -71,7 +71,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
 
           describe('I visit the page for editing the rule', function() {
             beforeEach(function() {
-              visit(`projects/${this.project.id}/rules/${this.rule.id}/edit`);
+              visit(`/projects/${this.project.id}/rules/${this.rule.id}/edit`);
             });
 
             it('tells me I am not authorized to open this page', function() {
@@ -90,7 +90,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
 
         describe('I visit the page for the rule', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/${this.rule.id}`);
+            visit(`/projects/${this.project.id}/rules/${this.rule.id}`);
           });
 
           it('shows a link for editing the rule', function() {
@@ -99,7 +99,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
 
           describe('I visit the page for editing the rule', function() {
             beforeEach(function() {
-              visit(`projects/${this.project.id}/rules/${this.rule.id}/edit`);
+              visit(`/projects/${this.project.id}/rules/${this.rule.id}/edit`);
             });
 
             it('shows a form for editing the rule', function() {
@@ -120,7 +120,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
 
                 describe('I visit the page for the rule', function() {
                   beforeEach(function() {
-                    visit(`projects/${this.project.id}/rules/${this.rule.id}`);
+                    visit(`/projects/${this.project.id}/rules/${this.rule.id}`);
                   });
 
                   it('shows the old name for the project', function() {
@@ -135,7 +135,7 @@ describe('Acceptance - Projects | Rules: Editing a rule', function() {
                 });
 
                 it('transitions to the rules\'s overview page', function() {
-                  expect(currentPath()).to.equal('projects.show.rules.show.lerm.step-1');
+                  expect(currentURL()).to.equal(`/projects/${this.project.id}/rules/${this.rule.id}/lerm/step-1`);
                 });
 
                 it('displays a flash message indicating that the new project was updated successfully', function() {

@@ -28,7 +28,7 @@ describe('Acceptance - Projects | Data Elements: Listing the data elements of a 
     describe('the project has no data elements', function() {
       describe('I visit the page that lists the data elements of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/data-elements`);
+          visit(`/projects/${this.project.id}/data-elements`);
         });
 
         it('tells me that no data elements exist yet for this project', function() {
@@ -45,7 +45,7 @@ describe('Acceptance - Projects | Data Elements: Listing the data elements of a 
 
       describe('I visit the page that lists the data elements of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/data-elements`);
+          visit(`/projects/${this.project.id}/data-elements`);
         });
 
         it('lists 3 data elements', function() {

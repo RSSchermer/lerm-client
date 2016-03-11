@@ -39,7 +39,7 @@ describe('Acceptance - Authentication: Logging out', function() {
       });
 
       it('transitions to the login page', function() {
-        expect(currentPath()).to.equal('login');
+        expect(currentURL()).to.equal('/login');
       });
 
       it('does not display a logout link in the user menu', function() {

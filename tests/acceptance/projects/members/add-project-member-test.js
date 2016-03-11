@@ -28,7 +28,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
     describe('I am not logged in', function() {
       describe('I visit the page for listing members of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/members`);
+          visit(`/projects/${this.project.id}/members`);
         });
 
         it('does not show a link for adding a member to the project', function() {
@@ -37,11 +37,11 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
 
         describe('I visit the page for adding a member to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/members/new`);
+            visit(`/projects/${this.project.id}/members/new`);
           });
 
           it('redirects me to the login page', function() {
-            expect(currentPath()).to.equal('login');
+            expect(currentURL()).to.equal('/login');
           });
         });
       });
@@ -54,7 +54,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
 
       describe('I visit the page for listing the members of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/members`);
+          visit(`/projects/${this.project.id}/members`);
         });
 
         it('does not show a link for adding a member to the project', function() {
@@ -63,7 +63,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
 
         describe('I visit the page for adding a member to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/members/new`);
+            visit(`/projects/${this.project.id}/members/new`);
           });
 
           it('tells me I am not authorized to open this page', function() {
@@ -82,7 +82,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
 
       describe('I visit the page for the listing the members of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/members`);
+          visit(`/projects/${this.project.id}/members`);
         });
 
         it('shows a link for adding a member to the project', function() {
@@ -96,7 +96,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
 
           describe('I visit the page for adding a member to the project', function() {
             beforeEach(function() {
-              visit(`projects/${this.project.id}/members/new`);
+              visit(`/projects/${this.project.id}/members/new`);
             });
 
             it('shows a form for editing adding a project member', function() {
@@ -146,7 +146,7 @@ describe('Acceptance - Projects | Members: adding a member to a project', functi
                 });
 
                 it('redirects me to the page listing the members of the project', function() {
-                  expect(currentPath()).to.equal('projects.show.members.index');
+                  expect(currentURL()).to.equal(`/projects/${this.project.id}/members`);
                 });
 
                 it('it displays a flash message indicating that the member was added successfully', function() {

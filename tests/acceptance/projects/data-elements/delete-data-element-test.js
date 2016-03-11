@@ -36,7 +36,7 @@ describe('Acceptance - Projects | Data Elements: Deleting a data element', funct
       describe('I am not logged in', function() {
         describe('I visit the page for the data element', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}`);
+            visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
           });
 
           it('does not show a link for deleting the data element', function() {
@@ -52,7 +52,7 @@ describe('Acceptance - Projects | Data Elements: Deleting a data element', funct
 
         describe('I visit the page for the data element', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}`);
+            visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
           });
 
           it('does not show a link for deleting the data element', function() {
@@ -70,7 +70,7 @@ describe('Acceptance - Projects | Data Elements: Deleting a data element', funct
 
         describe('I visit the page for the data element', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}`);
+            visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
           });
 
           it('shows a link for deleting the data element', function() {
@@ -110,7 +110,7 @@ describe('Acceptance - Projects | Data Elements: Deleting a data element', funct
               });
 
               it('redirects me to the page listing the data elements of the project', function() {
-                expect(currentPath()).to.equal('projects.show.data-elements.index');
+                expect(currentURL()).to.equal(`/projects/${this.project.id}/data-elements`);
               });
 
               it('it displays a flash message indicating that the data element was deleted successfully', function() {

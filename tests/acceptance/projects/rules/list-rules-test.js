@@ -28,7 +28,7 @@ describe('Acceptance - Projects | Rules: Listing the rules of a project', functi
     describe('the project has no rules', function() {
       describe('I visit the page that lists the rules of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/rules`);
+          visit(`/projects/${this.project.id}/rules`);
         });
 
         it('tells me that no rules exist yet for this project', function() {
@@ -45,7 +45,7 @@ describe('Acceptance - Projects | Rules: Listing the rules of a project', functi
 
       describe('I visit the page that lists the rules of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/rules`);
+          visit(`/projects/${this.project.id}/rules`);
         });
 
         it('lists 3 rules', function() {

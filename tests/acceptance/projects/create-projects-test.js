@@ -23,7 +23,7 @@ describe('Acceptance - Projects: Creating a project', function() {
   describe('I am not logged in', function() {
     describe('I visit the page for listing projects', function() {
       beforeEach(function() {
-        visit('projects');
+        visit('/projects');
       });
 
       it('does not show a link for creating a new project', function() {
@@ -33,11 +33,11 @@ describe('Acceptance - Projects: Creating a project', function() {
 
     describe('I visit the page for creating a new project', function() {
       beforeEach(function() {
-        visit('projects/new');
+        visit('/projects/new');
       });
 
       it('redirects me to the login page', function() {
-        expect(currentPath()).to.equal('login');
+        expect(currentURL()).to.equal('/login');
       });
     });
   });
@@ -49,7 +49,7 @@ describe('Acceptance - Projects: Creating a project', function() {
 
     describe('I visit the page for listing projects', function() {
       beforeEach(function() {
-        visit('projects');
+        visit('/projects');
       });
 
       it('shows a link for creating a new project', function() {
@@ -59,7 +59,7 @@ describe('Acceptance - Projects: Creating a project', function() {
 
     describe('I visit the page for creating a new project', function() {
       beforeEach(function() {
-        visit('projects/new');
+        visit('/projects/new');
       });
 
       it('shows a form for creating a new project', function() {
@@ -79,7 +79,7 @@ describe('Acceptance - Projects: Creating a project', function() {
 
           describe('I visit the page for listing projects', function() {
             beforeEach(function() {
-              visit('projects');
+              visit('/projects');
             });
 
             it('does not list the project', function() {
@@ -94,7 +94,7 @@ describe('Acceptance - Projects: Creating a project', function() {
           });
 
           it('transitions to the projects\'s overview page', function() {
-            expect(currentPath()).to.equal('projects.show.rules.index');
+            expect(currentURL()).to.equal('/projects/1/rules');
             expect(find('main').text()).to.contain('Some project');
           });
 
@@ -104,7 +104,7 @@ describe('Acceptance - Projects: Creating a project', function() {
 
           describe('I visit the page for listing projects', function() {
             beforeEach(function() {
-              visit('projects');
+              visit('/projects');
             });
 
             it('lists the project', function() {

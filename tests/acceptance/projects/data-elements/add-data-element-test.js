@@ -28,7 +28,7 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
     describe('I am not logged in', function() {
       describe('I visit the page for listing the data elements of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/data-elements`);
+          visit(`/projects/${this.project.id}/data-elements`);
         });
 
         it('does not show a link for adding a data-element to the project', function() {
@@ -37,11 +37,11 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
 
         describe('I visit the page for adding a data-element to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/new`);
+            visit(`/projects/${this.project.id}/data-elements/new`);
           });
 
           it('redirects me to the login page', function() {
-            expect(currentPath()).to.equal('login');
+            expect(currentURL()).to.equal('/login');
           });
         });
       });
@@ -54,7 +54,7 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
 
       describe('I visit the page for listing the data elements of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/data-elements`);
+          visit(`/projects/${this.project.id}/data-elements`);
         });
 
         it('does not show a link for adding a data element to the project', function() {
@@ -63,7 +63,7 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
 
         describe('I visit the page for adding a data-element to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/new`);
+            visit(`/projects/${this.project.id}/data-elements/new`);
           });
 
           it('tells me I am not authorized to open this page', function() {
@@ -82,7 +82,7 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
 
       describe('I visit the page for the listing the data-elements of the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}/data-elements`);
+          visit(`/projects/${this.project.id}/data-elements`);
         });
 
         it('shows a link for adding a data element the project', function() {
@@ -91,7 +91,7 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
 
         describe('I visit the page for adding a data element to the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/new`);
+            visit(`/projects/${this.project.id}/data-elements/new`);
           });
 
           it('shows a form for editing adding a data element', function() {
@@ -110,7 +110,7 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
               });
 
               it('redirects me to the page listing the data elements of the project', function() {
-                expect(currentPath()).to.equal('projects.show.data-elements.index');
+                expect(currentURL()).to.equal(`/projects/${this.project.id}/data-elements`);
               });
 
               it('it displays a flash message indicating that the data element was added successfully', function() {

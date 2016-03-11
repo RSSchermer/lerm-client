@@ -21,11 +21,11 @@ describe('Acceptance - Authentication: Logging in', function() {
   });
 
   beforeEach(function() {
-    visit('login');
+    visit('/login');
   });
 
   it('can visit /login', function() {
-    expect(currentPath()).to.equal('login');
+    expect(currentURL()).to.equal('/login');
   });
 
   describe('I log in with invalid credentials', function() {
@@ -36,7 +36,7 @@ describe('Acceptance - Authentication: Logging in', function() {
     });
 
     it('remains on the login page', function() {
-      expect(currentPath()).to.equal('login');
+      expect(currentURL()).to.equal('/login');
     });
 
     it('displays a message indicating the credentials were invalid', function() {
@@ -52,7 +52,7 @@ describe('Acceptance - Authentication: Logging in', function() {
     });
 
     it('redirects to current-user', function() {
-      expect(currentPath()).to.equal('current-user');
+      expect(currentURL()).to.equal('/current-user');
     });
   });
 });

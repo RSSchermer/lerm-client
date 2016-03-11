@@ -36,7 +36,7 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
       describe('I am not logged in', function() {
         describe('I visit the page for the data element', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}`);
+            visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
           });
 
           it('does not show a link for editing the data element', function() {
@@ -45,11 +45,11 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
 
           describe('I visit the page for editing the data element', function() {
             beforeEach(function() {
-              visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}/edit`);
+              visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}/edit`);
             });
 
             it('redirects me to the login page', function() {
-              expect(currentPath()).to.equal('login');
+              expect(currentURL()).to.equal('/login');
             });
           });
         });
@@ -62,7 +62,7 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
 
         describe('I visit the page for the data element', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}`);
+            visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
           });
 
           it('does not show a link for editing the data element', function() {
@@ -71,7 +71,7 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
 
           describe('I visit the page for editing the data element', function() {
             beforeEach(function() {
-              visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}/edit`);
+              visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}/edit`);
             });
 
             it('tells me I am not authorized to open this page', function() {
@@ -90,7 +90,7 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
 
         describe('I visit the page for the data element', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}`);
+            visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
           });
 
           it('shows a link for editing the data element', function() {
@@ -99,7 +99,7 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
 
           describe('I visit the page for editing the data element', function() {
             beforeEach(function() {
-              visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}/edit`);
+              visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}/edit`);
             });
 
             it('shows a form for editing the data element', function() {
@@ -119,7 +119,7 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
 
                 describe('I visit the page for the data element', function() {
                   beforeEach(function() {
-                    visit(`projects/${this.project.id}/data-elements/${this.dataElement.id}`);
+                    visit(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
                   });
 
                   it('shows the old name for the project', function() {
@@ -134,7 +134,7 @@ describe('Acceptance - Projects | Data Elements: Editing a data element', functi
                 });
 
                 it('transitions to the data elements\'s overview page', function() {
-                  expect(currentPath()).to.equal('projects.show.data-elements.show');
+                  expect(currentURL()).to.equal(`/projects/${this.project.id}/data-elements/${this.dataElement.id}`);
                 });
 
                 it('displays a flash message indicating that the new project was updated successfully', function() {

@@ -36,7 +36,7 @@ describe('Acceptance - Projects | Rules: Deleting a rule', function() {
       describe('I am not logged in', function() {
         describe('I visit the page for the rule', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/${this.rule.id}`);
+            visit(`/projects/${this.project.id}/rules/${this.rule.id}`);
           });
 
           it('does not show a link for deleting the rule', function() {
@@ -52,7 +52,7 @@ describe('Acceptance - Projects | Rules: Deleting a rule', function() {
 
         describe('I visit the page for the rule', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/${this.rule.id}`);
+            visit(`/projects/${this.project.id}/rules/${this.rule.id}`);
           });
 
           it('does not show a link for deleting the rule', function() {
@@ -70,7 +70,7 @@ describe('Acceptance - Projects | Rules: Deleting a rule', function() {
 
         describe('I visit the page for the rule', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/rules/${this.rule.id}`);
+            visit(`/projects/${this.project.id}/rules/${this.rule.id}`);
           });
 
           it('shows a link for deleting the rule', function() {
@@ -110,7 +110,7 @@ describe('Acceptance - Projects | Rules: Deleting a rule', function() {
               });
 
               it('redirects me to the page listing the rules of the project', function() {
-                expect(currentPath()).to.equal('projects.show.rules.index');
+                expect(currentURL()).to.equal(`/projects/${this.project.id}/rules`);
               });
 
               it('it displays a flash message indicating that the rule was deleted successfully', function() {

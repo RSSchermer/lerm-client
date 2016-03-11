@@ -27,7 +27,7 @@ describe('Acceptance - Projects: Listing projects', function() {
 
     describe('I visit the page for listing projects', function() {
       beforeEach(function() {
-        visit('projects');
+        visit('/projects');
       });
 
       it('lists 3 projects', function() {

@@ -28,7 +28,7 @@ describe('Acceptance - Projects: Editing a project', function() {
     describe('I am not logged in', function() {
       describe('I visit the page for the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}`);
+          visit(`/projects/${this.project.id}`);
         });
 
         it('does not show a link for editing the project', function() {
@@ -37,11 +37,11 @@ describe('Acceptance - Projects: Editing a project', function() {
 
         describe('I visit the page for editing the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/edit`);
+            visit(`/projects/${this.project.id}/edit`);
           });
 
           it('redirects me to the login page', function() {
-            expect(currentPath()).to.equal('login');
+            expect(currentURL()).to.equal('/login');
           });
         });
       });
@@ -54,7 +54,7 @@ describe('Acceptance - Projects: Editing a project', function() {
 
       describe('I visit the page for the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}`);
+          visit(`/projects/${this.project.id}`);
         });
 
         it('does not show a link for editing the project', function() {
@@ -63,7 +63,7 @@ describe('Acceptance - Projects: Editing a project', function() {
 
         describe('I visit the page for editing the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/edit`);
+            visit(`/projects/${this.project.id}/edit`);
           });
 
           it('tells me I am not authorized to open this page', function() {
@@ -82,7 +82,7 @@ describe('Acceptance - Projects: Editing a project', function() {
 
       describe('I visit the page for the project', function() {
         beforeEach(function() {
-          visit(`projects/${this.project.id}`);
+          visit(`/projects/${this.project.id}`);
         });
 
         it('shows a link for editing the project', function() {
@@ -91,7 +91,7 @@ describe('Acceptance - Projects: Editing a project', function() {
 
         describe('I visit the page for editing the project', function() {
           beforeEach(function() {
-            visit(`projects/${this.project.id}/edit`);
+            visit(`/projects/${this.project.id}/edit`);
           });
 
           it('shows a form for editing the project', function() {
@@ -111,7 +111,7 @@ describe('Acceptance - Projects: Editing a project', function() {
 
               describe('I visit the page for the project', function() {
                 beforeEach(function() {
-                  visit(`projects/${this.project.id}`);
+                  visit(`/projects/${this.project.id}`);
                 });
 
                 it('shows the old name for the project', function() {
@@ -126,7 +126,7 @@ describe('Acceptance - Projects: Editing a project', function() {
               });
 
               it('transitions to the projects\'s overview page', function() {
-                expect(currentPath()).to.equal('projects.show.rules.index');
+                expect(currentURL()).to.equal(`/projects/${this.project.id}/rules`);
               });
 
               it('displays a flash message indicating that the new project was updated successfully', function() {
