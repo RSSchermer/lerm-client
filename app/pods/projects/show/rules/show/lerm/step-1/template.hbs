@@ -1,1 +1,34 @@
-<h3>Step 1: Formulate the rule proactively</h3>
+<section class="lerm-step-1">
+  <h3>Step 1: Formulate the rule proactively</h3>
+
+  <p>
+    In order to provide proactive decision support for a rule, the rule must be stated
+    such that it can be proactively operationalized. That is, it must be possible to
+    use the rule to make a decision for an individual patient before it is too late to
+    carry out the recommended care. The rule may need to be made more explicit in order
+    to be actionable. If the rule is already formulated proactively, copy the original
+    rule text.
+  </p>
+
+  {{textarea id="proactive_form" class="form-control" value=proactiveForm disabled=proactiveFormFieldDisabled
+             placeholder="Formulate the rule proactively..."}}
+
+  <div class="field-controls">
+    {{#if (can 'edit rule' rule)}}
+      {{#if isEditing}}
+        {{#spinner-button class="btn btn-primary save-btn" onclick=(action (perform saveProactiveFormTask))
+                          isSpinning=saveProactiveFormTask.isRunning}}
+          {{fa-icon "save"}} Save
+        {{/spinner-button}}
+
+        <button class="btn btn-default cancel-btn" {{action 'stopEditing'}}>
+          Cancel
+        </button>
+      {{else}}
+        <button class="btn btn-default edit-btn" {{action 'startEditing'}}>
+          {{fa-icon 'pencil'}} Edit
+        </button>
+      {{/if}}
+    {{/if}}
+  </div>
+</section>
