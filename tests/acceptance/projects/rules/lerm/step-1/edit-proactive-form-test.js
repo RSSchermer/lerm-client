@@ -6,8 +6,8 @@ import {
   afterEach
 } from 'mocha';
 import { expect } from 'chai';
-import startApp from '../../../../helpers/start-app';
-import destroyApp from '../../../../helpers/destroy-app';
+import startApp from '../../../../../helpers/start-app';
+import destroyApp from '../../../../../helpers/destroy-app';
 
 describe('Acceptance - Projects | Rules: LERM step 1', function() {
   let application;
