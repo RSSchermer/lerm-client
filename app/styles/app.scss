@@ -218,3 +218,21 @@ footer.main-footer {
     background: white;
   }
 }
+
+.highlight {
+  color: green;
+}
+
+.phrase-column{
+  &.valid-phrase {
+    color: green;
+  }
+
+  &.invalid-phrase {
+    color: red;
+  }
+}
+
+.phrase-table-section {
+  padding: 15px 0;
+}

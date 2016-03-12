@@ -1,5 +1,64 @@
 <h3>Step 2: Formulate the rule as logical statement</h3>
 
-<h4>Step 2a: Identify phrases with data elements</h4>
+<section class="lerm-step-2a">
+  <h4>Step 2a: Identify phrases with data elements</h4>
+
+  <p>
+    Identify the phrases containing clinical information in the rule. Copy and paste
+    these from the proactively formulated rule into the text field below.
+  </p>
+
+  <pre class="proactive-form-reference">
+    {{highlight rule.proactiveForm phraseTexts}}
+  </pre>
+
+  {{#if (can 'edit rule' rule)}}
+    <form class="form-inline add-phrase-form" {{action (perform addPhraseTask)}}>
+      <div class="form-group">
+        {{input type='text' id='new_phrase_text' value=newPhraseText class='form-control'
+                placeholder='Copy and paste a new phrase...'}}
+      </div>
+
+      <div class="form-group">
+        {{#spinner-button class="btn btn-primary add-phrase-btn" isSpinning=addPhraseTask.isRunning}}
+          {{fa-icon 'plus'}} Add phrase
+        {{/spinner-button}}
+      </div>
+    </form>
+  {{/if}}
+
+  <section class="phrase-table-section">
+    {{#if rule.phrases.length}}
+      <table class="table table-striped phrase-table">
+        <thead>
+          <tr>
+            <th>Phrase</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each rule.phrases as |phrase|}}
+            <tr>
+              <td class="phrase-column {{if phrase.textMatchesProactiveForm 'valid-phrase' 'invalid-phrase'}}">
+                {{phrase.text}}
+              </td>
+
+              <td>
+                {{#if (can 'edit rule' rule)}}
+                  <button class="btn btn-default delete-btn" {{action (perform deletePhraseTask phrase)}}>
+                    {{fa-icon "remove"}} Delete
+                  </button>
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p class="text-muted">No phrases have been identified yet.</p>
+    {{/if}}
+  </section>
+</section>
 
 <h4>Step 2b: Restate the rule in disjunctive normal form</h4>

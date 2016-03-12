@@ -100,4 +100,11 @@ export default function() {
   this.put('/rules/:id');
   this.patch('/rules/:id');
   this.delete('/rules/:id');
+
+  this.get('/phrases');
+  this.get('/phrases/:id');
+  this.post('/phrases');
+  this.put('/phrases/:id');
+  this.patch('/phrases/:id');
+  this.delete('/phrases/:id');
 }
