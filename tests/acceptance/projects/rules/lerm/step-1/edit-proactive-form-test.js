@@ -9,7 +9,7 @@ import { expect } from 'chai';
 import startApp from '../../../../../helpers/start-app';
 import destroyApp from '../../../../../helpers/destroy-app';
 
-describe('Acceptance - Projects | Rules: LERM step 1', function() {
+describe('Acceptance - Projects | Rules: LERM step 1 - editing the proactive form', function() {
   let application;
 
   beforeEach(function() {
