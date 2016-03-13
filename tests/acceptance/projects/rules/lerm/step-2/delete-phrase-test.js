@@ -46,7 +46,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a phrase', funct
             });
 
             it('does not show delete buttons for the phrases', function() {
-              expect(find('.phrase-table .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-2a .phrase-table .delete-btn').length).to.equal(0);
             });
           });
         });
@@ -62,42 +62,42 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a phrase', funct
             });
 
             it('does not show delete buttons for the phrases', function() {
-              expect(find('.phrase-table .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-2a .phrase-table .delete-btn').length).to.equal(0);
             });
           });
         });
 
         describe('I am logged as a user who is a project member', function() {
-          beforeEach(function () {
+          beforeEach(function() {
             this.currentUser = server.create('user');
-            server.create('membership', {userId: this.currentUser.id, projectId: this.project.id});
+            server.create('membership', { userId: this.currentUser.id, projectId: this.project.id });
             logIn(this.currentUser);
           });
 
-          describe('I visit the page for step 2 of the LERM for the rule', function () {
-            beforeEach(function () {
+          describe('I visit the page for step 2 of the LERM for the rule', function() {
+            beforeEach(function() {
               visit(`/projects/${this.project.id}/rules/${this.rule.id}/lerm/step-2`);
             });
 
-            it('shows delete buttons for both phrases', function () {
-              expect(find('.phrase-table .delete-btn').length).to.equal(2);
+            it('shows delete buttons for both phrases', function() {
+              expect(find('.lerm-step-2a .phrase-table .delete-btn').length).to.equal(2);
             });
 
             describe('I click the delete button for the first phrase', function() {
               beforeEach(function() {
-                click('.phrase-table .delete-btn:first');
+                click('.lerm-step-2a .phrase-table .delete-btn:first');
               });
 
               it('lists 1 phrase', function() {
-                expect(find('.phrase-table tbody tr').length).to.equal(1);
+                expect(find('.lerm-step-2a .phrase-table tbody tr').length).to.equal(1);
               });
 
               it('does not list the removed phrase', function() {
-                expect(find('.phrase-table tbody').text()).to.not.contain(this.phrases[0].text);
+                expect(find('.lerm-step-2a .phrase-table tbody').text()).to.not.contain(this.phrases[0].text);
               });
 
               it('lists the phrase that was not removed', function() {
-                expect(find('.phrase-table tbody').text()).to.contain(this.phrases[1].text);
+                expect(find('.lerm-step-2a .phrase-table tbody').text()).to.contain(this.phrases[1].text);
               });
             });
           });

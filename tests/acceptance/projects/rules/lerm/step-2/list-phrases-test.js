@@ -41,7 +41,8 @@ describe('Acceptance - Projects | Rules: LERM step 2 - listing phrases', functio
           });
 
           it('displays a message saying no phrases have been identified yet', function() {
-            expect(find('.phrase-table-section').text()).to.contain('No phrases have been identified yet');
+            expect(find('.lerm-step-2a .phrase-table-section').text()).to
+              .contain('No phrases have been identified yet');
           });
         });
       });
@@ -64,15 +65,15 @@ describe('Acceptance - Projects | Rules: LERM step 2 - listing phrases', functio
           });
 
           it('lists 2 phrases', function() {
-            expect(find('.phrase-table tbody tr').length).to.equal(2);
+            expect(find('.lerm-step-2a .phrase-table tbody tr').length).to.equal(2);
           });
 
           it('displays the matching phrase as valid', function() {
-            expect(find('.phrase-column:contains("proactive")').hasClass('valid-phrase')).to.be.true;
+            expect(find('.lerm-step-2a .phrase-column:contains("proactive")').hasClass('valid-phrase')).to.be.true;
           });
 
           it('displays the non-matching phrase as invalid', function() {
-            expect(find('.phrase-column:contains("no match")').hasClass('invalid-phrase')).to.be.true;
+            expect(find('.lerm-step-2a .phrase-column:contains("no match")').hasClass('invalid-phrase')).to.be.true;
           });
         });
       });
