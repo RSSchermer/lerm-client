@@ -107,4 +107,11 @@ export default function() {
   this.put('/phrases/:id');
   this.patch('/phrases/:id');
   this.delete('/phrases/:id');
+
+  this.get('/statements');
+  this.get('/statements/:id');
+  this.post('/statements');
+  this.put('/statements/:id');
+  this.patch('/statements/:id');
+  this.delete('/statements/:id');
 }

@@ -7,7 +7,7 @@ const { alias } = computed;
 export default Controller.extend({
   rule: alias('model.rule'),
 
-  phraseTexts: computed('rule.phrases.@each', function() {
+  phraseTexts: computed('rule.phrases.@each.text', function() {
     return this.get('rule.phrases').map((p) => p.get('text'));
   }),
 
@@ -38,5 +38,25 @@ export default Controller.extend({
     } catch (error) {
       this.send('error', error);
     }
-  }).drop()
+  }).drop(),
+
+  saveStatementTask: task(function *(statement) {
+    yield statement.save();
+  }).drop(),
+
+  deleteStatementTask: task(function *(statement) {
+    try {
+      statement.deleteRecord();
+
+      yield statement.save();
+    } catch (error) {
+      this.send('error', error);
+    }
+  }),
+
+  actions: {
+    addStatement() {
+      this.store.createRecord('statement', { rule: this.get('rule') });
+    }
+  }
 });

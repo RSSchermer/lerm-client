@@ -9,5 +9,6 @@ export default Model.extend({
   proactiveForm: attr('string'),
 
   project: belongsTo('project'),
-  phrases: hasMany('phrase')
+  phrases: hasMany('phrase'),
+  statements: hasMany('statement')
 });

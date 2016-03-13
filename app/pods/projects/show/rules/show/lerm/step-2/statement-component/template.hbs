@@ -1,0 +1,97 @@
+{{#if isEditing}}
+  <form class="statement-form form-horizontal" {{action 'saveStatement' on='submit'}}>
+    <div class="form-group {{if statement.errors.condition 'has-error'}}">
+      <label class="col-sm-1">IF</label>
+      <div class="col-sm-11">
+        {{input class="form-control condition-field" value=statement.condition
+                placeholder="State the condition with a logical expression..."}}
+        {{#each statement.errors.condition as |error|}}
+          <p class="help-block"><em>{{error.message}}</em></p>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="form-group {{if statement.errors.consequence 'has-error'}}">
+      <label class="col-sm-1">THEN</label>
+      <div class="col-sm-11">
+        {{input class="form-control consequence-field" value=statement.consequence
+                placeholder="State the consequence with a logical expression..."}}
+        {{#each statement.errors.consequence as |error|}}
+          <p class="help-block"><em>{{error.message}}</em></p>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-11 col-sm-offset-1">
+        {{#spinner-button class='btn btn-primary save-btn' isSaving=saveTask.isRunning}}
+          {{fa-icon 'save'}} Save
+        {{/spinner-button}}
+
+        <button class="btn btn-default cancel-btn" {{action 'stopEditing'}}>
+          Cancel
+        </button>
+
+        <button class="btn btn-default delete-btn" {{action 'toggleDeleteModal'}}>
+          {{fa-icon 'remove'}} Delete
+        </button>
+      </div>
+    </div>
+  </form>
+{{else}}
+  <div class="statement-panel">
+    <div class="row">
+      <label class="col-sm-1">IF</label>
+      <div class="col-sm-11">
+        <div class="highlight-field condition-box">
+          {{highlight statement.condition phraseTexts}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-sm-1">THEN</label>
+      <div class="col-sm-11">
+        <div class="highlight-field consequence-box">
+          {{highlight statement.consequence phraseTexts}}
+        </div>
+      </div>
+    </div>
+
+    {{#if (can 'edit rule' statement.rule)}}
+      <div class="row">
+        <div class="col-sm-11 col-sm-offset-1">
+          <button class="btn btn-default edit-btn" {{action 'startEditing'}}>
+            {{fa-icon 'pencil'}} Edit
+          </button>
+
+          <button class="btn btn-default delete-btn" {{action 'toggleDeleteModal'}}>
+            {{fa-icon 'remove'}} Delete
+          </button>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+{{/if}}
+
+{{#if showDeleteModal}}
+  {{#modal-dialog close='toggleDeleteModal' targetAttachment='center' translucentOverlay=true}}
+    <h3>Are you sure you wish to delete this statement?</h3>
+
+    <dl>
+      <dt>Condition</dt>
+      <dd>{{statement.condition}}</dd>
+      <dt>Consequence</dt>
+      <dd>{{statement.consequence}}</dd>
+    </dl>
+
+    {{#spinner-button onclick=(action (perform deleteTask statement))
+                      isSpinning=deleteTask.isrunning
+                      class='btn btn-danger delete-confirm-btn'}}
+      {{fa-icon "remove"}} Delete
+    {{/spinner-button}}
+
+    <a class="btn btn-default delete-cancel-btn" {{action 'toggleDeleteModal'}}>Cancel</a>
+
+  {{/modal-dialog}}
+{{/if}}
