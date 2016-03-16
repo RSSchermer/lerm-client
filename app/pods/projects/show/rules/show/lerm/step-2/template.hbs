@@ -8,9 +8,7 @@
     these from the proactively formulated rule into the text field below.
   </p>
 
-  <pre class="proactive-form-reference">
-    {{highlight rule.proactiveForm phraseTexts}}
-  </pre>
+  <pre class="proactive-form-reference">{{highlight rule.proactiveForm phraseTexts}}</pre>
 
   <section class="phrase-table-section">
     {{#if rule.phrases.length}}
@@ -74,7 +72,7 @@
 
   <section class="statement-list-section">
     {{#if rule.statements}}
-      <ul class="statement-list">
+      <ul class="panel-list statement-list">
         {{#each rule.statements as |statement|}}
           <li>
             {{projects/show/rules/show/lerm/step-2/statement-component
