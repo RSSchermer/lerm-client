@@ -18,5 +18,11 @@ export default Model.extend({
     return this.get('project.ruleConflicts').filter((conflict) => {
       return conflict.get('ruleOne.id') === this.get('id') || conflict.get('ruleTwo.id') === this.get('id');
     });
+  }),
+
+  relationships: computed('project.ruleRelationships.[]', function() {
+    return this.get('project.ruleRelationships').filter((relationship) => {
+      return relationship.get('ruleOne.id') === this.get('id') || relationship.get('ruleTwo.id') === this.get('id');
+    });
   })
 });

@@ -257,7 +257,7 @@ footer.main-footer {
   }
 }
 
-.statement-list, .conflict-list {
+.statement-list, .conflict-list, .relationship-list {
   label {
     text-align: right;
     line-height: 34px;
@@ -279,7 +279,7 @@ footer.main-footer {
   width: 500px;
 }
 
-.conflict-panel .conflicting-rule-link {
+.conflict-panel .conflicting-rule-link, .relationship-panel .related-rule-link {
   line-height: 35px;
   font-weight: bold;
 }

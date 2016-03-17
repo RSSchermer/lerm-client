@@ -121,4 +121,11 @@ export default function() {
   this.put('/rule-conflicts/:id');
   this.patch('/rule-conflicts/:id');
   this.delete('/rule-conflicts/:id');
+
+  this.get('/rule-relationships');
+  this.get('/rule-relationships/:id');
+  this.post('/rule-relationships');
+  this.put('/rule-relationships/:id');
+  this.patch('/rule-relationships/:id');
+  this.delete('/rule-relationships/:id');
 }
