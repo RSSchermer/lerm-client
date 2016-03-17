@@ -72,52 +72,52 @@ describe('Acceptance - Projects | Rules: LERM step 2 - editing a statement', fun
         });
 
         describe('I am logged as a user who is a project member', function() {
-          beforeEach(function () {
+          beforeEach(function() {
             this.currentUser = server.create('user');
-            server.create('membership', {userId: this.currentUser.id, projectId: this.project.id});
+            server.create('membership', { userId: this.currentUser.id, projectId: this.project.id });
             logIn(this.currentUser);
           });
 
-          describe('I visit the page for step 2 of the LERM for the rule', function () {
-            beforeEach(function () {
+          describe('I visit the page for step 2 of the LERM for the rule', function() {
+            beforeEach(function() {
               visit(`/projects/${this.project.id}/rules/${this.rule.id}/lerm/step-2`);
             });
 
-            it('shows a button for editing the statement', function () {
+            it('shows a button for editing the statement', function() {
               expect(find('.lerm-step-2b .statement-panel .edit-btn').length).to.equal(1);
             });
 
-            describe('I click the button to edit statement', function () {
-              beforeEach(function () {
+            describe('I click the button to edit statement', function() {
+              beforeEach(function() {
                 click('.lerm-step-2b .statement-panel .edit-btn');
               });
 
-              it('displays a form for editing the statement', function () {
+              it('displays a form for editing the statement', function() {
                 expect(find('.lerm-step-2b .statement-list .statement-form').length).to.equal(1);
               });
 
-              describe('I fill in valid new data', function () {
-                beforeEach(function () {
+              describe('I fill in valid new data', function() {
+                beforeEach(function() {
                   fillIn('.lerm-step-2b .statement-list .statement-form .condition-field', 'New condition');
                   fillIn('.lerm-step-2b .statement-list .statement-form .consequence-field', 'New consequence');
                 });
 
-                describe('I click the cancel button', function () {
-                  beforeEach(function () {
+                describe('I click the cancel button', function() {
+                  beforeEach(function() {
                     click('.lerm-step-2b .statement-list .statement-form .cancel-btn');
                   });
 
-                  it('displays the old statement condition', function () {
+                  it('displays the old statement condition', function() {
                     expect(find('.lerm-step-2b .statement-list').text()).to.contain('Some condition');
                   });
 
-                  it('displays the old statement consequence', function () {
+                  it('displays the old statement consequence', function() {
                     expect(find('.lerm-step-2b .statement-list').text()).to.contain('Some consequence');
                   });
                 });
 
-                describe('I click the save button', function () {
-                  beforeEach(function () {
+                describe('I click the save button', function() {
+                  beforeEach(function() {
                     click('.lerm-step-2b .statement-list .statement-form .save-btn');
                   });
 
@@ -125,15 +125,15 @@ describe('Acceptance - Projects | Rules: LERM step 2 - editing a statement', fun
                     expect(find('.lerm-step-2b .statement-list .statement-form').length).to.equal(0);
                   });
 
-                  it('displays 1 statement in the statement list', function () {
+                  it('displays 1 statement in the statement list', function() {
                     expect(find('.lerm-step-2b .statement-list li').length).to.equal(1);
                   });
 
-                  it('displays the new condition', function () {
+                  it('displays the new condition', function() {
                     expect(find('.lerm-step-2b .statement-list').text()).to.contain('New condition');
                   });
 
-                  it('displays the new consequence', function () {
+                  it('displays the new consequence', function() {
                     expect(find('.lerm-step-2b .statement-list').text()).to.contain('New consequence');
                   });
                 });
