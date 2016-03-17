@@ -245,7 +245,7 @@ footer.main-footer {
   }
 }
 
-.statement-list {
+.panel-list {
   list-style: none;
   padding-left: 0;
 
@@ -255,7 +255,9 @@ footer.main-footer {
     margin-bottom: 10px;
     border-radius: 10px;
   }
+}
 
+.statement-list, .conflict-list {
   label {
     text-align: right;
     line-height: 34px;
@@ -275,4 +277,17 @@ footer.main-footer {
 
 #new_phrase_text {
   width: 500px;
+}
+
+.conflict-panel .conflicting-rule-link {
+  line-height: 35px;
+  font-weight: bold;
+}
+
+.select-option-description {
+  display: block;
+  font-size: $font-size-small;
+  color: $text-muted;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

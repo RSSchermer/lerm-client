@@ -1,1 +1,32 @@
-<h3>Step 3: Assess for conflict between rules</h3>
+<section class="lerm-step-3">
+  <h3>Step 3: Assess for conflict between rules</h3>
+
+  <p>
+    Restating the rules in a uniform grammar may have revealed inconsistencies
+    between rules.
+  </p>
+
+  <section class="conflict-list-section">
+    {{#if rule.conflicts}}
+      <ul class="panel-list conflict-list">
+        {{#each rule.conflicts as |conflict|}}
+          <li>
+            {{projects/show/rules/show/lerm/step-3/rule-conflict-component
+                rule=rule
+                conflict=conflict
+                saveTask=saveConflictTask
+                deleteTask=deleteConflictTask}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="text-muted">No conflicts have been identified yet for this rule.</p>
+    {{/if}}
+
+    {{#if (can 'edit rule' rule)}}
+      <button class="btn btn-primary add-conflict-btn" {{action 'addConflict'}}>
+        {{fa-icon 'plus'}} Add Conflict
+      </button>
+    {{/if}}
+  </section>
+</section>

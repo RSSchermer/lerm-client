@@ -1,0 +1,105 @@
+{{#if isEditing}}
+  <form class="conflict-form form-horizontal" {{action 'saveConflict' on='submit'}}>
+    <div class="form-group {{if conflictingRuleError 'has-error'}}">
+      <label class="col-sm-2">Conflicting rule</label>
+      <div class="col-sm-10">
+        {{#power-select
+            options=conflictOptions
+            selected=conflictingRule
+            searchField='label'
+            onchange=(action 'changeConflictingRule')
+            placeholder='Select the conflicting rule...'
+            class='conflicting-rule-field'
+            as |rule|}}
+          <strong>{{rule.label}}</strong>
+          <small class="select-option-description">{{rule.originalText}}</small>
+        {{/power-select}}
+        {{#if conflictingRuleError}}
+          <p class="help-block"><em>{{conflictingRuleError}}</em></p>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="form-group {{if conflict.errors.description 'has-error'}}">
+      <label class="col-sm-2">Description</label>
+      <div class="col-sm-10">
+        {{textarea class="form-control description-field" value=conflict.description
+                   placeholder="Enter a description for the conflict..."}}
+        {{#each conflict.errors.description as |error|}}
+          <p class="help-block"><em>{{error.message}}</em></p>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        {{#spinner-button class='btn btn-primary save-btn' isSaving=saveTask.isRunning}}
+          {{fa-icon 'save'}} Save
+        {{/spinner-button}}
+
+        <button class="btn btn-default cancel-btn" {{action 'stopEditing'}}>
+          Cancel
+        </button>
+
+        <button class="btn btn-default delete-btn" {{action 'toggleDeleteModal'}}>
+          {{fa-icon 'remove'}} Delete
+        </button>
+      </div>
+    </div>
+  </form>
+{{else}}
+  <div class="conflict-panel">
+    <div class="row">
+      <label class="col-sm-2">Conflicting rule</label>
+      <div class="col-sm-10">
+        {{#link-to 'projects.show.rules.show.index' conflictingRule.project conflictingRule
+                   class='conflicting-rule-link'}}
+          {{conflictingRule.label}}
+        {{/link-to}}
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-sm-2">Conflict description</label>
+      <div class="col-sm-10">
+        <pre>{{conflict.description}}</pre>
+      </div>
+    </div>
+
+    {{#if (can 'edit rule' rule)}}
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-2">
+          <button class="btn btn-default edit-btn" {{action 'startEditing'}}>
+            {{fa-icon 'pencil'}} Edit
+          </button>
+
+          <button class="btn btn-default delete-btn" {{action 'toggleDeleteModal'}}>
+            {{fa-icon 'remove'}} Delete
+          </button>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+{{/if}}
+
+{{#if showDeleteModal}}
+  {{#modal-dialog close='toggleDeleteModal' targetAttachment='center' translucentOverlay=true}}
+    <h3>Are you sure you wish to delete this conflict?</h3>
+
+    <dl>
+      <dt>Conflicting rule</dt>
+      <dd>{{conflictingRule.label}}</dd>
+      <dt>Conflict description</dt>
+      <dd>{{conflict.description}}</dd>
+    </dl>
+
+    {{#spinner-button onclick=(action (perform deleteTask conflict))
+                      isSpinning=deleteTask.isrunning
+                      class='btn btn-danger delete-confirm-btn'}}
+      {{fa-icon "remove"}} Delete
+    {{/spinner-button}}
+
+    <a class="btn btn-default delete-cancel-btn" {{action 'toggleDeleteModal'}}>Cancel</a>
+
+  {{/modal-dialog}}
+{{/if}}

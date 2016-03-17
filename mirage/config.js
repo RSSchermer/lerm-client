@@ -114,4 +114,11 @@ export default function() {
   this.put('/statements/:id');
   this.patch('/statements/:id');
   this.delete('/statements/:id');
+
+  this.get('/rule-conflicts');
+  this.get('/rule-conflicts/:id');
+  this.post('/rule-conflicts');
+  this.put('/rule-conflicts/:id');
+  this.patch('/rule-conflicts/:id');
+  this.delete('/rule-conflicts/:id');
 }
