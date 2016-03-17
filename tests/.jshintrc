@@ -23,6 +23,7 @@
     "currentURL",
     "currentPath",
     "currentRouteName",
+    "selectChoose",
     "logIn"
   ],
   "node": false,
