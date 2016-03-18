@@ -291,3 +291,21 @@ footer.main-footer {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.lerm-step-4a .phrase-table{
+  .original-text-column {
+    width: 35%;
+  }
+
+  .cleaned-text-column {
+    width: 45%;
+  }
+
+  .discard-controls-column {
+    width: 20%;
+  }
+
+  .discarded td:not(.discard-controls-column) {
+    opacity: 0.5;
+  }
+}

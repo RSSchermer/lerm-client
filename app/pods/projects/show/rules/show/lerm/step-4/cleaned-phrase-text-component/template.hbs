@@ -1,0 +1,29 @@
+{{#if isEditing}}
+  <form class="form-inline cleaned-phrase-form" {{action 'savePhrase' on='submit'}}>
+    <div class="form-group">
+      {{input class="form-control cleaned-text-field" value=phrase.cleanedText placeholder="Cleaned phrase..."}}
+    </div>
+
+    <div class="form-group">
+      {{#spinner-button class='btn btn-primary save-btn' isSpinning=saveTask.isRunning}}
+        {{fa-icon 'save'}} Save
+      {{/spinner-button}}
+    </div>
+  </form>
+{{else}}
+  {{#if phrase.cleanedText}}
+    {{phrase.cleanedText}}
+  {{else}}
+    <span class="text-muted">Not cleaned...</span>
+  {{/if}}
+
+  {{#if (can 'edit rule' phrase.rule)}}
+    <button class="btn btn-default edit-btn" {{action 'startEditing'}}>
+      {{#if phrase.cleanedText}}
+        {{fa-icon 'pencil'}} Edit
+      {{else}}
+        {{fa-icon 'pencil'}} Clean
+      {{/if}}
+    </button>
+  {{/if}}
+{{/if}}
