@@ -112,7 +112,7 @@ describe('Acceptance - Projects | Rules: LERM step 4 - discarding a statement', 
               });
 
               describe('I fill in a new cleaned condition and consequence', function() {
-                beforeEach(function () {
+                beforeEach(function() {
                   fillIn('.lerm-step-4b .statement-list .cleaned-condition-field', 'New cleaned condition');
                   fillIn('.lerm-step-4b .statement-list .cleaned-consequence-field', 'New cleaned consequence');
                 });

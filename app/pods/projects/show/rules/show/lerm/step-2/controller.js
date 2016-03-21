@@ -7,8 +7,8 @@ const { alias } = computed;
 export default Controller.extend({
   rule: alias('model.rule'),
 
-  phraseTexts: computed('rule.phrases.@each.text', function() {
-    return this.get('rule.phrases').map((p) => p.get('text'));
+  phraseTexts: computed('rule.phrases.@each.originalText', function() {
+    return this.get('rule.phrases').map((p) => p.get('originalText'));
   }),
 
   addPhraseTask: task(function *() {
@@ -17,7 +17,7 @@ export default Controller.extend({
     if (newPhraseText) {
       try {
         let phrase = this.store.createRecord('phrase', {
-          text: newPhraseText,
+          originalText: newPhraseText,
           rule: this.get('rule')
         });
 

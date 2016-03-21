@@ -30,7 +30,7 @@
         <tbody>
           {{#each rule.phrases as |phrase|}}
             <tr class="{{if phrase.discarded 'discarded'}}">
-              <td class="original-text-column">{{phrase.text}}</td>
+              <td class="original-text-column">{{phrase.originalText}}</td>
               <td class="cleaned-text-column">
                 {{projects/show/rules/show/lerm/step-4/cleaned-phrase-text-component
                     phrase=phrase

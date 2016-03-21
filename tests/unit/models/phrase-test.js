@@ -25,7 +25,7 @@ describeModel('phrase', 'Unit - Models: phrase', {
   describe('textMatchesProactiveForm', function() {
     context('phrase text does not match proactive form', function() {
       beforeEach(function() {
-        this.subject().set('text', 'no match');
+        this.subject().set('originalText', 'no match');
       });
 
       it('returns false', function() {
@@ -35,7 +35,7 @@ describeModel('phrase', 'Unit - Models: phrase', {
 
     context('with a single word phrase that occurs in the proactive form in a different case', function() {
       beforeEach(function() {
-        this.subject().set('text', 'Proactive');
+        this.subject().set('originalText', 'Proactive');
       });
 
       it('returns false', function() {
@@ -45,7 +45,7 @@ describeModel('phrase', 'Unit - Models: phrase', {
 
     context('with a single word phrase that occurs in the proactive form with matching different case', function() {
       beforeEach(function() {
-        this.subject().set('text', 'proactive');
+        this.subject().set('originalText', 'proactive');
       });
 
       it('returns true', function() {
@@ -55,7 +55,7 @@ describeModel('phrase', 'Unit - Models: phrase', {
 
     context('with a multiple word phrase that occurs in the proactive form', function() {
       beforeEach(function() {
-        this.subject().set('text', 'proactive form');
+        this.subject().set('originalText', 'proactive form');
       });
 
       it('returns true', function() {

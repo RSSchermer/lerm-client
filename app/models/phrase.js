@@ -5,7 +5,7 @@ const { Model, attr, belongsTo } = DS;
 const { computed } = Ember;
 
 export default Model.extend({
-  text: attr('string'),
+  originalText: attr('string'),
   cleanedText: attr('string'),
   discarded: attr('boolean'),
   crisp: attr('boolean'),
@@ -13,7 +13,7 @@ export default Model.extend({
 
   rule: belongsTo('rule'),
 
-  textMatchesProactiveForm: computed('text', 'rule.proactiveForm', function() {
-    return this.get('rule.proactiveForm').indexOf(this.get('text').trim()) >= 0;
+  textMatchesProactiveForm: computed('originalText', 'rule.proactiveForm', function() {
+    return this.get('rule.proactiveForm').indexOf(this.get('originalText').trim()) >= 0;
   })
 });

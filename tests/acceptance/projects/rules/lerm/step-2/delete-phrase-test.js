@@ -93,11 +93,11 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a phrase', funct
               });
 
               it('does not list the removed phrase', function() {
-                expect(find('.lerm-step-2a .phrase-table tbody').text()).to.not.contain(this.phrases[0].text);
+                expect(find('.lerm-step-2a .phrase-table tbody').text()).to.not.contain(this.phrases[0].originalText);
               });
 
               it('lists the phrase that was not removed', function() {
-                expect(find('.lerm-step-2a .phrase-table tbody').text()).to.contain(this.phrases[1].text);
+                expect(find('.lerm-step-2a .phrase-table tbody').text()).to.contain(this.phrases[1].originalText);
               });
             });
           });

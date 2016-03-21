@@ -5,11 +5,16 @@ const { Component, computed } = Ember;
 export default Component.extend({
   isEditing: false,
 
-  cleanedPhraseTexts: computed('statement.rule.phrases.@each.cleanedText', 'statement.rule.phrases.@each.discarded', function() {
-    return this.get('statement.rule.phrases')
-      .filter((p) => !p.get('discarded'))
-      .map((p) => p.get('cleanedText') || p.get('text'));
-  }),
+  cleanedPhraseTexts: computed(
+    'statement.rule.phrases.@each.originalText',
+    'statement.rule.phrases.@each.cleanedText',
+    'statement.rule.phrases.@each.discarded',
+    function() {
+      return this.get('statement.rule.phrases')
+        .filter((p) => !p.get('discarded'))
+        .map((p) => p.get('cleanedText') || p.get('originalText'));
+    }
+  ),
 
   actions: {
     startEditing() {

@@ -24,7 +24,7 @@
           {{#each rule.phrases as |phrase|}}
             <tr>
               <td class="phrase-column {{if phrase.textMatchesProactiveForm 'valid-phrase' 'invalid-phrase'}}">
-                {{phrase.text}}
+                {{phrase.originalText}}
               </td>
 
               <td>
@@ -46,7 +46,7 @@
       <form class="form-inline add-phrase-form" {{action (perform addPhraseTask) on='submit'}}>
         <div class="form-group">
           {{input type='text' id='new_phrase_text' value=newPhraseText class='form-control'
-          placeholder='Copy and paste a new phrase...'}}
+                  placeholder='Copy and paste a new phrase...'}}
         </div>
 
         <div class="form-group">

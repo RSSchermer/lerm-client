@@ -50,11 +50,11 @@ describe('Acceptance - Projects | Rules: LERM step 2 - listing phrases', functio
       describe('2 phrases exist for the rule, one that matches and one that does not match', function() {
         beforeEach(function() {
           server.create('phrase', {
-            text: 'proactive',
+            originalText: 'proactive',
             ruleId: this.rule.id
           });
           server.create('phrase', {
-            text: 'no match',
+            originalText: 'no match',
             ruleId: this.rule.id
           });
         });

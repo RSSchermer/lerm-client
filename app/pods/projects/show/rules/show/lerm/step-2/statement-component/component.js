@@ -11,8 +11,8 @@ export default Component.extend({
 
   showDeleteModal: false,
 
-  phraseTexts: computed('statement.rule.phrases.@each.text', function() {
-    return this.get('statement.rule.phrases').map((p) => p.get('text'));
+  phraseTexts: computed('statement.rule.phrases.@each.originalText', function() {
+    return this.get('statement.rule.phrases').map((p) => p.get('originalText'));
   }),
 
   actions: {
