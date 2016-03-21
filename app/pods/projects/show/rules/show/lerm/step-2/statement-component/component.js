@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 const { Component, computed } = Ember;
+const { alias } = computed;
 
 export default Component.extend({
   init(...args) {
@@ -11,8 +12,12 @@ export default Component.extend({
 
   showDeleteModal: false,
 
-  phraseTexts: computed('statement.rule.phrases.@each.originalText', function() {
-    return this.get('statement.rule.phrases').map((p) => p.get('originalText'));
+  rule: alias('statement.rule'),
+
+  phrases: alias('rule.phrases'),
+
+  phraseTexts: computed('phrases.@each.originalText', function() {
+    return this.get('phrases').map((p) => p.get('originalText'));
   }),
 
   actions: {
