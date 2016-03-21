@@ -1,5 +1,54 @@
-<h3>Step 5: Extract data elements</h3>
+<section class="lerm-step-5">
+  <h3>Step 5: Extract data elements</h3>
 
-<h4>Step 5a: Determine the crispness of the phrases</h4>
+  <section class="lerm-step-5a">
+    <h4>Step 5a: Determine the crispness of the phrases</h4>
 
-<h4>Step 5b: Link phrases to data elements</h4>
+    <p>
+      The terms crisp and fuzzy are drawn from set theory. A set of objects is fuzzy if
+      it is possible to have degrees of membership in that set. A set is crisp if it is
+      possible to unambiguously determine whether something is or is not a member of the
+      set. Mark the phrase as crisp when the system can unambiguously determine if the
+      rule applies.
+    </p>
+
+    {{#if activePhrases}}
+      <table class="table table-striped phrase-table">
+        <thead>
+          <tr>
+            <th>Phrase</th>
+            <th>Crisp</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each activePhrases as |phrase|}}
+            <tr>
+              <td>{{phrase.text}}</td>
+              <td>
+                {{one-way-checkbox class='crispness-checkbox' checked=phrase.crisp
+                                   update=(action 'updateCrispness' phrase)
+                                   disabled=(not (can 'edit rule' rule))}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p class="text-muted">No phrases have been identified yet for this rule.</p>
+    {{/if}}
+  </section>
+
+  <section class="lerm-step-5b">
+    <h4>Step 5b: Link phrases to data elements</h4>
+
+    <p>
+      Data elements are the units of clinical information which will be used by the software
+      which provides decision support. Link each of the phrases to one or more data elements
+      the system knows. Define an expression term to combine more than one data element, or
+      to adjust the format to what is needed for your system.
+    </p>
+
+
+  </section>
+</section>
