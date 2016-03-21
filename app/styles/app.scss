@@ -239,7 +239,7 @@ footer.main-footer {
   padding: 15px 0;
 }
 
-.statement-list-section {
+.statement-list {
   .row, .form-group {
     margin-bottom: 15px;
   }
@@ -308,4 +308,18 @@ footer.main-footer {
   .discarded td:not(.discard-controls-column) {
     opacity: 0.5;
   }
+}
+
+.sub-label {
+  line-height: 35px;
+  text-align: right;
+}
+
+.statement-list .discarded .form-group:not(.form-actions) {
+  opacity: 0.5;
+}
+
+.statement-panel .not-cleaned-placeholder {
+  line-height: 35px;
+  color: $text-muted;
 }

@@ -1,0 +1,93 @@
+<form class="form-horizontal statement-panel cleaned-statement-form {{if statement.discarded 'discarded'}}" {{action 'saveStatement' on='submit'}}>
+  <div class="form-group">
+    <label class="col-sm-1">Original</label>
+    <div class="col-sm-1 sub-label">IF</div>
+    <div class="col-sm-10">
+      <div class="highlight-field condition-box">
+        {{highlight statement.condition cleanedPhraseTexts}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-1 col-sm-offset-1 sub-label">THEN</div>
+    <div class="col-sm-10">
+      <div class="highlight-field consequense-box">
+        {{highlight statement.consequence cleanedPhraseTexts}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group {{if statement.errors.cleanedCondition 'has-errors'}}">
+    <label class="col-sm-1">Cleaned</label>
+    <div class="col-sm-1 sub-label">IF</div>
+    <div class="col-sm-10">
+      {{#if isEditing}}
+        {{input class="form-control cleaned-condition-field" value=statement.cleanedCondition
+                placeholder="Not cleaned..."}}
+        {{#each statement.errors.cleanedCondition as |error|}}
+          <p class="help-block"><em>{{error.message}}</em></p>
+        {{/each}}
+      {{else}}
+        {{#if statement.cleanedCondition}}
+          <div class="highlight-field cleaned-condition-box">
+            {{highlight statement.cleanedCondition cleanedPhraseTexts}}
+          </div>
+        {{else}}
+          <p class="not-cleaned-placeholder">Not cleaned...</p>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group {{if statement.errors.cleanedConsequence 'has-errors'}}">
+    <div class="col-sm-1 col-sm-offset-1 sub-label">THEN</div>
+    <div class="col-sm-10">
+      {{#if isEditing}}
+        {{input class="form-control cleaned-consequence-field" value=statement.cleanedConsequence
+                placeholder="Not cleaned..."}}
+        {{#each statement.errors.cleanedConsequence as |error|}}
+          <p class="help-block"><em>{{error.message}}</em></p>
+        {{/each}}
+      {{else}}
+        {{#if statement.cleanedConsequence}}
+          <div class="highlight-field cleaned-consequence-box">
+            {{highlight statement.cleanedConsequence cleanedPhraseTexts}}
+          </div>
+        {{else}}
+          <p class="not-cleaned-placeholder">Not cleaned...</p>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+
+  {{#if (can 'edit rule' statement.rule)}}
+    <div class="form-group form-actions">
+      <div class="col-sm-10 col-sm-offset-2">
+        {{#if statement.discarded}}
+          <button type="button" class="btn btn-default reinstate-btn" {{action 'reinstateStatement'}}>
+            {{fa-icon 'undo'}} Reinstate
+          </button>
+        {{else}}
+          {{#if isEditing}}
+            {{#spinner-button class='btn btn-primary save-btn' isSpinning=saveTask.isRunning}}
+              {{fa-icon 'save'}} Save
+            {{/spinner-button}}
+
+            <button type="button" class="btn btn-default cancel-btn" {{action 'stopEditing'}}>
+              Cancel
+            </button>
+          {{else}}
+            <button type="button" class="btn btn-default edit-btn" {{action 'startEditing'}}>
+              {{fa-icon 'pencil'}} Edit
+            </button>
+          {{/if}}
+
+          <button type="button" class="btn btn-default discard-btn" {{action 'discardStatement'}}>
+            {{fa-icon 'trash'}} Discard
+          </button>
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+</form>

@@ -17,6 +17,14 @@ export default Controller.extend({
     }
   }),
 
+  saveStatementTask: task(function *(statement) {
+    try {
+      yield statement.save();
+    } catch (error) {
+      this.send('error', error);
+    }
+  }),
+
   actions: {
     discardPhrase(phrase) {
       phrase.set('discarded', true);

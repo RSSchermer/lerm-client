@@ -68,6 +68,18 @@
       require some adjustments to the logical statements.
     </p>
 
-
+    {{#if rule.statements}}
+      <ul class="panel-list statement-list">
+        {{#each rule.statements as |statement|}}
+          <li>
+            {{projects/show/rules/show/lerm/step-4/cleaned-statement-component
+                statement=statement
+                saveTask=saveStatementTask}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="text-muted">No statements have been identified yet for this rule.</p>
+    {{/if}}
   </section>
 </section>
