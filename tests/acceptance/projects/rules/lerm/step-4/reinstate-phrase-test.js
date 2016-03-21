@@ -9,7 +9,7 @@ import { expect } from 'chai';
 import startApp from '../../../../../helpers/start-app';
 import destroyApp from '../../../../../helpers/destroy-app';
 
-describe('Acceptance - Projects | Rules: LERM step 4 - discarding a phrase', function() {
+describe('Acceptance - Projects | Rules: LERM step 4 - reinstating a phrase', function() {
   let application;
 
   beforeEach(function() {
@@ -78,7 +78,7 @@ describe('Acceptance - Projects | Rules: LERM step 4 - discarding a phrase', fun
               visit(`/projects/${this.project.id}/rules/${this.rule.id}/lerm/step-4`);
             });
 
-            it('show reinstate buttons for each of the phrases', function() {
+            it('shows reinstate buttons for each of the phrases', function() {
               expect(find('.lerm-step-4a .phrase-table .reinstate-btn').length).to.equal(3);
             });
 
