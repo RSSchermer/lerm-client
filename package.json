@@ -54,6 +54,7 @@
     "ember-spin-spinner": "0.2.4",
     "ember-spinner-button": "0.2.0",
     "ember-suave": "2.0.1",
+    "ember-truth-helpers": "1.2.0",
     "ember-watson": "0.8.0",
     "liquid-fire": "0.23.0",
     "loader.js": "^4.0.0",
