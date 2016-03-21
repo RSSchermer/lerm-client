@@ -13,6 +13,10 @@ export default Model.extend({
 
   rule: belongsTo('rule'),
 
+  text: computed('originalText', 'cleanedText', function() {
+    return this.get('cleanedText') || this.get('originalText');
+  }),
+
   textMatchesProactiveForm: computed('originalText', 'rule.proactiveForm', function() {
     return this.get('rule.proactiveForm').indexOf(this.get('originalText').trim()) >= 0;
   })

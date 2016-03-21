@@ -22,6 +22,28 @@ describeModel('phrase', 'Unit - Models: phrase', {
     this.subject().set('rule', this.rule);
   });
 
+  describe('text', function() {
+    beforeEach(function() {
+      this.subject().set('originalText', 'Original text');
+    });
+
+    context('no cleaned text is specified', function() {
+      it('returns the original text', function() {
+        expect(this.subject().get('text')).to.equal('Original text');
+      });
+    });
+
+    context('cleaned text is specified', function() {
+      beforeEach(function() {
+        this.subject().set('cleanedText', 'Cleaned text');
+      });
+
+      it('returns the cleaned text', function() {
+        expect(this.subject().get('text')).to.equal('Cleaned text');
+      });
+    });
+  });
+
   describe('textMatchesProactiveForm', function() {
     context('phrase text does not match proactive form', function() {
       beforeEach(function() {
