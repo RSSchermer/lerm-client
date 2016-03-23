@@ -39,7 +39,6 @@ describe('Acceptance - Projects | Data Elements: Listing the data elements of a 
 
     describe('the project has 3 data elements', function() {
       beforeEach(function() {
-        server.logging = true;
         server.createList('data-element', 3, { projectId: this.project.id });
       });
 
