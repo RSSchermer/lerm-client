@@ -23,6 +23,28 @@ export default Controller.extend({
     }
   }),
 
+  saveDataElementTask: task(function *(dataElement) {
+    yield dataElement.save();
+  }),
+
+  linkDataElementTask: task(function *(phrase, dataElement) {
+    try {
+      phrase.get('dataElements').addObject(dataElement);
+      yield phrase.save();
+    } catch (error) {
+      this.send('error', error);
+    }
+  }),
+
+  unlinkDataElementTask: task(function *(phrase, dataElement) {
+    try {
+      phrase.get('dataElements').removeObject(dataElement);
+      yield phrase.save();
+    } catch (error) {
+      this.send('error', error);
+    }
+  }),
+
   actions: {
     updateCrispness(phrase, value) {
       phrase.set('crisp', value);

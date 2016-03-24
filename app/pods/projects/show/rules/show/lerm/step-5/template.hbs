@@ -26,9 +26,11 @@
             <tr>
               <td>{{phrase.text}}</td>
               <td>
-                {{one-way-checkbox class='crispness-checkbox' checked=phrase.crisp
-                                   update=(action 'updateCrispness' phrase)
-                                   disabled=(not (can 'edit rule' rule))}}
+                {{one-way-checkbox
+                    class='crispness-checkbox'
+                    checked=phrase.crisp
+                    update=(action 'updateCrispness' phrase)
+                    disabled=(not (can 'edit rule' rule))}}
               </td>
             </tr>
           {{/each}}
@@ -45,10 +47,27 @@
     <p>
       Data elements are the units of clinical information which will be used by the software
       which provides decision support. Link each of the phrases to one or more data elements
-      the system knows. Define an expression term to combine more than one data element, or
-      to adjust the format to what is needed for your system.
+      the system knows. By default, multiple data elements will be combined with a logical OR.
+      A custom logical expression may be provided to combine multiple data element in a
+      different way or to adjust the format to be compatible the target system.
     </p>
 
-
+    {{#if activePhrases}}
+      <ul class="panel-list phrase-list">
+        {{#each activePhrases as |phrase|}}
+          <li>
+            {{projects/show/rules/show/lerm/step-5/phrase-data-element-links
+                phrase=phrase
+                dataElements=dataElements
+                linkDataElementTask=linkDataElementTask
+                unlinkDataElementTask=unlinkDataElementTask
+                savePhraseTask=savePhraseTask
+                saveDataElementTask=saveDataElementTask}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="text-muted">No phrases have been identified yet for this rule.</p>
+    {{/if}}
   </section>
 </section>

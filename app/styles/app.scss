@@ -6,6 +6,19 @@
 $page-width: 1064px;
 $border-color: $gray-lighter;
 
+.ember-power-select-trigger {
+  line-height: 31px;
+}
+
+h5 {
+  font-size: $font-size-h4;
+}
+
+h6 {
+  font-weight: bold;
+  font-size: $font-size-base;
+}
+
 .nav-container {
   @extend .container;
 
@@ -251,7 +264,8 @@ footer.main-footer {
 
   li {
     padding: 10px;
-    border: 1px solid $border-color;
+    border: 1px solid #aaa;
+    background-color: #fdfdfd;
     margin-bottom: 10px;
     border-radius: 10px;
   }
@@ -322,4 +336,22 @@ footer.main-footer {
 .statement-panel .not-cleaned-placeholder {
   line-height: 35px;
   color: $text-muted;
+}
+
+.phrase-panel .data-element-field {
+  width: 500px;
+}
+
+.phrase-panel .data-element-linking-form {
+  margin-bottom: 10px;
+}
+
+.data-element-expression-form .form-group {
+  margin-bottom: 0;
+}
+
+.linked-data-elements-section .create-data-element-link {
+  &:hover {
+    cursor: pointer;
+  }
 }

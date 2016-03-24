@@ -1,0 +1,160 @@
+<div class="phrase-panel">
+  <h5>Phrase: <strong>{{phrase.text}}</strong></h5>
+
+  <section class="linked-data-elements-section">
+    {{#if phrase.dataElements}}
+      <p>The following data elements were linked to this phrase:</p>
+
+      <table class="table table-striped data-element-table">
+        <tbody>
+        {{#each phrase.dataElements as |dataElement|}}
+          <tr>
+            <td>
+              {{#link-to 'projects.show.data-elements.show' dataElement.project dataElement}}
+                {{dataElement.label}}
+              {{/link-to}}
+            </td>
+            <td>
+              {{#if (can 'edit rule' phrase.rule)}}
+                <button class="btn btn-default" {{action 'unlinkDataElement' dataElement}}>
+                  {{fa-icon 'unlink'}} Unlink
+                </button>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p>No data elements have been linked to this phrase yet.</p>
+    {{/if}}
+
+    {{#if (can 'edit rule' phrase.rule)}}
+      <form class="form-inline data-element-linking-form">
+        <div class="form-group">
+          {{#power-select
+              options=dataElementOptions
+              selected=selectedDataElement
+              searchField='label'
+              onchange=(action (mut selectedDataElement))
+              placeholder='Select a data element...'
+              class='data-element-field'
+              as |dataElement|}}
+            <strong>{{dataElement.label}}</strong>
+            <small class="select-option-description">{{dataElement.description}}</small>
+          {{/power-select}}
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary link-data-element-btn" {{action 'linkDataElement'}}>
+            {{fa-icon 'link'}} Link Data Element
+          </button>
+        </div>
+      </form>
+
+      <p class="text-muted">
+        Has the appropriate data element not yet been created for this project?
+        <a {{action 'openCreateDataElementModal'}} class="create-data-element-link">
+          Create and link a new data element.
+        </a>
+      </p>
+    {{/if}}
+  </section>
+
+  <section class="data-element-expression-section">
+    <h6>Data Element Expression</h6>
+
+    {{#if isEditingExpression}}
+      <form class="row data-element-expression-form" {{action 'saveDataElementExpression' on='submit'}}>
+        <div class="form-group {{if phrase.errors.dataElementExpression 'has-error'}} col-sm-9">
+          {{input
+              class='form-control'
+              value=phrase.dataElementExpression
+              placeholder=phrase.defaultDataElementExpression}}
+
+          {{#each phrase.errors.dataElementExpression as |error|}}
+            <p class="help-block"><em>{{error.message}}</em></p>
+          {{/each}}
+        </div>
+
+        <div class="form-group col-sm-3">
+          {{#spinner-button class='btn btn-primary save-btn' isSpinning=savePhraseTask.isRunning}}
+            {{fa-icon 'save'}} Save
+          {{/spinner-button}}
+
+          <button class="btn btn-default" {{action 'stopEditingExpression'}}>
+            Cancel
+          </button>
+        </div>
+      </form>
+    {{else}}
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="highlight-field consequence-box">
+            {{#if phrase.dataElementExpression}}
+              {{linked-data-element-expression
+                  expression=phrase.dataElementExpression
+                  dataElements=phrase.dataElements}}
+            {{else}}
+              {{linked-data-element-expression
+                  expression=phrase.defaultDataElementExpression
+                  dataElements=phrase.dataElements}}
+            {{/if}}
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          {{#if (can 'edit rule' phrase.rule)}}
+            <button class="btn btn-default" {{action 'startEditingExpression'}}>
+              {{fa-icon 'pencil'}} Edit
+            </button>
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+  </section>
+</div>
+
+{{#if showCreateDataElementModal}}
+  {{#modal-dialog close='closeCreateDataElementModal' targetAttachment='center' translucentOverlay=true}}
+    <h3>Create and link a new data element</h3>
+
+    <form class="create-and-link-data-element-form" {{action 'createAndLinkDataElement' on="submit"}}>
+      <div class="form-group {{if newDataElement.errors.label "has-error"}}">
+        <label class="control-label" for="label">Label</label>
+
+        <div>
+          {{input id="label" class="form-control" value=newDataElement.label placeholder="Enter a label..."}}
+
+          {{#each newDataElement.errors.label as |error|}}
+            <p class="help-block"><em>{{error.message}}</em></p>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="form-group {{if newDataElement.errors.description "has-error"}}">
+        <label class="control-label" for="description">Description</label>
+
+        <div>
+          {{textarea id="description" class="form-control" value=newDataElement.description
+                     placeholder="Give a description for the data element..."}}
+
+          {{#each newDataElement.errors.description as |error|}}
+            <p class="help-block"><em>{{error.message}}</em></p>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        {{#spinner-button type="submit" class="btn btn-primary save-btn"
+                          isSpinning=createAndLinkDataElementTask.isRunning}}
+          {{fa-icon "plus"}} Create and Link
+        {{/spinner-button}}
+
+        <button class="btn btn-default cancel-btn" {{action 'closeCreateDataElementModal'}}>
+          Cancel
+        </button>
+      </div>
+    </form>
+  {{/modal-dialog}}
+{{/if}}
