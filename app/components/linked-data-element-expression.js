@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, computed, inject, observer, $ } = Ember;
+const { Component, computed, inject, observer, on, $ } = Ember;
 const { sort } = computed;
 
 export default Component.extend({
@@ -16,15 +16,7 @@ export default Component.extend({
     }
   }),
 
-  didInsertElement() {
-    this.renderLinkedExpression();
-  },
-
-  maintainExpression: observer('sortedDataElements.@each.label', 'expression', function() {
-    this.renderLinkedExpression();
-  }),
-
-  renderLinkedExpression() {
+  renderLinkedExpression: on('didInsertElement', observer('sortedDataElements.@each.label', 'expression', function() {
     this.$().html(this.get('expression'));
 
     this.get('sortedDataElements').forEach((dataElement) => {
@@ -45,5 +37,5 @@ export default Component.extend({
         $node.replaceWith(rendered);
       });
     });
-  }
+  }))
 });
