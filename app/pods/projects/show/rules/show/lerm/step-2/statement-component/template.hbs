@@ -1,22 +1,22 @@
 {{#if isEditing}}
   <form class="statement-form form-horizontal" {{action 'saveStatement' on='submit'}}>
-    <div class="form-group {{if statement.errors.condition 'has-error'}}">
+    <div class="form-group {{if statement.errors.originalCondition 'has-error'}}">
       <label class="col-sm-1">IF</label>
       <div class="col-sm-11">
-        {{input class="form-control condition-field" value=statement.condition
+        {{input class="form-control condition-field" value=statement.originalCondition
                 placeholder="State the condition with a logical expression..."}}
-        {{#each statement.errors.condition as |error|}}
+        {{#each statement.errors.originalCondition as |error|}}
           <p class="help-block"><em>{{error.message}}</em></p>
         {{/each}}
       </div>
     </div>
 
-    <div class="form-group {{if statement.errors.consequence 'has-error'}}">
+    <div class="form-group {{if statement.errors.originalConsequence 'has-error'}}">
       <label class="col-sm-1">THEN</label>
       <div class="col-sm-11">
-        {{input class="form-control consequence-field" value=statement.consequence
+        {{input class="form-control consequence-field" value=statement.originalConsequence
                 placeholder="State the consequence with a logical expression..."}}
-        {{#each statement.errors.consequence as |error|}}
+        {{#each statement.errors.originalConsequence as |error|}}
           <p class="help-block"><em>{{error.message}}</em></p>
         {{/each}}
       </div>
@@ -44,7 +44,7 @@
       <label class="col-sm-1">IF</label>
       <div class="col-sm-11">
         <div class="highlight-field condition-box">
-          {{highlight statement.condition phraseTexts}}
+          {{highlight statement.originalCondition phraseTexts}}
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
       <label class="col-sm-1">THEN</label>
       <div class="col-sm-11">
         <div class="highlight-field consequence-box">
-          {{highlight statement.consequence phraseTexts}}
+          {{highlight statement.originalConsequence phraseTexts}}
         </div>
       </div>
     </div>
@@ -80,9 +80,9 @@
 
     <dl>
       <dt>Condition</dt>
-      <dd>{{statement.condition}}</dd>
+      <dd>{{statement.originalCondition}}</dd>
       <dt>Consequence</dt>
-      <dd>{{statement.consequence}}</dd>
+      <dd>{{statement.originalConsequence}}</dd>
     </dl>
 
     {{#spinner-button onclick=(action (perform deleteTask statement))

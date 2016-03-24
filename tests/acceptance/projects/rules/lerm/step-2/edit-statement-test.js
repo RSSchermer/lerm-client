@@ -37,8 +37,8 @@ describe('Acceptance - Projects | Rules: LERM step 2 - editing a statement', fun
       describe('a statement exists for the rule', function() {
         beforeEach(function() {
           server.create('statement', {
-            condition: 'Some condition',
-            consequence: 'Some consequence',
+            originalCondition: 'Some condition',
+            originalConsequence: 'Some consequence',
             ruleId: this.rule.id
           });
         });

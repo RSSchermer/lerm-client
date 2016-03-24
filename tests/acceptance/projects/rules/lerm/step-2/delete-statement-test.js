@@ -94,7 +94,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a statement', fu
               });
 
               it('displays the details for the first statement in the modal', function() {
-                expect(find('.ember-modal-dialog').text()).to.contain(this.statements[0].condition);
+                expect(find('.ember-modal-dialog').text()).to.contain(this.statements[0].originalCondition);
               });
 
               describe('I click the cancel button', function() {
@@ -125,7 +125,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a statement', fu
                 });
 
                 it('lists the statement that was not deleted', function() {
-                  expect(find('.lerm-step-2b .statement-list').text()).to.contain(this.statements[1].condition);
+                  expect(find('.lerm-step-2b .statement-list').text()).to.contain(this.statements[1].originalCondition);
                 });
               });
             });
