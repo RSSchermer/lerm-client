@@ -114,8 +114,8 @@ describeModel('phrase', 'Unit - Models: phrase', {
         ]);
       });
 
-      it('returns the data element labels joined with OR', function() {
-        expect(this.subject().get('defaultDataElementExpression')).to.equal('First OR Second OR Third');
+      it('returns the data element labels joined with OR and wrapped in parentheses', function() {
+        expect(this.subject().get('defaultDataElementExpression')).to.equal('(First OR Second OR Third)');
       });
     });
   });

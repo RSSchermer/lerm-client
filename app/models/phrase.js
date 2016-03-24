@@ -22,7 +22,18 @@ export default Model.extend({
     return this.get('rule.proactiveForm').indexOf(this.get('originalText').trim()) >= 0;
   }),
 
-  defaultDataElementExpression: computed('dataElements.[]', function() {
-    return this.get('dataElements').reduce((s, e) => s === null ? e.get('label') : `${s} OR ${e.get('label')}`, null);
+  defaultDataElementExpression: computed('dataElements.@each.label', function() {
+    let dataElements = this.get('dataElements');
+    let count = dataElements.get('length');
+
+    if (count === 0) {
+      return null;
+    } else if (count === 1) {
+      return dataElements.get('firstObject.label');
+    } else {
+      let expression = dataElements.reduce((s, e) => s === null ? e.get('label') : `${s} OR ${e.get('label')}`, null);
+
+      return `(${expression})`;
+    }
   })
 });
