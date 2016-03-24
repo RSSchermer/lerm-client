@@ -11,7 +11,7 @@ import FactoryGuy from 'ember-data-factory-guy';
 import setupFactoryGuy from 'ember-data-factory-guy/utils/manual-setup';
 
 describeModel('phrase', 'Unit - Models: phrase', {
-  needs: ['model:rule', 'model:project', 'model:membership']
+  needs: ['model:rule', 'model:project', 'model:membership', 'model:data-element']
 }, function() {
   beforeEach(function() {
     setupFactoryGuy(this.container);
@@ -82,6 +82,40 @@ describeModel('phrase', 'Unit - Models: phrase', {
 
       it('returns true', function() {
         expect(this.subject().get('textMatchesProactiveForm')).to.be.true;
+      });
+    });
+  });
+
+  describe('defaultDataElementExpression', function() {
+    context('no data elements have been linked', function() {
+      it('returns null', function() {
+        expect(this.subject().get('defaultDataElementExpression')).to.be.null;
+      });
+    });
+
+    context('one data element has been linked', function() {
+      beforeEach(function() {
+        let dataElement = FactoryGuy.make('data-element', { label: 'Some data element' });
+
+        this.subject().get('dataElements').addObject(dataElement);
+      });
+
+      it('returns the data element label', function() {
+        expect(this.subject().get('defaultDataElementExpression')).to.equal('Some data element');
+      });
+    });
+
+    context('three data elements have been linked', function() {
+      beforeEach(function() {
+        this.subject().get('dataElements').addObjects([
+          FactoryGuy.make('data-element', { label: 'First' }),
+          FactoryGuy.make('data-element', { label: 'Second' }),
+          FactoryGuy.make('data-element', { label: 'Third' })
+        ]);
+      });
+
+      it('returns the data element labels joined with OR', function() {
+        expect(this.subject().get('defaultDataElementExpression')).to.equal('First OR Second OR Third');
       });
     });
   });
