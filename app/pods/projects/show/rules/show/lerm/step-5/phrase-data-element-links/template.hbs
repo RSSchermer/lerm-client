@@ -16,7 +16,7 @@
             </td>
             <td>
               {{#if (can 'edit rule' phrase.rule)}}
-                <button class="btn btn-default" {{action 'unlinkDataElement' dataElement}}>
+                <button class="btn btn-default unlink-data-element-btn" {{action 'unlinkDataElement' dataElement}}>
                   {{fa-icon 'unlink'}} Unlink
                 </button>
               {{/if}}
@@ -68,7 +68,7 @@
       <form class="row data-element-expression-form" {{action 'saveDataElementExpression' on='submit'}}>
         <div class="form-group {{if phrase.errors.dataElementExpression 'has-error'}} col-sm-9">
           {{input
-              class='form-control'
+              class='form-control data-element-expression-field'
               value=phrase.dataElementExpression
               placeholder=phrase.defaultDataElementExpression}}
 
@@ -82,7 +82,7 @@
             {{fa-icon 'save'}} Save
           {{/spinner-button}}
 
-          <button class="btn btn-default" {{action 'stopEditingExpression'}}>
+          <button class="btn btn-default cancel-btn" {{action 'stopEditingExpression'}}>
             Cancel
           </button>
         </div>
@@ -105,7 +105,7 @@
 
         <div class="col-sm-3">
           {{#if (can 'edit rule' phrase.rule)}}
-            <button class="btn btn-default" {{action 'startEditingExpression'}}>
+            <button class="btn btn-default edit-btn" {{action 'startEditingExpression'}}>
               {{fa-icon 'pencil'}} Edit
             </button>
           {{/if}}
@@ -124,7 +124,7 @@
         <label class="control-label" for="label">Label</label>
 
         <div>
-          {{input id="label" class="form-control" value=newDataElement.label placeholder="Enter a label..."}}
+          {{input class="form-control label-field" value=newDataElement.label placeholder="Enter a label..."}}
 
           {{#each newDataElement.errors.label as |error|}}
             <p class="help-block"><em>{{error.message}}</em></p>
@@ -136,7 +136,7 @@
         <label class="control-label" for="description">Description</label>
 
         <div>
-          {{textarea id="description" class="form-control" value=newDataElement.description
+          {{textarea class="form-control description-field" value=newDataElement.description
                      placeholder="Give a description for the data element..."}}
 
           {{#each newDataElement.errors.description as |error|}}
