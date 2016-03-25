@@ -49,7 +49,7 @@ describe('Acceptance - Projects | Rules: LERM step 4 - discarding a statement', 
             });
 
             it('does not show buttons for discarding the statements', function() {
-              expect(find('.lerm-step-4b .statement-list .discard-btn').length).to.equal(0);
+              expect(find('.lerm-step-4b .statement-panel .discard-btn').length).to.equal(0);
             });
           });
         });
@@ -65,7 +65,7 @@ describe('Acceptance - Projects | Rules: LERM step 4 - discarding a statement', 
             });
 
             it('does not show buttons for discarding the statements', function() {
-              expect(find('.lerm-step-4b .statement-list .discard-btn').length).to.equal(0);
+              expect(find('.lerm-step-4b .statement-panel .discard-btn').length).to.equal(0);
             });
           });
         });
@@ -83,63 +83,63 @@ describe('Acceptance - Projects | Rules: LERM step 4 - discarding a statement', 
             });
 
             it('shows discard buttons for each of the statements', function() {
-              expect(find('.lerm-step-4b .statement-list .discard-btn').length).to.equal(3);
+              expect(find('.lerm-step-4b .statement-panel .discard-btn').length).to.equal(3);
             });
 
             describe('I am not editing the statement', function() {
               describe('I click the discard button for the first statement', function() {
                 beforeEach(function() {
-                  click('.lerm-step-4b .statement-list li:first-of-type .discard-btn');
+                  click('.lerm-step-4b .statement-panel:first .discard-btn');
                 });
 
                 it('marks the first statement as discarded', function() {
-                  expect(find('.lerm-step-4b .statement-list li:first-of-type .statement-panel').hasClass('discarded')).to.be.true;
+                  expect(find('.lerm-step-4b .statement-panel:first').hasClass('discarded')).to.be.true;
                 });
 
                 it('shows a button for reinstating the first statement', function() {
-                  expect(find('.lerm-step-4b .statement-list li:first-of-type .reinstate-btn').length).to.equal(1);
+                  expect(find('.lerm-step-4b .statement-panel:first .reinstate-btn').length).to.equal(1);
                 });
               });
             });
 
             describe('I am editing the statement', function() {
               beforeEach(function() {
-                click('.lerm-step-4b .statement-list li:first-of-type .edit-btn');
+                click('.lerm-step-4b .statement-panel:first .edit-btn');
               });
 
               it('shows a form for editing the cleaned statement', function() {
-                expect(find('.lerm-step-4b .statement-list li:first-of-type .save-btn').length).to.equal(1);
+                expect(find('.lerm-step-4b .statement-panel:first .save-btn').length).to.equal(1);
               });
 
               describe('I fill in a new cleaned condition and consequence', function() {
                 beforeEach(function() {
-                  fillIn('.lerm-step-4b .statement-list .cleaned-condition-field', 'New cleaned condition');
-                  fillIn('.lerm-step-4b .statement-list .cleaned-consequence-field', 'New cleaned consequence');
+                  fillIn('.lerm-step-4b .cleaned-statement-form:first .cleaned-condition-field', 'New cleaned condition');
+                  fillIn('.lerm-step-4b .cleaned-statement-form:first .cleaned-consequence-field', 'New cleaned consequence');
                 });
 
                 describe('I click the discard button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-4b .statement-list li:first-of-type .discard-btn');
+                    click('.lerm-step-4b .statement-panel:first .discard-btn');
                   });
 
                   it('does not displays an form for editing the cleaned statement', function() {
-                    expect(find('.lerm-step-4b .statement-list li:first-of-type .save-btn').length).to.equal(0);
+                    expect(find('.lerm-step-4b .statement-panel:first .save-btn').length).to.equal(0);
                   });
 
                   it('displays the old cleaned statement condition', function() {
-                    expect(find('.lerm-step-4b .statement-list li:first-of-type').text()).to.contain('Some cleaned condition');
+                    expect(find('.lerm-step-4b .statement-panel:first').text()).to.contain('Some cleaned condition');
                   });
 
                   it('displays the old cleaned statement consequence', function() {
-                    expect(find('.lerm-step-4b .statement-list li:first-of-type').text()).to.contain('Some cleaned consequence');
+                    expect(find('.lerm-step-4b .statement-panel:first').text()).to.contain('Some cleaned consequence');
                   });
 
                   it('marks the first statement as discarded', function() {
-                    expect(find('.lerm-step-4b .statement-list li:first-of-type .statement-panel').hasClass('discarded')).to.be.true;
+                    expect(find('.lerm-step-4b .statement-panel:first').hasClass('discarded')).to.be.true;
                   });
 
                   it('shows a button for reinstating the first statement', function() {
-                    expect(find('.lerm-step-4b .statement-list li:first-of-type .reinstate-btn').length).to.equal(1);
+                    expect(find('.lerm-step-4b .statement-panel:first .reinstate-btn').length).to.equal(1);
                   });
                 });
               });

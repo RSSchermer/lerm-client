@@ -49,7 +49,7 @@ describe('Acceptance - Projects | Rules: LERM step 6 - deleting a relationship',
             });
 
             it('does not show delete buttons for the relationships', function() {
-              expect(find('.lerm-step-6 .relationship-list .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-6 .relationship-panel .delete-btn').length).to.equal(0);
             });
           });
         });
@@ -65,7 +65,7 @@ describe('Acceptance - Projects | Rules: LERM step 6 - deleting a relationship',
             });
 
             it('does not show delete buttons for the relationships', function() {
-              expect(find('.lerm-step-6 .relationship-list .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-6 .relationship-panel .delete-btn').length).to.equal(0);
             });
           });
         });
@@ -83,12 +83,12 @@ describe('Acceptance - Projects | Rules: LERM step 6 - deleting a relationship',
             });
 
             it('shows delete buttons for the relationships', function() {
-              expect(find('.lerm-step-6 .relationship-list .delete-btn').length).to.equal(2);
+              expect(find('.lerm-step-6 .relationship-panel .delete-btn').length).to.equal(2);
             });
 
             describe('I click the delete button for the first relationship', function() {
               beforeEach(function() {
-                click('.lerm-step-6 .relationship-list .delete-btn:first');
+                click('.lerm-step-6 .relationship-panel:first .delete-btn');
               });
 
               it('displays a modal asking for confirmation', function() {
@@ -110,7 +110,7 @@ describe('Acceptance - Projects | Rules: LERM step 6 - deleting a relationship',
                 });
 
                 it('lists 2 relationships in the relationship list', function() {
-                  expect(find('.lerm-step-6 .relationship-list li').length).to.equal(2);
+                  expect(find('.lerm-step-6 .relationship-panel').length).to.equal(2);
                 });
               });
 
@@ -124,11 +124,11 @@ describe('Acceptance - Projects | Rules: LERM step 6 - deleting a relationship',
                 });
 
                 it('lists 1 relationship in the relationship list', function() {
-                  expect(find('.lerm-step-6 .relationship-list li').length).to.equal(1);
+                  expect(find('.lerm-step-6 .relationship-panel').length).to.equal(1);
                 });
 
                 it('lists the relationship that was not deleted', function() {
-                  expect(find('.lerm-step-6 .relationship-list').text()).to.contain(this.relationships[1].description);
+                  expect(find('.lerm-step-6 .relationship-panel:first').text()).to.contain(this.relationships[1].description);
                 });
               });
             });

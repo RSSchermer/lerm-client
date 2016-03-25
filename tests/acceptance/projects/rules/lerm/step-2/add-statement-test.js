@@ -89,13 +89,13 @@ describe('Acceptance - Projects | Rules: LERM step 2 - adding a statement', func
 
             describe('I fill in valid data', function() {
               beforeEach(function() {
-                fillIn('.lerm-step-2b .statement-list .statement-form .condition-field', 'Some condition');
-                fillIn('.lerm-step-2b .statement-list .statement-form .consequence-field', 'Some consequence');
+                fillIn('.lerm-step-2b .statement-form:first .condition-field', 'Some condition');
+                fillIn('.lerm-step-2b .statement-form:first .consequence-field', 'Some consequence');
               });
 
               describe('I click the cancel button', function() {
                 beforeEach(function() {
-                  click('.lerm-step-2b .statement-list .statement-form .cancel-btn');
+                  click('.lerm-step-2b .statement-form:first .cancel-btn');
                 });
 
                 it('displays an empty statement list', function() {
@@ -106,7 +106,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - adding a statement', func
 
               describe('I click the save button', function() {
                 beforeEach(function() {
-                  click('.lerm-step-2b .statement-list .statement-form .save-btn');
+                  click('.lerm-step-2b .statement-form:first .save-btn');
                 });
 
                 it('does not display the statement edit form', function() {
@@ -114,15 +114,15 @@ describe('Acceptance - Projects | Rules: LERM step 2 - adding a statement', func
                 });
 
                 it('displays 1 statement in the statement list', function() {
-                  expect(find('.lerm-step-2b .statement-list li').length).to.equal(1);
+                  expect(find('.lerm-step-2b .statement-panel').length).to.equal(1);
                 });
 
                 it('displays the correct condition', function() {
-                  expect(find('.lerm-step-2b .statement-list').text()).to.contain('Some condition');
+                  expect(find('.lerm-step-2b .statement-panel:first').text()).to.contain('Some condition');
                 });
 
                 it('displays the correct consequence', function() {
-                  expect(find('.lerm-step-2b .statement-list').text()).to.contain('Some consequence');
+                  expect(find('.lerm-step-2b .statement-panel:first').text()).to.contain('Some consequence');
                 });
               });
             });

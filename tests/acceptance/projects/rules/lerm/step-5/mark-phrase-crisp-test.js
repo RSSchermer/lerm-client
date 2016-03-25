@@ -90,11 +90,11 @@ describe('Acceptance - Projects | Rules: LERM step 5 - marking a phrase as crisp
 
             describe('I click the checkbox button for the first phrase', function() {
               beforeEach(function() {
-                click('.lerm-step-5a .phrase-table tbody tr:first-of-type .crispness-checkbox');
+                click('.lerm-step-5a .phrase-table .crispness-checkbox:first');
               });
 
               it('marks the first phrase as crisp', function() {
-                expect(find('.lerm-step-5a .phrase-table tbody tr:first-of-type .crispness-checkbox').prop('checked')).to.be.true;
+                expect(find('.lerm-step-5a .phrase-table .crispness-checkbox:first').prop('checked')).to.be.true;
               });
             });
           });

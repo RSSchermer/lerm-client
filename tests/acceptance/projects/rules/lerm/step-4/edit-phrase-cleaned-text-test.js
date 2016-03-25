@@ -84,29 +84,29 @@ describe('Acceptance - Projects | Rules: LERM step 4 - editing cleaned phrase te
 
             describe('I click the edit button for the first phrase', function() {
               beforeEach(function() {
-                click('.lerm-step-4a .phrase-table tbody tr:first-of-type .edit-btn');
+                click('.lerm-step-4a .phrase-table tbody tr:first .edit-btn');
               });
 
               it('shows a form for editing the cleaned phrase text', function() {
-                expect(find('.lerm-step-4a .phrase-table tbody tr:first-of-type .cleaned-phrase-form').length).to.equal(1);
+                expect(find('.lerm-step-4a .phrase-table tbody tr:first .cleaned-phrase-form').length).to.equal(1);
               });
 
               describe('I fill in a new cleaned phrase text', function() {
                 beforeEach(function() {
-                  fillIn('.lerm-step-4a .phrase-table .cleaned-text-field', 'New cleaned text');
+                  fillIn('.lerm-step-4a .cleaned-phrase-form:first .cleaned-text-field', 'New cleaned text');
                 });
 
                 describe('I click the save button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-4a .phrase-table .cleaned-phrase-form .save-btn');
+                    click('.lerm-step-4a .cleaned-phrase-form:first .save-btn');
                   });
 
                   it('does not displays an form for editing the cleaned phrase text', function() {
-                    expect(find('.lerm-step-4a .phrase-table tbody tr:first-of-type .cleaned-phrase-form').length).to.equal(0);
+                    expect(find('.lerm-step-4a .phrase-table tbody tr:first .cleaned-phrase-form').length).to.equal(0);
                   });
 
                   it('displays the updated cleaned phrase text', function() {
-                    expect(find('.lerm-step-4a .phrase-table tbody tr:first-of-type').text()).to.contain('New cleaned text');
+                    expect(find('.lerm-step-4a .phrase-table tbody tr:first').text()).to.contain('New cleaned text');
                   });
                 });
               });

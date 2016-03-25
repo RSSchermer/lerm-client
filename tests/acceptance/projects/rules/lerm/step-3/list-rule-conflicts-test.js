@@ -72,7 +72,7 @@ describe('Acceptance - Projects | Rules: LERM step 3 - listing statements', func
           });
 
           it('lists 3 rule conflicts', function() {
-            expect(find('.lerm-step-3 .conflict-list li').length).to.equal(3);
+            expect(find('.lerm-step-3 .conflict-panel').length).to.equal(3);
           });
         });
       });

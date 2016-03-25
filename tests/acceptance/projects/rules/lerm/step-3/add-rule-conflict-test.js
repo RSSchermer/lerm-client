@@ -96,13 +96,13 @@ describe('Acceptance - Projects | Rules: LERM step 3 - adding a conflict', funct
 
               describe('I fill in valid data', function() {
                 beforeEach(function() {
-                  selectChoose('.lerm-step-3 .conflict-list .conflict-form .conflicting-rule-field', 'Some Other Rule');
-                  fillIn('.lerm-step-3 .conflict-list .conflict-form .description-field', 'Some description');
+                  selectChoose('.lerm-step-3 .conflict-form:first .conflicting-rule-field', 'Some Other Rule');
+                  fillIn('.lerm-step-3 .conflict-form:first .description-field', 'Some description');
                 });
 
                 describe('I click the cancel button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-3 .conflict-list .conflict-form .cancel-btn');
+                    click('.lerm-step-3 .conflict-form:first .cancel-btn');
                   });
 
                   it('displays an empty conflict list', function() {
@@ -113,7 +113,7 @@ describe('Acceptance - Projects | Rules: LERM step 3 - adding a conflict', funct
 
                 describe('I click the save button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-3 .conflict-list .conflict-form .save-btn');
+                    click('.lerm-step-3 .conflict-form:first .save-btn');
                   });
 
                   it('does not display the conflict edit form', function() {
@@ -121,15 +121,15 @@ describe('Acceptance - Projects | Rules: LERM step 3 - adding a conflict', funct
                   });
 
                   it('displays 1 conflict in the conflict list', function() {
-                    expect(find('.lerm-step-3 .conflict-list li').length).to.equal(1);
+                    expect(find('.lerm-step-3 .conflict-panel').length).to.equal(1);
                   });
 
                   it('displays the correct rule label', function() {
-                    expect(find('.lerm-step-3 .conflict-list').text()).to.contain('Some Other Rule');
+                    expect(find('.lerm-step-3 .conflict-panel:first').text()).to.contain('Some Other Rule');
                   });
 
                   it('displays the correct description', function() {
-                    expect(find('.lerm-step-3 .conflict-list').text()).to.contain('Some description');
+                    expect(find('.lerm-step-3 .conflict-panel:first').text()).to.contain('Some description');
                   });
                 });
               });

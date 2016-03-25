@@ -46,7 +46,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a statement', fu
             });
 
             it('does not show delete buttons for the statements', function() {
-              expect(find('.lerm-step-2b .statement-list .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-2b .statement-panel .delete-btn').length).to.equal(0);
             });
           });
         });
@@ -62,7 +62,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a statement', fu
             });
 
             it('does not show delete buttons for the statements', function() {
-              expect(find('.lerm-step-2b .statement-list .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-2b .statement-panel .delete-btn').length).to.equal(0);
             });
           });
         });
@@ -80,12 +80,12 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a statement', fu
             });
 
             it('shows delete buttons for the statements', function() {
-              expect(find('.lerm-step-2b .statement-list .delete-btn').length).to.equal(2);
+              expect(find('.lerm-step-2b .statement-panel .delete-btn').length).to.equal(2);
             });
 
             describe('I click the delete button for the first statement', function() {
               beforeEach(function() {
-                click('.lerm-step-2b .statement-list .delete-btn:first');
+                click('.lerm-step-2b .statement-panel:first .delete-btn');
               });
 
               it('displays a modal asking for confirmation', function() {
@@ -107,7 +107,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a statement', fu
                 });
 
                 it('lists 2 statements in the statement list', function() {
-                  expect(find('.lerm-step-2b .statement-list li').length).to.equal(2);
+                  expect(find('.lerm-step-2b .statement-panel').length).to.equal(2);
                 });
               });
 
@@ -121,11 +121,11 @@ describe('Acceptance - Projects | Rules: LERM step 2 - deleting a statement', fu
                 });
 
                 it('lists 1 statement in the statement list', function() {
-                  expect(find('.lerm-step-2b .statement-list li').length).to.equal(1);
+                  expect(find('.lerm-step-2b .statement-panel').length).to.equal(1);
                 });
 
                 it('lists the statement that was not deleted', function() {
-                  expect(find('.lerm-step-2b .statement-list').text()).to.contain(this.statements[1].originalCondition);
+                  expect(find('.lerm-step-2b .statement-panel:first').text()).to.contain(this.statements[1].originalCondition);
                 });
               });
             });

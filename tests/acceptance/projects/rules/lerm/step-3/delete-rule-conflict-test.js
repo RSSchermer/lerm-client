@@ -49,7 +49,7 @@ describe('Acceptance - Projects | Rules: LERM step 3 - deleting a conflict', fun
             });
 
             it('does not show delete buttons for the conflicts', function() {
-              expect(find('.lerm-step-3 .conflict-list .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-3 .conflict-panel .delete-btn').length).to.equal(0);
             });
           });
         });
@@ -65,7 +65,7 @@ describe('Acceptance - Projects | Rules: LERM step 3 - deleting a conflict', fun
             });
 
             it('does not show delete buttons for the conflicts', function() {
-              expect(find('.lerm-step-3 .conflict-list .delete-btn').length).to.equal(0);
+              expect(find('.lerm-step-3 .conflict-panel .delete-btn').length).to.equal(0);
             });
           });
         });
@@ -83,12 +83,12 @@ describe('Acceptance - Projects | Rules: LERM step 3 - deleting a conflict', fun
             });
 
             it('shows delete buttons for the conflicts', function() {
-              expect(find('.lerm-step-3 .conflict-list .delete-btn').length).to.equal(2);
+              expect(find('.lerm-step-3 .conflict-panel .delete-btn').length).to.equal(2);
             });
 
             describe('I click the delete button for the first conflict', function() {
               beforeEach(function() {
-                click('.lerm-step-3 .conflict-list .delete-btn:first');
+                click('.lerm-step-3 .conflict-panel:first .delete-btn');
               });
 
               it('displays a modal asking for confirmation', function() {
@@ -110,7 +110,7 @@ describe('Acceptance - Projects | Rules: LERM step 3 - deleting a conflict', fun
                 });
 
                 it('lists 2 conflicts in the conflict list', function() {
-                  expect(find('.lerm-step-3 .conflict-list li').length).to.equal(2);
+                  expect(find('.lerm-step-3 .conflict-panel').length).to.equal(2);
                 });
               });
 
@@ -124,11 +124,11 @@ describe('Acceptance - Projects | Rules: LERM step 3 - deleting a conflict', fun
                 });
 
                 it('lists 1 conflict in the conflict list', function() {
-                  expect(find('.lerm-step-3 .conflict-list li').length).to.equal(1);
+                  expect(find('.lerm-step-3 .conflict-panel').length).to.equal(1);
                 });
 
                 it('lists the conflict that was not deleted', function() {
-                  expect(find('.lerm-step-3 .conflict-list').text()).to.contain(this.conflicts[1].description);
+                  expect(find('.lerm-step-3 .conflict-panel:first').text()).to.contain(this.conflicts[1].description);
                 });
               });
             });

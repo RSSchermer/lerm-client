@@ -72,7 +72,7 @@ describe('Acceptance - Projects | Rules: LERM step 6 - listing statements', func
           });
 
           it('lists 3 rule relationships', function() {
-            expect(find('.lerm-step-6 .relationship-list li').length).to.equal(3);
+            expect(find('.lerm-step-6 .relationship-panel').length).to.equal(3);
           });
         });
       });

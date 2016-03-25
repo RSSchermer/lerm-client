@@ -84,15 +84,15 @@ describe('Acceptance - Projects | Rules: LERM step 4 - reinstating a phrase', fu
 
             describe('I click the reinstate button for the first phrase', function() {
               beforeEach(function() {
-                click('.lerm-step-4a .phrase-table tbody tr:first-of-type .reinstate-btn');
+                click('.lerm-step-4a .phrase-table tbody tr:first .reinstate-btn');
               });
 
               it('does not mark the first phrase as discarded', function() {
-                expect(find('.lerm-step-4a .phrase-table tbody tr:first-of-type').hasClass('discarded')).to.be.false;
+                expect(find('.lerm-step-4a .phrase-table tbody tr:first').hasClass('discarded')).to.be.false;
               });
 
               it('shows a button for discarding the first phrase', function() {
-                expect(find('.lerm-step-4a .phrase-table tbody tr:first-of-type .discard-btn').length).to.equal(1);
+                expect(find('.lerm-step-4a .phrase-table tbody tr:first .discard-btn').length).to.equal(1);
               });
             });
           });

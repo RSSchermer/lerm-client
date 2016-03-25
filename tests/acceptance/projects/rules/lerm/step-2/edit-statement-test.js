@@ -98,27 +98,27 @@ describe('Acceptance - Projects | Rules: LERM step 2 - editing a statement', fun
 
               describe('I fill in valid new data', function() {
                 beforeEach(function() {
-                  fillIn('.lerm-step-2b .statement-list .statement-form .condition-field', 'New condition');
-                  fillIn('.lerm-step-2b .statement-list .statement-form .consequence-field', 'New consequence');
+                  fillIn('.lerm-step-2b .statement-form:first .condition-field', 'New condition');
+                  fillIn('.lerm-step-2b .statement-form:first .consequence-field', 'New consequence');
                 });
 
                 describe('I click the cancel button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-2b .statement-list .statement-form .cancel-btn');
+                    click('.lerm-step-2b .statement-form:first .cancel-btn');
                   });
 
                   it('displays the old statement condition', function() {
-                    expect(find('.lerm-step-2b .statement-list').text()).to.contain('Some condition');
+                    expect(find('.lerm-step-2b .statement-panel:first').text()).to.contain('Some condition');
                   });
 
                   it('displays the old statement consequence', function() {
-                    expect(find('.lerm-step-2b .statement-list').text()).to.contain('Some consequence');
+                    expect(find('.lerm-step-2b .statement-panel:first').text()).to.contain('Some consequence');
                   });
                 });
 
                 describe('I click the save button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-2b .statement-list .statement-form .save-btn');
+                    click('.lerm-step-2b .statement-form:first .save-btn');
                   });
 
                   it('does not display the statement edit form', function() {
@@ -126,15 +126,15 @@ describe('Acceptance - Projects | Rules: LERM step 2 - editing a statement', fun
                   });
 
                   it('displays 1 statement in the statement list', function() {
-                    expect(find('.lerm-step-2b .statement-list li').length).to.equal(1);
+                    expect(find('.lerm-step-2b .statement-panel').length).to.equal(1);
                   });
 
                   it('displays the new condition', function() {
-                    expect(find('.lerm-step-2b .statement-list').text()).to.contain('New condition');
+                    expect(find('.lerm-step-2b .statement-panel:first').text()).to.contain('New condition');
                   });
 
                   it('displays the new consequence', function() {
-                    expect(find('.lerm-step-2b .statement-list').text()).to.contain('New consequence');
+                    expect(find('.lerm-step-2b .statement-panel:first').text()).to.contain('New consequence');
                   });
                 });
               });

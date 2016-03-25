@@ -58,7 +58,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - listing statements', func
           });
 
           it('lists 3 statements', function() {
-            expect(find('.lerm-step-2b .statement-list li').length).to.equal(3);
+            expect(find('.lerm-step-2b .statement-panel').length).to.equal(3);
           });
         });
       });

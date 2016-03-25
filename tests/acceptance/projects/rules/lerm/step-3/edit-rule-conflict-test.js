@@ -98,12 +98,12 @@ describe('Acceptance - Projects | Rules: LERM step 3 - editing a conflict', func
 
               describe('I fill in a new description', function() {
                 beforeEach(function() {
-                  fillIn('.lerm-step-3 .conflict-list .conflict-form .description-field', 'New description');
+                  fillIn('.lerm-step-3 .conflict-form:first .description-field', 'New description');
                 });
 
                 describe('I click the cancel button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-3 .conflict-list .conflict-form .cancel-btn');
+                    click('.lerm-step-3 .conflict-form:first .cancel-btn');
                   });
 
                   it('displays the old conflict description', function() {
@@ -113,7 +113,7 @@ describe('Acceptance - Projects | Rules: LERM step 3 - editing a conflict', func
 
                 describe('I click the save button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-3 .conflict-list .conflict-form .save-btn');
+                    click('.lerm-step-3 .conflict-form:first .save-btn');
                   });
 
                   it('does not display the conflict edit form', function() {
@@ -121,11 +121,11 @@ describe('Acceptance - Projects | Rules: LERM step 3 - editing a conflict', func
                   });
 
                   it('displays 1 conflict in the conflict list', function() {
-                    expect(find('.lerm-step-3 .conflict-list li').length).to.equal(1);
+                    expect(find('.lerm-step-3 .conflict-panel').length).to.equal(1);
                   });
 
                   it('displays the new description', function() {
-                    expect(find('.lerm-step-3 .conflict-list').text()).to.contain('New description');
+                    expect(find('.lerm-step-3 .conflict-panel:first').text()).to.contain('New description');
                   });
                 });
               });

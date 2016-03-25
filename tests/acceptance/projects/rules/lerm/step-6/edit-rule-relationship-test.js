@@ -50,7 +50,7 @@ describe('Acceptance - Projects | Rules: LERM step 6 - editing a relationship', 
             });
 
             it('does not show a button for editing the relationship', function() {
-              expect(find('.lerm-step-6 .relationship-panel .edit-btn').length).to.equal(0);
+              expect(find('.lerm-step-6 .relationship-panel:first .edit-btn').length).to.equal(0);
             });
           });
         });
@@ -66,7 +66,7 @@ describe('Acceptance - Projects | Rules: LERM step 6 - editing a relationship', 
             });
 
             it('does not show a button for editing the relationship', function() {
-              expect(find('.lerm-step-6 .relationship-panel .edit-btn').length).to.equal(0);
+              expect(find('.lerm-step-6 .relationship-panel:first .edit-btn').length).to.equal(0);
             });
           });
         });
@@ -84,12 +84,12 @@ describe('Acceptance - Projects | Rules: LERM step 6 - editing a relationship', 
             });
 
             it('shows a button for editing the relationship', function() {
-              expect(find('.lerm-step-6 .relationship-panel .edit-btn').length).to.equal(1);
+              expect(find('.lerm-step-6 .relationship-panel:first .edit-btn').length).to.equal(1);
             });
 
             describe('I click the button to edit relationship', function() {
               beforeEach(function() {
-                click('.lerm-step-6 .relationship-panel .edit-btn');
+                click('.lerm-step-6 .relationship-panel:first .edit-btn');
               });
 
               it('displays a form for editing the relationship\'s description', function() {
@@ -98,22 +98,22 @@ describe('Acceptance - Projects | Rules: LERM step 6 - editing a relationship', 
 
               describe('I fill in a new description', function() {
                 beforeEach(function() {
-                  fillIn('.lerm-step-6 .relationship-list .relationship-form .description-field', 'New description');
+                  fillIn('.lerm-step-6 .relationship-form:first .description-field', 'New description');
                 });
 
                 describe('I click the cancel button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-6 .relationship-list .relationship-form .cancel-btn');
+                    click('.lerm-step-6 .relationship-form:first .cancel-btn');
                   });
 
                   it('displays the old relationship description', function() {
-                    expect(find('.lerm-step-6 .relationship-list').text()).to.contain('Some description');
+                    expect(find('.lerm-step-6 .relationship-panel:first').text()).to.contain('Some description');
                   });
                 });
 
                 describe('I click the save button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-6 .relationship-list .relationship-form .save-btn');
+                    click('.lerm-step-6 .relationship-form:first .save-btn');
                   });
 
                   it('does not display the relationship edit form', function() {
@@ -121,11 +121,11 @@ describe('Acceptance - Projects | Rules: LERM step 6 - editing a relationship', 
                   });
 
                   it('displays 1 relationship in the relationship list', function() {
-                    expect(find('.lerm-step-6 .relationship-list li').length).to.equal(1);
+                    expect(find('.lerm-step-6 .relationship-panel').length).to.equal(1);
                   });
 
                   it('displays the new description', function() {
-                    expect(find('.lerm-step-6 .relationship-list').text()).to.contain('New description');
+                    expect(find('.lerm-step-6 .relationship-panel:first').text()).to.contain('New description');
                   });
                 });
               });

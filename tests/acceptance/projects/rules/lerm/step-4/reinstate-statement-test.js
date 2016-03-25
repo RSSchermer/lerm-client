@@ -48,7 +48,7 @@ describe('Acceptance - Projects | Rules: LERM step 4 - reinstating a statement',
             });
 
             it('does not show buttons for reinstating the statements', function() {
-              expect(find('.lerm-step-4b .statement-list .reinstate-btn').length).to.equal(0);
+              expect(find('.lerm-step-4b .statement-panel .reinstate-btn').length).to.equal(0);
             });
           });
         });
@@ -64,7 +64,7 @@ describe('Acceptance - Projects | Rules: LERM step 4 - reinstating a statement',
             });
 
             it('does not show buttons for reinstating the statements', function() {
-              expect(find('.lerm-step-4b .statement-list .reinstate-btn').length).to.equal(0);
+              expect(find('.lerm-step-4b .statement-panel .reinstate-btn').length).to.equal(0);
             });
           });
         });
@@ -82,20 +82,20 @@ describe('Acceptance - Projects | Rules: LERM step 4 - reinstating a statement',
             });
 
             it('shows reinstate buttons for each of the statements', function() {
-              expect(find('.lerm-step-4b .statement-list .reinstate-btn').length).to.equal(3);
+              expect(find('.lerm-step-4b .statement-panel .reinstate-btn').length).to.equal(3);
             });
 
             describe('I click the reinstate button for the first statement', function() {
               beforeEach(function() {
-                click('.lerm-step-4b .statement-list li:first-of-type .reinstate-btn');
+                click('.lerm-step-4b .statement-panel:first .reinstate-btn');
               });
 
               it('does not mark the first statement as discarded', function() {
-                expect(find('.lerm-step-4b .statement-list li:first-of-type .statement-panel').hasClass('discarded')).to.be.false;
+                expect(find('.lerm-step-4b .statement-panel:first').hasClass('discarded')).to.be.false;
               });
 
               it('shows a button for discarding the first statement', function() {
-                expect(find('.lerm-step-4b .statement-list li:first-of-type .discard-btn').length).to.equal(1);
+                expect(find('.lerm-step-4b .statement-panel:first .discard-btn').length).to.equal(1);
               });
             });
           });

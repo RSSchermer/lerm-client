@@ -75,7 +75,7 @@ describe('Acceptance - Projects | Rules: LERM step 2 - adding a phrase', functio
           });
 
           it('shows a form for adding a phrase', function() {
-            expect(find('.lerm-step-2a .add-phrase-form').length).to.not.equal(0);
+            expect(find('.lerm-step-2a .add-phrase-form').length).to.equal(1);
           });
 
           describe('I click the button to add a phrase while leaving the phrase text empty', function() {
@@ -96,11 +96,11 @@ describe('Acceptance - Projects | Rules: LERM step 2 - adding a phrase', functio
 
             describe('I click the button to add a phrase', function() {
               beforeEach(function() {
-                click('.lerm-step-2a .add-phrase-form  .add-phrase-btn');
+                click('.lerm-step-2a .add-phrase-form .add-phrase-btn');
               });
 
               it('displays the phrase in the phrase list', function() {
-                expect(find('.lerm-step-2a .phrase-table-section').text()).to.contain('proactive');
+                expect(find('.lerm-step-2a .phrase-table tbody tr:first').text()).to.contain('proactive');
               });
             });
           });

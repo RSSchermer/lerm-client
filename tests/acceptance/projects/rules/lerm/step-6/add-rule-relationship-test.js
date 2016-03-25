@@ -96,13 +96,13 @@ describe('Acceptance - Projects | Rules: LERM step 6 - adding a relationship', f
 
               describe('I fill in valid data', function() {
                 beforeEach(function() {
-                  selectChoose('.lerm-step-6 .relationship-list .relationship-form .related-rule-field', 'Some Other Rule');
-                  fillIn('.lerm-step-6 .relationship-list .relationship-form .description-field', 'Some description');
+                  selectChoose('.lerm-step-6 .relationship-form:first  .related-rule-field', 'Some Other Rule');
+                  fillIn('.lerm-step-6 .relationship-form:first .description-field', 'Some description');
                 });
 
                 describe('I click the cancel button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-6 .relationship-list .relationship-form .cancel-btn');
+                    click('.lerm-step-6 .relationship-form:first .cancel-btn');
                   });
 
                   it('displays an empty relationship list', function() {
@@ -113,23 +113,23 @@ describe('Acceptance - Projects | Rules: LERM step 6 - adding a relationship', f
 
                 describe('I click the save button', function() {
                   beforeEach(function() {
-                    click('.lerm-step-6 .relationship-list .relationship-form .save-btn');
+                    click('.lerm-step-6 .relationship-form:first .save-btn');
                   });
 
                   it('does not display the relationship edit form', function() {
-                    expect(find('.lerm-step-6 .relationship-list .relationship-form').length).to.equal(0);
+                    expect(find('.lerm-step-6 .relationship-panel:first .relationship-form').length).to.equal(0);
                   });
 
                   it('displays 1 relationship in the relationship list', function() {
-                    expect(find('.lerm-step-6 .relationship-list li').length).to.equal(1);
+                    expect(find('.lerm-step-6 .relationship-panel').length).to.equal(1);
                   });
 
                   it('displays the correct rule label', function() {
-                    expect(find('.lerm-step-6 .relationship-list').text()).to.contain('Some Other Rule');
+                    expect(find('.lerm-step-6 .relationship-panel:first').text()).to.contain('Some Other Rule');
                   });
 
                   it('displays the correct description', function() {
-                    expect(find('.lerm-step-6 .relationship-list').text()).to.contain('Some description');
+                    expect(find('.lerm-step-6 .relationship-panel:first').text()).to.contain('Some description');
                   });
                 });
               });

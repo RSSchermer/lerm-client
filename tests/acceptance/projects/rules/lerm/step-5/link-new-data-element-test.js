@@ -45,7 +45,7 @@ describe('Acceptance - Projects | Rules: LERM step 5 - creating and linking a ne
             });
 
             it('does not display links that open the modal for creating and linking new data elements', function() {
-              expect(find('.lerm-step-5b .create-data-element-link').length).to.equal(0);
+              expect(find('.lerm-step-5b .phrase-panel .create-data-element-link').length).to.equal(0);
             });
           });
         });
@@ -61,7 +61,7 @@ describe('Acceptance - Projects | Rules: LERM step 5 - creating and linking a ne
             });
 
             it('does not display links that open the modal for creating and linking new data elements', function() {
-              expect(find('.lerm-step-5b .create-data-element-link').length).to.equal(0);
+              expect(find('.lerm-step-5b .phrase-panel .create-data-element-link').length).to.equal(0);
             });
           });
         });
@@ -79,7 +79,7 @@ describe('Acceptance - Projects | Rules: LERM step 5 - creating and linking a ne
             });
 
             it('displays links that open the modal for creating and linking new data elements for each phrase', function() {
-              expect(find('.lerm-step-5b .create-data-element-link').length).to.equal(3);
+              expect(find('.lerm-step-5b .phrase-panel .create-data-element-link').length).to.equal(3);
             });
 
             describe('I click the link for creating and linking a new data element for the first phrase', function() {
