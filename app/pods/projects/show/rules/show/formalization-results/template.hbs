@@ -1,0 +1,15 @@
+<section class="formalization-results">
+  {{#if rule.statements}}
+    <ul class="panel-list statement-list">
+      {{#each rule.statements as |statement|}}
+        <li>
+          {{projects/show/rules/show/formalization-results/rendered-statement-result
+              statement=statement
+              phrases=rule.phrases}}
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p class="text-muted">No formalization results to show yet.</p>
+  {{/if}}
+</section>

@@ -262,7 +262,7 @@ footer.main-footer {
   list-style: none;
   padding-left: 0;
 
-  li {
+  > li {
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #fdfdfd;
@@ -357,4 +357,12 @@ footer.main-footer {
   &:hover {
     cursor: pointer;
   }
+}
+
+.phrase-reference-list {
+  display: none;
+}
+
+.formalization-results .highlight-field .ember-view {
+  display: inline;
 }

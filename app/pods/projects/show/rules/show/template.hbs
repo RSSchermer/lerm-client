@@ -37,7 +37,9 @@
     {{/link-to}}
   </li>
   <li role="presentation">
-    <a href="#">Formalization results</a>
+    {{#link-to 'projects.show.rules.show.formalization-results' rule.project rule}}
+      Formalization results
+    {{/link-to}}
   </li>
   <li role="presentation">
     <a href="#">Relationships</a>

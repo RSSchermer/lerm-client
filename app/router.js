@@ -34,6 +34,8 @@ Router.map(function() {
             this.route('step-5');
             this.route('step-6');
           });
+
+          this.route('formalization-results');
         });
         this.route('edit', { path: '/:rule_id/edit' });
       });

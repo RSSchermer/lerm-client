@@ -1,0 +1,35 @@
+<div class="statement-panel">
+  <ul class="phrase-reference-list">
+    {{#each phrases as |phrase|}}
+      <li id="phrase_{{phrase.id}}">
+        {{#if phrase.dataElementExpression}}
+          {{linked-data-element-expression
+              expression=phrase.dataElementExpression
+              dataElements=phrase.dataElements}}
+        {{else}}
+          {{linked-data-element-expression
+              expression=phrase.defaultDataElementExpression
+              dataElements=phrase.dataElements}}
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <div class="row">
+    <label class="col-sm-1">IF</label>
+    <div class="col-sm-11">
+      <div class="highlight-field rendered-condition">
+        {{statement.condition}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-1">THEN</label>
+    <div class="col-sm-11">
+      <div class="highlight-field rendered-consequence">
+        {{statement.consequence}}
+      </div>
+    </div>
+  </div>
+</div>
