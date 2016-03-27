@@ -49,7 +49,6 @@ export default Component.extend({
     },
 
     changeRelatedRule(rule) {
-      console.log(rule);
       this.set('relatedRule', rule);
     },
 

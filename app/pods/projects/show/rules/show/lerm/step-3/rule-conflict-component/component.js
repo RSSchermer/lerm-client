@@ -49,7 +49,6 @@ export default Component.extend({
     },
 
     changeConflictingRule(rule) {
-      console.log(rule);
       this.set('conflictingRule', rule);
     },
 
