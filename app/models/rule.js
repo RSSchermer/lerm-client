@@ -24,5 +24,19 @@ export default Model.extend({
     return this.get('project.ruleRelationships').filter((relationship) => {
       return relationship.get('ruleOne.id') === this.get('id') || relationship.get('ruleTwo.id') === this.get('id');
     });
+  }),
+
+  dataElements: computed('phrases.@each.dataElements.[]', function() {
+    let dataElements = [];
+
+    this.get('phrases').forEach((p) => {
+      p.get('dataElements').forEach((e) => {
+        if (!dataElements.any((d) => d.get('id') === e.get('id'))) {
+          dataElements.addObject(e);
+        }
+      });
+    });
+
+    return dataElements;
   })
 });

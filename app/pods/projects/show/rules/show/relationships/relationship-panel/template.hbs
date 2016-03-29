@@ -1,0 +1,16 @@
+<div class="row">
+  <label class="col-sm-3">Related rule</label>
+  <div class="col-sm-9">
+    {{#link-to 'projects.show.rules.show.index' relatedRule.project relatedRule
+               class='related-rule-link'}}
+      {{relatedRule.label}}
+    {{/link-to}}
+  </div>
+</div>
+
+<div class="row">
+  <label class="col-sm-3">Relationship description</label>
+  <div class="col-sm-9">
+    <pre>{{relationship.description}}</pre>
+  </div>
+</div>

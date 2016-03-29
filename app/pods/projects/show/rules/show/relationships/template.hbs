@@ -1,0 +1,67 @@
+<section class="relationships-section">
+  <section class="conflicts-section">
+    <h3>Conflicts with other rules (LERM step 3)</h3>
+
+    {{#if rule.conflicts}}
+      <ul class="panel-list conflict-list">
+        {{#each rule.conflicts as |conflict|}}
+          <li>
+            {{projects/show/rules/show/relationships/conflict-panel conflict=conflict rule=rule}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="text-muted">No conflicts have been identified yet for this rule.</p>
+    {{/if}}
+  </section>
+
+  <section class="explicit-relationships-section">
+    <h3>Explicit relationships with other rules (LERM step 6)</h3>
+
+    {{#if rule.relationships}}
+      <ul class="panel-list conflict-list">
+        {{#each rule.relationships as |relationship|}}
+          <li>
+            {{projects/show/rules/show/relationships/relationship-panel relationship=relationship rule=rule}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="text-muted">No explicit relationships have been identified yet for this rule.</p>
+    {{/if}}
+  </section>
+
+  <section class="implicit-relationships-section">
+    <h3>Implicit relationships through shared data elements</h3>
+
+    {{#if rule.dataElements}}
+      <table class="data-element-table table table-striped">
+        <thead>
+          <tr>
+            <th class="data-element-column">Data Element</th>
+            <th class="data-element-rules-column">Related Rules</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each rule.dataElements as |dataElement|}}
+            <tr>
+              <td>
+                {{#link-to 'projects.show.data-elements.show' dataElement.project dataElement}}
+                  {{dataElement.label}}
+                {{/link-to}}
+
+                <small class="small-description">{{dataElement.description}}</small>
+              </td>
+              <td>
+                {{projects/show/rules/show/relationships/data-element-rules dataElement=dataElement rule=rule}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p class="text-muted">No data elements have been linked to this rule yet.</p>
+    {{/if}}
+  </section>
+</section>

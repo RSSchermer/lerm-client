@@ -1,0 +1,16 @@
+<div class="row">
+  <label class="col-sm-3">Conflicting rule</label>
+  <div class="col-sm-9">
+    {{#link-to 'projects.show.rules.show.index' conflictingRule.project conflictingRule
+               class='conflicting-rule-link'}}
+      {{conflictingRule.label}}
+    {{/link-to}}
+  </div>
+</div>
+
+<div class="row">
+  <label class="col-sm-3">Conflict description</label>
+  <div class="col-sm-9">
+    <pre>{{conflict.description}}</pre>
+  </div>
+</div>

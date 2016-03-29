@@ -1,0 +1,15 @@
+{{#if rules}}
+  <ul class="rule-list">
+    {{#each rules as |rule|}}
+      <li>
+        {{#link-to 'projects.show.rules.show' rule.project rule}}
+          {{rule.label}}
+        {{/link-to}}
+
+        <small class="small-description">{{rule.originalText}}</small>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p class="text-muted">No other rules are currently linked to this data element.</p>
+{{/if}}

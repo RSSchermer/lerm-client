@@ -36,6 +36,7 @@ Router.map(function() {
           });
 
           this.route('formalization-results');
+          this.route('relationships');
         });
         this.route('edit', { path: '/:rule_id/edit' });
       });

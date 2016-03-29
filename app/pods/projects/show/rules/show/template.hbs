@@ -42,7 +42,9 @@
     {{/link-to}}
   </li>
   <li role="presentation">
-    <a href="#">Relationships</a>
+    {{#link-to 'projects.show.rules.show.relationships' rule.project rule}}
+      Relationships
+    {{/link-to}}
   </li>
 </ul>
 
