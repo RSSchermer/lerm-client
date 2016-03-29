@@ -39,7 +39,6 @@ describe('Acceptance - Projects | Rules: Listing the rules of a project', functi
 
     describe('the project has 3 rules', function() {
       beforeEach(function() {
-        server.logging = true;
         server.createList('rule', 3, { projectId: this.project.id });
       });
 
