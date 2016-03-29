@@ -390,3 +390,16 @@ footer.main-footer {
     width: 65%;
   }
 }
+
+.formalization-status-section {
+  margin-bottom: 15px;
+
+  .label {
+    margin-right: 5px;
+
+    &.inactive {
+      background-color: #aaa;
+      cursor: pointer;
+    }
+  }
+}

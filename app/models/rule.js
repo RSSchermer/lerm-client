@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import FormalizationStatus from 'lerm-client/enums/formalization-status';
 
 const { Model, attr, belongsTo, hasMany } = DS;
 const { computed } = Ember;
@@ -9,6 +10,7 @@ export default Model.extend({
   source: attr('string'),
   originalText: attr('string'),
   proactiveForm: attr('string'),
+  formalizationStatus: attr('string', { defaultValue: FormalizationStatus.UNFINISHED }),
 
   project: belongsTo('project'),
   phrases: hasMany('phrase'),
@@ -38,5 +40,21 @@ export default Model.extend({
     });
 
     return dataElements;
+  }),
+
+  isUnfinished: computed('formalizationStatus', function() {
+    return this.get('formalizationStatus') === FormalizationStatus.UNFINISHED;
+  }),
+
+  isUnimplementable: computed('formalizationStatus', function() {
+    return this.get('formalizationStatus') === FormalizationStatus.UNIMPLEMENTABLE;
+  }),
+
+  isPartiallyImplemented: computed('formalizationStatus', function() {
+    return this.get('formalizationStatus') === FormalizationStatus.PARTIALLY_IMPLEMENTED;
+  }),
+
+  isFullyImplemented: computed('formalizationStatus', function() {
+    return this.get('formalizationStatus') === FormalizationStatus.FULLY_IMPLEMENTED;
   })
 });

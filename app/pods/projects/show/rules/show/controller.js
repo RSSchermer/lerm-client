@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
+import FormalizationStatus from 'lerm-client/enums/formalization-status';
 
 const { Controller, inject, computed } = Ember;
 const { alias } = computed;
@@ -29,6 +30,34 @@ export default Controller.extend({
   actions: {
     toggleDeleteModal() {
       this.toggleProperty('showDeleteModal');
+    },
+
+    setStatusUnfinished() {
+      let rule = this.get('rule');
+
+      rule.set('formalizationStatus', FormalizationStatus.UNFINISHED);
+      rule.save();
+    },
+
+    setStatusUnimplementable() {
+      let rule = this.get('rule');
+
+      rule.set('formalizationStatus', FormalizationStatus.UNIMPLEMENTABLE);
+      rule.save();
+    },
+
+    setStatusPartiallyImplemented() {
+      let rule = this.get('rule');
+
+      rule.set('formalizationStatus', FormalizationStatus.PARTIALLY_IMPLEMENTED);
+      rule.save();
+    },
+
+    setStatusFullyImplemented() {
+      let rule = this.get('rule');
+
+      rule.set('formalizationStatus', FormalizationStatus.FULLY_IMPLEMENTED);
+      rule.save();
     }
   }
 });

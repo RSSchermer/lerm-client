@@ -23,6 +23,46 @@
   </div>
 </header>
 
+<section class="formalization-status-section">
+  <em>Formalization status:</em>
+
+  {{#if (can 'edit rule' rule)}}
+    <span class="label label-info {{if rule.isUnfinished 'active' 'inactive'}}" {{action 'setStatusUnfinished'}}>
+      Unfinished
+    </span>
+
+    <span class="label label-danger {{if rule.isUnimplementable 'active' 'inactive'}}" {{action 'setStatusUnimplementable'}}>
+      Unimplementable
+    </span>
+
+    <span class="label label-warning {{if rule.isPartiallyImplemented 'active' 'inactive'}}" {{action 'setStatusPartiallyImplemented'}}>
+      Partially Implemented
+    </span>
+
+    <span class="label label-success {{if rule.isFullyImplemented 'active' 'inactive'}}" {{action 'setStatusFullyImplemented'}}>
+      Fully Implemented
+    </span>
+
+    <span class="text-muted">(click to change)</span>
+  {{else}}
+    {{#if rule.isUnfinished}}
+      <span class="label label-info">Unfinished</span>
+    {{/if}}
+
+    {{#if rule.isUnimplementable}}
+      <span class="label label-danger">Unimplementable</span>
+    {{/if}}
+
+    {{#if rule.isPartiallyImplemented}}
+      <span class="label label-warning">Partially Implemented</span>
+    {{/if}}
+
+    {{#if rule.isFullyImplemented}}
+      <span class="label label-success">Fully Implemented</span>
+    {{/if}}
+  {{/if}}
+</section>
+
 <dl>
   <dt>Source</dt>
   <dd>{{rule.source}}</dd>

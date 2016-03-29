@@ -9,6 +9,7 @@ import {
 } from 'mocha';
 import FactoryGuy from 'ember-data-factory-guy';
 import setupFactoryGuy from 'ember-data-factory-guy/utils/manual-setup';
+import FormalizationStatus from 'lerm-client/enums/formalization-status';
 
 describeModel('rule', 'Unit - Models: rule', {
   needs: [
@@ -159,6 +160,126 @@ describeModel('rule', 'Unit - Models: rule', {
         it('returns a list that contains the data element', function() {
           expect(this.subject.get('dataElements').contains(this.dataElement)).to.be.true;
         });
+      });
+    });
+  });
+
+  context('the formalization status is UNFINISHED', function() {
+    beforeEach(function() {
+      this.subject.set('formalizationStatus', FormalizationStatus.UNFINISHED);
+    });
+
+    describe('isUnfinished', function() {
+      it('is true', function() {
+        expect(this.subject.get('isUnfinished')).to.be.true;
+      });
+    });
+
+    describe('isUnimplementable', function() {
+      it('is false', function() {
+        expect(this.subject.get('isUnimplementable')).to.be.false;
+      });
+    });
+
+    describe('isPartiallyImplemented', function() {
+      it('is false', function() {
+        expect(this.subject.get('isPartiallyImplemented')).to.be.false;
+      });
+    });
+
+    describe('isFullyImplemented', function() {
+      it('is false', function() {
+        expect(this.subject.get('isFullyImplemented')).to.be.false;
+      });
+    });
+  });
+
+  context('the formalization status is UNIMPLEMENTABLE', function() {
+    beforeEach(function() {
+      this.subject.set('formalizationStatus', FormalizationStatus.UNIMPLEMENTABLE);
+    });
+
+    describe('isUnfinished', function() {
+      it('is false', function() {
+        expect(this.subject.get('isUnfinished')).to.be.false;
+      });
+    });
+
+    describe('isUnimplementable', function() {
+      it('is true', function() {
+        expect(this.subject.get('isUnimplementable')).to.be.true;
+      });
+    });
+
+    describe('isPartiallyImplemented', function() {
+      it('is false', function() {
+        expect(this.subject.get('isPartiallyImplemented')).to.be.false;
+      });
+    });
+
+    describe('isFullyImplemented', function() {
+      it('is false', function() {
+        expect(this.subject.get('isFullyImplemented')).to.be.false;
+      });
+    });
+  });
+
+  context('the formalization status is PARTIALLY_IMPLEMENTED', function() {
+    beforeEach(function() {
+      this.subject.set('formalizationStatus', FormalizationStatus.PARTIALLY_IMPLEMENTED);
+    });
+
+    describe('isUnfinished', function() {
+      it('is false', function() {
+        expect(this.subject.get('isUnfinished')).to.be.false;
+      });
+    });
+
+    describe('isUnimplementable', function() {
+      it('is false', function() {
+        expect(this.subject.get('isUnimplementable')).to.be.false;
+      });
+    });
+
+    describe('isPartiallyImplemented', function() {
+      it('is true', function() {
+        expect(this.subject.get('isPartiallyImplemented')).to.be.true;
+      });
+    });
+
+    describe('isFullyImplemented', function() {
+      it('is false', function() {
+        expect(this.subject.get('isFullyImplemented')).to.be.false;
+      });
+    });
+  });
+
+  context('the formalization status is FULLY_IMPLEMENTED', function() {
+    beforeEach(function() {
+      this.subject.set('formalizationStatus', FormalizationStatus.FULLY_IMPLEMENTED);
+    });
+
+    describe('isUnfinished', function() {
+      it('is false', function() {
+        expect(this.subject.get('isUnfinished')).to.be.false;
+      });
+    });
+
+    describe('isUnimplementable', function() {
+      it('is false', function() {
+        expect(this.subject.get('isUnimplementable')).to.be.false;
+      });
+    });
+
+    describe('isPartiallyImplemented', function() {
+      it('is false', function() {
+        expect(this.subject.get('isPartiallyImplemented')).to.be.false;
+      });
+    });
+
+    describe('isFullyImplemented', function() {
+      it('is true', function() {
+        expect(this.subject.get('isFullyImplemented')).to.be.true;
       });
     });
   });
