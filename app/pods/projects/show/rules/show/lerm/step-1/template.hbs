@@ -6,29 +6,32 @@
     such that it can be proactively operationalized. That is, it must be possible to
     use the rule to make a decision for an individual patient before it is too late to
     carry out the recommended care. The rule may need to be made more explicit in order
-    to be actionable. If the rule is already formulated proactively, copy the original
-    rule text.
+    to be actionable. By default, the rule's original text will be used.
   </p>
 
-  {{textarea id="proactive_form" class="form-control" value=proactiveForm disabled=proactiveFormFieldDisabled
-             placeholder="Formulate the rule proactively..."}}
+  <form class="proactive-form-form" {{action (perform saveProactiveFormTask) on='submit'}}>
 
-  <div class="field-controls">
-    {{#if (can 'edit rule' rule)}}
-      {{#if isEditing}}
-        {{#spinner-button class="btn btn-primary save-btn" onclick=(action (perform saveProactiveFormTask))
-                          isSpinning=saveProactiveFormTask.isRunning}}
-          {{fa-icon "save"}} Save
-        {{/spinner-button}}
+    <div class="form-group">
+      {{textarea id="proactive_form" class="form-control" value=proactiveForm disabled=proactiveFormFieldDisabled
+                 placeholder=rule.originalText}}
+    </div>
 
-        <button class="btn btn-default cancel-btn" {{action 'stopEditing'}}>
-          Cancel
-        </button>
-      {{else}}
-        <button class="btn btn-default edit-btn" {{action 'startEditing'}}>
-          {{fa-icon 'pencil'}} Edit
-        </button>
+    <div class="form-group field-controls">
+      {{#if (can 'edit rule' rule)}}
+        {{#if isEditing}}
+          {{#spinner-button class="btn btn-primary save-btn" isSpinning=saveProactiveFormTask.isRunning}}
+            {{fa-icon "save"}} Save
+          {{/spinner-button}}
+
+          <a class="btn btn-default cancel-btn" {{action 'stopEditing'}}>
+            Cancel
+          </a>
+        {{else}}
+          <a class="btn btn-default edit-btn" {{action 'startEditing'}}>
+            {{fa-icon 'pencil'}} Edit
+          </a>
+        {{/if}}
       {{/if}}
-    {{/if}}
-  </div>
+    </div>
+  </form>
 </section>

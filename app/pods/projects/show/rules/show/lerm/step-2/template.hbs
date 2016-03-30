@@ -8,7 +8,11 @@
     these from the proactively formulated rule into the text field below.
   </p>
 
-  <pre class="proactive-form-reference">{{highlight rule.proactiveForm phraseTexts}}</pre>
+  {{#if rule.proactiveForm}}
+    <pre class="proactive-form-reference">{{highlight rule.proactiveForm phraseTexts}}</pre>
+  {{else}}
+    <pre class="proactive-form-reference">{{highlight rule.originalText phraseTexts}}</pre>
+  {{/if}}
 
   <section class="phrase-table-section">
     {{#if rule.phrases.length}}
