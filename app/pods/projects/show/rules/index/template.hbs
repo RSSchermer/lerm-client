@@ -18,7 +18,8 @@
       <tr>
         <td>
           {{#link-to 'projects.show.rules.show' rule.project rule class="rule-link"}}{{rule.label}}{{/link-to}}
-          <span class="original-text">{{rule.originalText}}</span>
+          {{projects/show/rules/formalization-status-label rule=rule}}
+          <span class="small-description">{{rule.originalText}}</span>
         </td>
         <td>
           {{rule.source}}
