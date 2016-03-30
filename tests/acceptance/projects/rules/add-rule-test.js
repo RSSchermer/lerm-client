@@ -110,16 +110,16 @@ describe('Acceptance - Projects | Rules: adding a rule to a project', function()
                 click('.add-rule-form .btn-primary');
               });
 
-              it('redirects me to the page listing the rules of the project', function() {
-                expect(currentURL()).to.equal(`/projects/${this.project.id}/rules`);
+              it('redirects me to a page for showing the rule', function() {
+                expect(currentPath()).to.contain('projects.show.rules.show');
               });
 
               it('it displays a flash message indicating that the rule was added successfully', function() {
                 expect(find('main').text()).to.contain('The rule was added successfully');
               });
 
-              it('lists the rule in the rule list', function() {
-                expect(find('.project-rules-table tbody').text()).to.contain('Some Rule');
+              it('shows the correct rule label', function() {
+                expect(find('h2').text()).to.contain('Some Rule');
               });
             });
           });

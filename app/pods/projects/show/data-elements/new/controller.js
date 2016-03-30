@@ -14,7 +14,7 @@ export default Controller.extend({
       let dataElement = yield this.get('dataElement').save();
 
       this.get('flashMessages').success('The data element was added successfully.');
-      this.transitionToRoute('projects.show.data-elements.index', dataElement.get('project'));
+      this.transitionToRoute('projects.show.data-elements.show', dataElement.get('project'), dataElement);
     } catch (error) {
       this.set('error', error);
     }

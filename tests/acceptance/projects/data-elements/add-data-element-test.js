@@ -109,16 +109,16 @@ describe('Acceptance - Projects | Data Elements: adding a data element to a proj
                 click('.add-data-element-form .btn-primary');
               });
 
-              it('redirects me to the page listing the data elements of the project', function() {
-                expect(currentURL()).to.equal(`/projects/${this.project.id}/data-elements`);
+              it('redirects me to a page for showing the data element', function() {
+                expect(currentPath()).to.contain('projects.show.data-elements.show');
               });
 
               it('it displays a flash message indicating that the data element was added successfully', function() {
                 expect(find('main').text()).to.contain('The data element was added successfully');
               });
 
-              it('lists the data element in the data element list', function() {
-                expect(find('.project-data-elements-table tbody').text()).to.contain('Some Data Element');
+              it('shows the correct data element label', function() {
+                expect(find('h2').text()).to.contain('Some Data Element');
               });
             });
           });
