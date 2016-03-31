@@ -8,8 +8,8 @@
   <table class="table table-striped project-data-elements-table">
     <thead>
     <tr>
-      <th>Label</th>
-      <th>Description</th>
+      <th class="data-element-column">Data Element</th>
+      <th class="actions-column"></th>
     </tr>
     </thead>
 
@@ -17,12 +17,33 @@
     {{#each model.dataElements as |dataElement|}}
       <tr>
         <td>
-          {{#link-to 'projects.show.data-elements.show' dataElement.project dataElement}}
+          {{#link-to 'projects.show.data-elements.show' dataElement.project dataElement class='data-element-link'}}
             {{dataElement.label}}
           {{/link-to}}
+          <span class="small-description">{{dataElement.description}}</span>
         </td>
         <td>
-          {{dataElement.description}}
+          {{#rl-dropdown-container class="dropdown"}}
+            {{#rl-dropdown-toggle class="btn btn-default"}}
+              Actions <span class="caret"></span>
+            {{/rl-dropdown-toggle}}
+
+            {{#rl-dropdown tagName="ul" class="dropdown-menu dropdown-menu-right" closeOnChildClick="a:link"}}
+              <li>
+                {{#link-to 'projects.show.data-elements.show' dataElement.project dataElement}}
+                  View data element
+                {{/link-to}}
+              </li>
+
+              {{#if (can 'edit data-element' dataElement)}}
+                <li>
+                  {{#link-to 'projects.show.data-elements.edit' dataElement.project dataElement}}
+                    Edit data element
+                  {{/link-to}}
+                </li>
+              {{/if}}
+            {{/rl-dropdown}}
+          {{/rl-dropdown-container}}
         </td>
       </tr>
     {{/each}}

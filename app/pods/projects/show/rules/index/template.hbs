@@ -8,8 +8,9 @@
   <table class="table table-striped project-rules-table">
     <thead>
     <tr>
-      <th>Label</th>
-      <th>Source</th>
+      <th class="rule-column">Rule</th>
+      <th class="source-column">Source</th>
+      <th class="actions-column"></th>
     </tr>
     </thead>
 
@@ -23,6 +24,81 @@
         </td>
         <td>
           {{rule.source}}
+        </td>
+        <td>
+          {{#rl-dropdown-container class="dropdown"}}
+            {{#rl-dropdown-toggle class="btn btn-default"}}
+              Actions <span class="caret"></span>
+            {{/rl-dropdown-toggle}}
+
+            {{#rl-dropdown tagName="ul" class="dropdown-menu dropdown-menu-right" closeOnChildClick="a:link"}}
+              <li>
+                {{#link-to 'projects.show.rules.show' rule.project rule}}
+                  View rule
+                {{/link-to}}
+              </li>
+
+              {{#if (can 'edit rule' rule)}}
+                <li>
+                  {{#link-to 'projects.show.rules.edit' rule.project rule}}
+                    Edit rule
+                  {{/link-to}}
+                </li>
+              {{/if}}
+
+              <li role="separator" class="divider"></li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.lerm.step-1' rule.project rule}}
+                  Go to LERM step 1
+                {{/link-to}}
+              </li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.lerm.step-2' rule.project rule}}
+                  Go to LERM step 2
+                {{/link-to}}
+              </li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.lerm.step-3' rule.project rule}}
+                  Go to LERM step 3
+                {{/link-to}}
+              </li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.lerm.step-4' rule.project rule}}
+                  Go to LERM step 4
+                {{/link-to}}
+              </li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.lerm.step-5' rule.project rule}}
+                  Go to LERM step 5
+                {{/link-to}}
+              </li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.lerm.step-6' rule.project rule}}
+                  Go to LERM step 6
+                {{/link-to}}
+              </li>
+
+              <li role="separator" class="divider"></li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.formalization-results' rule.project rule}}
+                  View formalization results
+                {{/link-to}}
+              </li>
+
+              <li>
+                {{#link-to 'projects.show.rules.show.relationships' rule.project rule}}
+                  View relationships
+                {{/link-to}}
+              </li>
+            {{/rl-dropdown}}
+          {{/rl-dropdown-container}}
         </td>
       </tr>
     {{/each}}

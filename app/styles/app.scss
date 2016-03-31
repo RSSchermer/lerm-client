@@ -49,6 +49,10 @@ footer.main-footer {
   width: 100%;
 }
 
+.liquid-container, .liquid-child {
+  overflow: visible;
+}
+
 .navbar-nav > li > a.active {
   &,
   &:hover,
@@ -88,15 +92,38 @@ footer.main-footer {
 }
 
 .project-rules-table {
+  table-layout: fixed;
+
+  .rule-column {
+    width: 60%
+  }
+
+  .source-column {
+    width: 25%;
+  }
+
+  .actions-column {
+    width: 15%;
+  }
+
   .rule-link {
     font-weight: bold;
   }
+}
 
-  .original-text {
-    color: $text-muted;
-    display: block;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.project-data-elements-table {
+  table-layout: fixed;
+
+  .data-element {
+    width: 85%;
+  }
+
+  .actions-column {
+    width: 15%;
+  }
+
+  .data-element-link {
+    font-weight: bold;
   }
 }
 
