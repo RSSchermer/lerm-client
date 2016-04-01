@@ -53,6 +53,13 @@
           {{/each}}
         </tbody>
       </table>
+
+      {{#if displayCleanStatementWarning}}
+        <div class="alert alert-warning" role="alert">
+          <strong>{{fa-icon 'warning'}}</strong> Phrases were cleaned or discarded, but statements have not
+          yet been adjusted in step 4b. Verify if statements need cleaning in step 4b.
+        </div>
+      {{/if}}
     {{else}}
       <p class="text-muted">
         No phrases have been added yet for this rule.
