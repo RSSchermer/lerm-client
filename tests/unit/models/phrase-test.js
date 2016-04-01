@@ -18,7 +18,10 @@ describeModel('phrase', 'Unit - Models: phrase', {
   });
 
   beforeEach(function() {
-    this.rule = FactoryGuy.make('rule', { proactiveForm: 'Some proactive form' });
+    this.rule = FactoryGuy.make('rule', {
+      originalText: 'Some original text',
+      proactiveForm: 'Some proactive form'
+    });
     this.subject().set('rule', this.rule);
   });
 
@@ -44,44 +47,76 @@ describeModel('phrase', 'Unit - Models: phrase', {
     });
   });
 
-  describe('textMatchesProactiveForm', function() {
-    context('phrase text does not match proactive form', function() {
+  describe('matchesRule', function() {
+    context('the rule has no proactive form', function() {
       beforeEach(function() {
-        this.subject().set('originalText', 'no match');
+        this.rule.set('proactiveForm', null);
       });
 
-      it('returns false', function() {
-        expect(this.subject().get('textMatchesProactiveForm')).to.be.false;
+      context('phrase text does not match the original rule text', function() {
+        beforeEach(function() {
+          this.subject().set('originalText', 'no match');
+        });
+
+        it('returns false', function() {
+          expect(this.subject().get('matchesRule')).to.be.false;
+        });
+      });
+
+      context('with a single word phrase that occurs in the original rule text in a different case', function() {
+        beforeEach(function() {
+          this.subject().set('originalText', 'Original');
+        });
+
+        it('returns false', function() {
+          expect(this.subject().get('matchesRule')).to.be.false;
+        });
+      });
+
+      context('with a single word phrase that occurs in the original rule text with matching case', function() {
+        beforeEach(function() {
+          this.subject().set('originalText', 'original');
+        });
+
+        it('returns true', function() {
+          expect(this.subject().get('matchesRule')).to.be.true;
+        });
+      });
+
+      context('with a multiple word phrase that occurs in the original rule text', function() {
+        beforeEach(function() {
+          this.subject().set('originalText', 'original text');
+        });
+
+        it('returns true', function() {
+          expect(this.subject().get('matchesRule')).to.be.true;
+        });
       });
     });
 
-    context('with a single word phrase that occurs in the proactive form in a different case', function() {
+    context('the rule has a proactive form', function() {
       beforeEach(function() {
-        this.subject().set('originalText', 'Proactive');
+        this.rule.set('proactiveForm', 'Some proactive form');
       });
 
-      it('returns false', function() {
-        expect(this.subject().get('textMatchesProactiveForm')).to.be.false;
-      });
-    });
+      context('the rule matches the original text but does not match the proactive form', function() {
+        beforeEach(function() {
+          this.subject().set('originalText', 'original');
+        });
 
-    context('with a single word phrase that occurs in the proactive form with matching different case', function() {
-      beforeEach(function() {
-        this.subject().set('originalText', 'proactive');
-      });
-
-      it('returns true', function() {
-        expect(this.subject().get('textMatchesProactiveForm')).to.be.true;
-      });
-    });
-
-    context('with a multiple word phrase that occurs in the proactive form', function() {
-      beforeEach(function() {
-        this.subject().set('originalText', 'proactive form');
+        it('returns false', function() {
+          expect(this.subject().get('matchesRule')).to.be.false;
+        });
       });
 
-      it('returns true', function() {
-        expect(this.subject().get('textMatchesProactiveForm')).to.be.true;
+      context('the rule matches the proactive form', function() {
+        beforeEach(function() {
+          this.subject().set('originalText', 'proactive');
+        });
+
+        it('returns true', function() {
+          expect(this.subject().get('matchesRule')).to.be.true;
+        });
       });
     });
   });

@@ -18,8 +18,10 @@ export default Model.extend({
     return this.get('cleanedText') || this.get('originalText');
   }),
 
-  textMatchesProactiveForm: computed('originalText', 'rule.proactiveForm', function() {
-    return this.get('rule.proactiveForm').indexOf(this.get('originalText').trim()) >= 0;
+  matchesRule: computed('originalText', 'rule.proactiveForm', function() {
+    let proactiveForm = this.get('rule.proactiveForm') || this.get('rule.originalText');
+
+    return proactiveForm.indexOf(this.get('originalText').trim()) >= 0;
   }),
 
   defaultDataElementExpression: computed('dataElements.@each.label', function() {

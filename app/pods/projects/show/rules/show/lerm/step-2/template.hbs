@@ -27,7 +27,7 @@
         <tbody>
           {{#each rule.phrases as |phrase|}}
             <tr>
-              <td class="phrase-column {{if phrase.textMatchesProactiveForm 'valid-phrase' 'invalid-phrase'}}">
+              <td class="phrase-column {{if phrase.matchesRule 'valid-phrase' 'invalid-phrase'}}">
                 {{phrase.originalText}}
               </td>
 
