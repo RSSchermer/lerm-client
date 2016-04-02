@@ -59,7 +59,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.APP.SERVER_HOST = 'https://lerm-server.herokuapp.com';
+    ENV.APP.API_NAMESPACE = 'api/v1';
+    ENV.APP.SERVER_TOKEN_ENDPOINT = ENV.APP.SERVER_HOST + '/oauth/token';
   }
 
   return ENV;
