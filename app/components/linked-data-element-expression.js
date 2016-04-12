@@ -32,7 +32,7 @@ export default Component.extend({
       }).each(function() {
         let $node = $(this);
         let text = $node.text();
-        let rendered = text.replace(label, link);
+        let rendered = text.replace(new RegExp(label, 'g'), link);
 
         $node.replaceWith(rendered);
       });
