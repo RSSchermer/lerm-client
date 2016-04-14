@@ -12,13 +12,9 @@ export default Controller.extend({
   }).drop(),
 
   deleteRelationshipTask: task(function *(relationship) {
-    try {
-      relationship.deleteRecord();
+    relationship.deleteRecord();
 
-      yield relationship.save();
-    } catch (error) {
-      this.send('error', error);
-    }
+    yield relationship.save();
   }),
 
   actions: {

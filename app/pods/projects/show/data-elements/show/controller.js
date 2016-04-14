@@ -14,16 +14,12 @@ export default Controller.extend({
   showDeleteModal: false,
 
   deleteDataElementTask: task(function *() {
-    try {
-      let project = this.get('project');
+    let project = this.get('project');
 
-      yield this.get('dataElement').destroyRecord();
+    yield this.get('dataElement').destroyRecord();
 
-      this.get('flashMessages').success('The data element was deleted successfully.');
-      this.transitionToRoute('projects.show.data-elements.index', project);
-    } catch (error) {
-      this.set('error', error);
-    }
+    this.get('flashMessages').success('The data element was deleted successfully.');
+    this.transitionToRoute('projects.show.data-elements.index', project);
   }).drop(),
 
   actions: {

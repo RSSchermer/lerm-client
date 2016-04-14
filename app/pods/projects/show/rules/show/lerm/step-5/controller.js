@@ -16,11 +16,7 @@ export default Controller.extend({
   }),
 
   savePhraseTask: task(function *(phrase) {
-    try {
-      yield phrase.save();
-    } catch (error) {
-      this.send('error', error);
-    }
+    yield phrase.save();
   }),
 
   saveDataElementTask: task(function *(dataElement) {
@@ -28,21 +24,14 @@ export default Controller.extend({
   }),
 
   linkDataElementTask: task(function *(phrase, dataElement) {
-    try {
-      phrase.get('dataElements').addObject(dataElement);
-      yield phrase.save();
-    } catch (error) {
-      this.send('error', error);
-    }
+    phrase.get('dataElements').addObject(dataElement);
+
+    yield phrase.save();
   }),
 
   unlinkDataElementTask: task(function *(phrase, dataElement) {
-    try {
-      phrase.get('dataElements').removeObject(dataElement);
-      yield phrase.save();
-    } catch (error) {
-      this.send('error', error);
-    }
+    phrase.get('dataElements').removeObject(dataElement);
+    yield phrase.save();
   }),
 
   actions: {

@@ -12,13 +12,9 @@ export default Controller.extend({
   }).drop(),
 
   deleteConflictTask: task(function *(conflict) {
-    try {
-      conflict.deleteRecord();
+    conflict.deleteRecord();
 
-      yield conflict.save();
-    } catch (error) {
-      this.send('error', error);
-    }
+    yield conflict.save();
   }),
 
   actions: {

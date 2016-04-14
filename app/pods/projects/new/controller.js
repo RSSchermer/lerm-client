@@ -12,17 +12,13 @@ export default Controller.extend({
   project: alias('model'),
 
   createProjectTask: task(function *() {
-    try {
-      let project = yield this.get('project').save();
+    let project = yield this.get('project').save();
 
-      run(() => {
-        this.get('session.currentUser.memberships').reload();
-      });
+    run(() => {
+      this.get('session.currentUser.memberships').reload();
+    });
 
-      this.get('flashMessages').success('The project was created successfully.');
-      this.transitionToRoute('projects.show', project.id);
-    } catch (error) {
-      this.set('error', error);
-    }
+    this.get('flashMessages').success('The project was created successfully.');
+    this.transitionToRoute('projects.show', project.id);
   }).drop()
 });

@@ -10,13 +10,9 @@ export default Controller.extend({
   dataElement: alias('model'),
 
   saveDataElementTask: task(function *() {
-    try {
-      let dataElement = yield this.get('dataElement').save();
+    let dataElement = yield this.get('dataElement').save();
 
-      this.get('flashMessages').success('The data element was updated successfully.');
-      this.transitionToRoute('projects.show.data-elements.show', dataElement.get('project'), dataElement);
-    } catch (error) {
-      this.send('error', error);
-    }
+    this.get('flashMessages').success('The data element was updated successfully.');
+    this.transitionToRoute('projects.show.data-elements.show', dataElement.get('project'), dataElement);
   }).drop()
 });

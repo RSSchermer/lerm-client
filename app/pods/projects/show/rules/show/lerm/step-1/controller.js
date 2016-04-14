@@ -12,17 +12,13 @@ export default Controller.extend({
   }),
 
   saveProactiveFormTask: task(function *() {
-    try {
-      let rule = this.get('rule');
+    let rule = this.get('rule');
 
-      rule.set('proactiveForm', this.get('proactiveForm'));
+    rule.set('proactiveForm', this.get('proactiveForm'));
 
-      yield rule.save();
+    yield rule.save();
 
-      this.set('isEditing', false);
-    } catch (error) {
-      this.send('error', error);
-    }
+    this.set('isEditing', false);
   }).drop(),
 
   actions: {

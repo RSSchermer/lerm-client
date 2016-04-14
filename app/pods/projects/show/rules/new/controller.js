@@ -10,13 +10,9 @@ export default Controller.extend({
   rule: alias('model'),
 
   createRuleTask: task(function *() {
-    try {
-      let rule = yield this.get('rule').save();
+    let rule = yield this.get('rule').save();
 
-      this.get('flashMessages').success('The rule was added successfully.');
-      this.transitionToRoute('projects.show.rules.show', rule.get('project'), rule);
-    } catch (error) {
-      this.set('error', error);
-    }
+    this.get('flashMessages').success('The rule was added successfully.');
+    this.transitionToRoute('projects.show.rules.show', rule.get('project'), rule);
   }).drop()
 });

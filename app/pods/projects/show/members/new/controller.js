@@ -26,14 +26,11 @@ export default Controller.extend({
         this.set('error', 'this user is already a project member');
       } else {
         let membership = this.store.createRecord('membership', { user, project });
-        try {
-          yield membership.save();
-          this.get('flashMessages').success('The member was added successfully.');
-          this.transitionToRoute('projects.show.members.index', project);
-        } catch (error) {
-          membership.rollbackAttributes();
-          this.send('error', error);
-        }
+
+        yield membership.save();
+
+        this.get('flashMessages').success('The member was added successfully.');
+        this.transitionToRoute('projects.show.members.index', project);
       }
     }
   }).drop()

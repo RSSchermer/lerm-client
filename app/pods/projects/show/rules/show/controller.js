@@ -15,16 +15,12 @@ export default Controller.extend({
   showDeleteModal: false,
 
   deleteRuleTask: task(function *() {
-    try {
-      let project = this.get('project');
+    let project = this.get('project');
 
-      yield this.get('rule').destroyRecord();
+    yield this.get('rule').destroyRecord();
 
-      this.get('flashMessages').success('The rule was deleted successfully.');
-      this.transitionToRoute('projects.show.rules.index', project);
-    } catch (error) {
-      this.set('error', error);
-    }
+    this.get('flashMessages').success('The rule was deleted successfully.');
+    this.transitionToRoute('projects.show.rules.index', project);
   }).drop(),
 
   actions: {

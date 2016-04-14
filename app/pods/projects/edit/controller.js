@@ -10,13 +10,9 @@ export default Controller.extend({
   project: alias('model'),
 
   saveProjectTask: task(function *() {
-    try {
-      let project = yield this.get('project').save();
+    let project = yield this.get('project').save();
 
-      this.get('flashMessages').success('The project was updated successfully.');
-      this.transitionToRoute('projects.show', project.id);
-    } catch (error) {
-      this.send('error', error);
-    }
+    this.get('flashMessages').success('The project was updated successfully.');
+    this.transitionToRoute('projects.show', project.id);
   }).drop()
 });

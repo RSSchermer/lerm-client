@@ -27,19 +27,11 @@ export default Controller.extend({
   ),
 
   savePhraseTask: task(function *(phrase) {
-    try {
-      yield phrase.save();
-    } catch (error) {
-      this.send('error', error);
-    }
+    yield phrase.save();
   }),
 
   saveStatementTask: task(function *(statement) {
-    try {
-      yield statement.save();
-    } catch (error) {
-      this.send('error', error);
-    }
+    yield statement.save();
   }),
 
   actions: {

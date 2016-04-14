@@ -15,18 +15,14 @@ export default Controller.extend({
     let newPhraseText = this.get('newPhraseText');
 
     if (newPhraseText) {
-      try {
-        let phrase = this.store.createRecord('phrase', {
-          originalText: newPhraseText,
-          rule: this.get('rule')
-        });
+      let phrase = this.store.createRecord('phrase', {
+        originalText: newPhraseText,
+        rule: this.get('rule')
+      });
 
-        yield phrase.save();
+      yield phrase.save();
 
-        this.set('newPhraseText', null);
-      } catch (error) {
-        this.send('error', error);
-      }
+      this.set('newPhraseText', null);
     }
   }).drop(),
 
