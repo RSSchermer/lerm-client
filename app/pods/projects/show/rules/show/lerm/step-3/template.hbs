@@ -32,11 +32,11 @@
 </section>
 
 <div class="lerm-step-controls">
-  {{#link-to 'projects.show.rules.show.lerm.step-2' rule class='btn btn-default previous-step-btn'}}
+  {{#link-to 'projects.show.rules.show.lerm.step-2' rule.project rule class='btn btn-default previous-step-btn'}}
     {{fa-icon 'arrow-left'}} Go back to Step 2
   {{/link-to}}
 
-  {{#link-to 'projects.show.rules.show.lerm.step-4' rule class='btn btn-default next-step-btn'}}
+  {{#link-to 'projects.show.rules.show.lerm.step-4' rule.project rule class='btn btn-default next-step-btn'}}
     Go on to Step 4 {{fa-icon 'arrow-right'}}
   {{/link-to}}
 </div>

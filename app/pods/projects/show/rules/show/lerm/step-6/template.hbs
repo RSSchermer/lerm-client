@@ -34,11 +34,11 @@
 </section>
 
 <div class="lerm-step-controls">
-  {{#link-to 'projects.show.rules.show.lerm.step-5' rule class='btn btn-default previous-step-btn'}}
+  {{#link-to 'projects.show.rules.show.lerm.step-5' rule.project rule class='btn btn-default previous-step-btn'}}
     {{fa-icon 'arrow-left'}} Go back to Step 5
   {{/link-to}}
 
-  {{#link-to 'projects.show.rules.show.formalization-results' rule class='btn btn-default next-step-btn'}}
+  {{#link-to 'projects.show.rules.show.formalization-results' rule.project rule class='btn btn-default next-step-btn'}}
     {{fa-icon 'flag-checkered'}} Go to formalization results
   {{/link-to}}
 </div>
