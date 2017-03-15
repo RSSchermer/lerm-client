@@ -42,6 +42,7 @@ Router.map(function() {
       });
     });
     this.route('edit', { path: '/:project_id/edit' });
+    this.route('clone', { path: '/:project_id/clone' });
   });
 });
 

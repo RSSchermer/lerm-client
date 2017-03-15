@@ -3,9 +3,15 @@
     <h1>{{fa-icon "archive"}} {{model.name}}</h1>
 
     <nav class="page-nav-links">
+      {{#if (can 'clone project' model)}}
+        {{#link-to 'projects.clone' model class='btn btn-default project-clone-link'}}
+          {{fa-icon 'clone'}} Clone project
+        {{/link-to}}
+      {{/if}}
+
       {{#if (can 'edit project' model)}}
         {{#link-to 'projects.edit' model class='btn btn-default project-edit-link'}}
-          {{fa-icon "pencil"}} Edit project
+          {{fa-icon 'pencil'}} Edit project
         {{/link-to}}
       {{/if}}
     </nav>

@@ -24,5 +24,9 @@ export default Ability.extend({
     }
   }),
 
-  canDestroy: false
+  canDestroy: false,
+
+  canClone: computed('canCreate', 'canView', function() {
+    return this.get('canCreate') && this.get('canView');
+  })
 });
