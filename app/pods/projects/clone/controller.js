@@ -29,6 +29,10 @@ export default Controller.extend({
         }
       });
 
+      run(() => {
+        this.get('session.currentUser.memberships').reload();
+      });
+
       this.get('flashMessages').success('The project was cloned successfully.');
       this.transitionToRoute('projects.show', result.data.id);
     } catch (error) {
